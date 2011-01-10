@@ -1,3 +1,6 @@
+% {{{ Preamble
+
+
 %% BioMed_Central_Tex_Template_v1.05
 %%                                      %
 %  bmc_article.tex            ver: 1.05 %
@@ -103,13 +106,11 @@
 %Publication style settings
 %\newenvironment{bmcformat}{\fussy\setboolean{publ}{true}}{\fussy}
 
-
-
 % Begin ...
 \begin{document}
 \begin{bmcformat}
-
-
+% }}}
+% {{{ Title
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                          %%
 %% Enter the title of your article here     %%
@@ -158,7 +159,8 @@
 }%
 
 \maketitle
-
+%}}}
+% {{{ Abstract
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                          %%
 %% The Abstract begins here                 %%
@@ -189,44 +191,12 @@
 
 \ifthenelse{\boolean{publ}}{\begin{multicols}{2}}{}
 
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%                                          %%
-%% The Main Body begins here                %%
-%%                                          %%
-%% The Section headings here are those for  %%
-%% a Research article submitted to a        %%
-%% BMC-Series journal.                      %%  
-%%                                          %%
-%% If your article is not of this type,     %%
-%% then refer to the instructions for       %%
-%% authors on:                              %%
-%% http://www.biomedcentral.com/info/authors%%
-%% and change the section headings          %%
-%% accordingly.                             %% 
-%%                                          %%
-%% See the Results and Discussion section   %%
-%% for details on how to create sub-sections%%
-%%                                          %%
-%% use \cite{...} to cite references        %%
-%%  \cite{koon} and                         %%
-%%  \cite{oreg,khar,zvai,xjon,schn,pond}    %%
-%%  \nocite{smith,marg,hunn,advi,koha,mouse}%%
-%%                                          %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
-
-%%%%%%%%%%%%%%%%
-%% Background %%
-%%
+% }}}
+% {{{ Background
 \section*{Background}
  Text for this section.\cite{koon,oreg,khar,zvai,xjon,schn,pond,smith,marg,hunn,advi,koha,mouse}
-
-
+% }}}
+% {{{ Results and Discussion
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Results and Discussion %%
@@ -245,16 +215,13 @@
 
   \subsection*{Yet another results sub-heading}
     Text for this sub-section.  More results \ldots
-
-
-    
-
+% }}}
+% {{{ Conclusions
 %%%%%%%%%%%%%%%%%%%%%%
 \section*{Conclusions}
   Text for this section \ldots
-
-
-  
+% }}}
+% {{{ Methods
 %%%%%%%%%%%%%%%%%%
 \section*{Methods}
   \subsection*{Methods sub-heading for this section}
@@ -265,58 +232,23 @@
 
   \subsection*{Yet another sub-heading for this section}
     Text for this sub-section \ldots
-
-
-    
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% }}}
+% {{{ Author Contributions
 \section*{Authors contributions}
     Text for this section \ldots
-
-    
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% }}}
+% {{{ Acknowledgements
 \section*{Acknowledgements}
   \ifthenelse{\boolean{publ}}{\small}{}
   Text for this section \ldots
-
-
- 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%                  The Bibliography                       %%
-%%                                                         %%              
-%%  Bmc_article.bst  will be used to                       %%
-%%  create a .BBL file for submission, which includes      %%
-%%  XML structured for BMC.                                %%
-%%                                                         %%
-%%                                                         %%
-%%  Note that the displayed Bibliography will not          %% 
-%%  necessarily be rendered by Latex exactly as specified  %%
-%%  in the online Instructions for Authors.                %% 
-%%                                                         %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
+%}}}
+% {{{ Bibliography
 {\ifthenelse{\boolean{publ}}{\footnotesize}{\small}
  \bibliographystyle{bmc_article}  % Style BST file
   \bibliography{article} }     % Bibliography file (usually '*.bib' ) 
-
-%%%%%%%%%%%
-
+%}}}
+% {{{ Figures
 \ifthenelse{\boolean{publ}}{\end{multicols}}{}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%                               %%
-%% Figures                       %%
-%%                               %%
-%% NB: this is for captions and  %%
-%% Titles. All graphics must be  %%
-%% submitted separately and NOT  %%
-%% included in the Tex document  %%
-%%                               %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%
-%% Do not use \listoffigures as most will included as separate files
 
 \section*{Figures}
   \subsection*{Figure 1 - Sample figure title}
@@ -325,17 +257,8 @@
 
   \subsection*{Figure 2 - Sample figure title}
       Figure legend text.
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%                               %%
-%% Tables                        %%
-%%                               %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%% Use of \listoftables is discouraged.
-%%
+% }}}
+% {{{ Tables
 \section*{Tables}
   \subsection*{Table 1 - Sample table title}
     Here is an example of a \emph{small} table in \LaTeX\ using  
@@ -353,15 +276,8 @@
   \subsection*{Table 2 - Sample table title}
     Large tables are attached as separate files but should
     still be described here.
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%                               %%
-%% Additional Files              %%
-%%                               %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+% }}}
+% {{{ Additional Files
 \section*{Additional Files}
   \subsection*{Additional file 1 --- Sample additional file title}
     Additional file descriptions text (including details of how to
@@ -374,10 +290,4 @@
 
 \end{bmcformat}
 \end{document}
-
-
-
-
-
-
-
+% }}}
