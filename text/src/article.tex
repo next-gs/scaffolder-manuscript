@@ -74,11 +74,8 @@
 %%                                             %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                     
 
-
 \def\includegraphic{}
 \def\includegraphics{}
-
-
 
 \setlength{\topmargin}{0.0cm}
 \setlength{\textheight}{21.5cm}
@@ -98,7 +95,6 @@
 %% returned to the Review style setting.        %%
 %%                                              %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- 
 
 %Review style settings
 \newenvironment{bmcformat}{\begin{raggedright}\baselineskip20pt\sloppy\setboolean{publ}{false}}{\end{raggedright}\baselineskip20pt\sloppy}
@@ -106,88 +102,61 @@
 %Publication style settings
 %\newenvironment{bmcformat}{\fussy\setboolean{publ}{true}}{\fussy}
 
+% Scaffolder url
+\urldef{\scaffolder}\url{http://www.michaelbarton.me.uk/projects/scaffolder/}
+
 % Begin ...
 \begin{document}
 \begin{bmcformat}
 % }}}
 % {{{ Title
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%                                          %%
-%% Enter the title of your article here     %%
-%%                                          %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\title{A sample article title}
- 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%                                          %%
-%% Enter the authors here                   %%
-%%                                          %%
-%% Ensure \and is entered between all but   %%
-%% the last two authors. This will be       %%
-%% replaced by a comma in the final article %%
-%%                                          %%
-%% Ensure there are no trailing spaces at   %% 
-%% the ends of the lines                    %%     	
-%%                                          %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Scaffolder - Software for Microbial Genome Scaffolding.}
 
-
-\author{Charles A Darwin\correspondingauthor$^{1,2}$%
-       \email{Charles A Darwin\correspondingauthor - charles@londonzoo.co.uk}%
-      \and
-         Jane E Doe\correspondingauthor$^2$%
-         \email{Jane E Doe\correspondingauthor - jane.e.doe@cambridge.co.uk}
-       and 
-         John RS Smith$^3$%
-         \email{John RS Smith - john.RS.Smith@cambridge.co.uk}%
+\author{
+  Michael D Barton$^{1}$%
+  \email{Michael D Barton - mail@michaelbarton.me.uk}%
+\and
+  Hazel A Barton\correspondingauthor$^1$%
+  \email{Hazel A Barton\correspondingauthor - bartonh@nku.edu}%
       }
-      
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%                                          %%
-%% Enter the authors' addresses here        %%
-%%                                          %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\address{%
-    \iid(1)Life Sciences Department, Kings College London, Cornwall House,%
-        Waterloo Road, London, UK\\
-    \iid(2)Department of Zoology, Cambridge, Waterloo Road, London, UK\\
-    \iid(3)Marine Ecology Department, Institute of Marine Sciences Kiel, %
-        D\"{u}sternbrooker Weg 20, 24105 Kiel, Germany
-}%
+\address{\iid(1) Department of Biological Sciences, Northern Kentucky%
+University, Nunn Drive, Highland Heights, KY 41076 }%
 
 \maketitle
 %}}}
 % {{{ Abstract
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%                                          %%
-%% The Abstract begins here                 %%
-%%                                          %%
-%% The Section headings here are those for  %%
-%% a Research article submitted to a        %%
-%% BMC-Series journal.                      %%  
-%%                                          %%
-%% If your article is not of this type,     %%
-%% then refer to the Instructions for       %%
-%% authors on http://www.biomedcentral.com  %%
-%% and change the section headings          %%
-%% accordingly.                             %%   
-%%                                          %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 
 \begin{abstract}
-        % Do not use inserted blank lines (ie \\) until main body of text.
-        \paragraph*{Background:} Text for this section of the abstract. 
-      
-        \paragraph*{Results:} Text for this section of the abstract \ldots
 
-        \paragraph*{Conclusions:} Text for this section of the abstract \ldots
+  \paragraph*{Background:} Assembly of short read sequencing data can result in
+  a fragmented series of contigs. Therefore a common step in a genome project
+  is to join neighbouring sequence regions together and fill gaps using insert
+  data generated through PCR. This scaffolding step, however, is non-trivial
+  and requires manually editing large blocks of nucleotide sequence. Joining
+  sequence contigs together also hides the source of each region in the final
+  genome sequence. Taken together, these considerations may make reproducing or
+  editing an existing genome build difficult.
+
+  \paragraph*{Methods:} The software outlined "Scaffolder" is implemented in
+  the Ruby programming language and can be installed via the RubyGems software
+  management system. Genome scaffolds are defined using YAML - a markup
+  language, which is both human and machine-readable. Command line binaries and
+  extensive documentation are provided.
+
+  \paragraph*{Results:} This software allows a genome build to be defined in
+  terms of the constituent contigs using a relatively simple to write and edit
+  scaffold file syntax. The Scaffolder syntax further allows inserts to be
+  added to the scaffold for the purpose of filling unknown sequence regions.
+  Defining the genome construction in a file makes the scaffolding process
+  reproducible and comparatively easier to edit than raw fasta.
+
+  \paragraph*{Conclusions:} Scaffolder is easy to use genome scaffolding
+  software. This tool promotes reproducibility and maintenance in building
+  a genome. Scaffolder can be found at \scaffolder.
+
 \end{abstract}
-
-
 
 \ifthenelse{\boolean{publ}}{\begin{multicols}{2}}{}
 
