@@ -74,11 +74,8 @@
 %%                                             %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                     
 
-
 \def\includegraphic{}
 \def\includegraphics{}
-
-
 
 \setlength{\topmargin}{0.0cm}
 \setlength{\textheight}{21.5cm}
@@ -98,7 +95,6 @@
 %% returned to the Review style setting.        %%
 %%                                              %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- 
 
 %Review style settings
 \newenvironment{bmcformat}{\begin{raggedright}\baselineskip20pt\sloppy\setboolean{publ}{false}}{\end{raggedright}\baselineskip20pt\sloppy}
@@ -106,14 +102,16 @@
 %Publication style settings
 %\newenvironment{bmcformat}{\fussy\setboolean{publ}{true}}{\fussy}
 
+% Scaffolder url
+\urldef{\scaffolder}\url{http://www.michaelbarton.me.uk/projects/scaffolder/}
+
 % Begin ...
 \begin{document}
 \begin{bmcformat}
 % }}}
 % {{{ Title
 
-\title{Scaffolder - Simple and reproducible genome scaffolding using
-text configuration files.}
+\title{Scaffolder - Software for Microbial Genome Scaffolding.}
 
 \author{
   Michael D Barton$^{1}$%
@@ -152,11 +150,11 @@ University, Nunn Drive, Highland Heights, KY 41076 }%
   scaffold file syntax. The Scaffolder syntax further allows inserts to be
   added to the scaffold for the purpose of filling unknown sequence regions.
   Defining the genome construction in a file makes the scaffolding process
-  reproducible and comparatively easier to edit than raw fasta sequence.
-  
+  reproducible and comparatively easier to edit than raw fasta.
+
   \paragraph*{Conclusions:} Scaffolder is easy to use genome scaffolding
   software. This tool promotes reproducibility and maintenance in building
-  a genome. Scaffolder can be found at http://michaelbarton.me.uk/sfdr.
+  a genome. Scaffolder can be found at \scaffolder.
 
 \end{abstract}
 
