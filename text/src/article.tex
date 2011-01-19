@@ -171,34 +171,34 @@ University, Nunn Drive, Highland Heights, KY 41076 }%
 Scaffolder is written in Ruby \cite{ruby-lang} using version 1.8.7. Unit and
 ntegration tests use RSpec and Cucumber\cite{rspec}. The source code is
 documented in-line using Yard\cite{yard} and the Unix manual pages are
-generated using Ronn\cite{ronn}.
+generated using Ronn\cite{ronn}.\pb
 
 The sequence scaffold is defined in YAML\cite{yaml}. YAML is a machine
 readable data format written using indentation of white space. YAML is designed
 to be human readable which is ideal for manual editing of a genome scaffold.
 Each stretch of sequence in the genome scaffold is defined as a list entry in
 the YAML scaffold file. When parsing the scaffold file Scaffolder iterates over
-each scaffold entry to create an instance of the Scaffolder::Region class.
+each scaffold entry to create an instance of the Scaffolder::Region class.\pb
 
 The Region class is inherited by all types of sequence in the scaffold. The
 Region provides helper methods common to the tasks in manipulating scaffold
 sequence, subsequencing and reversing. In particular the region class has
-a class annotation method\cite{class-annotations} which allows attributes in the
-scaffold method to be defined in the class. This negates having to write
+a class annotation method\cite{class-annotations} which allows attributes in
+the scaffold method to be defined in the class. This negates having to write
 a custom method to deal with each scaffold variable.  Furthermore this makes
 the process of transferring attributes from the scaffold file to each region
-instance much simpler - each yaml attribute corresponds to a method call on the
-instantiated class. The scaffold file effectively becomes a DSL for populating
-the scaffold region instances while still maintaining the machine readable data
-qualities of YAML.
+instance much simpler - each yaml attribute corresponds to a method call on
+the instantiated class. The scaffold file effectively becomes a DSL for
+populating the scaffold region instances while still maintaining the machine
+readable data qualities of YAML.\pb
 
 The region class provides a sequence hook method. This method returns by
 default the sequence corresponding to the fasta sequence defined by the source
-tag which is then sublclassed or reversed if necessary. Subclasses of the region
-class should override this method to provide custom functionality in
-manipulating the source sequence. For example, the Scaffolder::Region::Sequence
-class overrides the sequence method add any sequence inserts specified in the
-scaffold file.
+tag which is then sublclassed or reversed if necessary. Subclasses of the
+region class should override this method to provide custom functionality in
+manipulating the source sequence. For example, the
+Scaffolder::Region::Sequence class overrides the sequence method add any
+sequence inserts specified in the scaffold file.\pb
 
 % }}}
 % {{{ Results and Discussion
