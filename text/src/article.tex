@@ -170,29 +170,39 @@ University, Nunn Drive, Highland Heights, KY 41076 }%
 \section*{Implementation}
   Text for this section \ldots
 % }}}
-% {{{ Results and Discussion
- 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Results and Discussion %%
-%%
-\section*{Results and Discussion}
-  \subsection*{Results sub-heading}
-    \subsubsection*{This is a sub-sub-heading}
-      Sub-sub-sub-headings are made with the \textsl{\\subsubsection} command. \pb
-      pb at end of lines ensures correct paragraph spacing.\pb
-	  Text for this sub-sub-section \ldots
-    \subsubsection*{Another sub-sub-sub-heading}
-      Text for this sub-sub-section \ldots
+\section*{Results and Discussion} %{{{1
+\subsection*{Scaffolder Description} %{{{2
 
-  \subsection*{Another results sub-heading}
-    Text for this sub-section \ldots
+  * Join contigs together
+  * Add inserts
+  * Add unknown gap regions
+  * Specified in a YAML file format
 
-  \subsection*{Yet another results sub-heading}
-    Text for this sub-section.  More results \ldots
-% }}}
-% {{{ Conclusions
-%%%%%%%%%%%%%%%%%%%%%%
-\section*{Conclusions}
+\subsection*{Scaffold file format} %{{{2
+
+  * Screen shot with example file
+  * Illustrate three types of region in the scaffold file
+  * Explanation of what each region does
+  * Expected output from each region
+
+\subsection*{Command line usage} %{{{2
+
+  * Illustrate running command line to generate output
+  * Demonstrate scaffold validate to test inserts overlap
+
+\subsection*{Programmatic usage of API} %{{{2
+
+  * Demonstrate how scaffolder can be manipulated programmatically
+  * Examine scaffolder data using a ruby program
+  * Example of extending sequence class with a new method \%GC content
+  * Create a new class to do something
+
+\subsection*{Installation} %{{{2
+
+  * Install through rubygems
+  * Make sure the bin is in the class path
+
+\section*{Conclusions} %{{{1
   Text for this section \ldots
 % }}}
 % {{{ Availability and Requirements
