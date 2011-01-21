@@ -165,17 +165,48 @@ University, Nunn Drive, Highland Heights, KY 41076 }%
 \section*{Background}
  Text for this section.
 % }}}
-% {{{ Implementation
-\section*{Implementation}
+\section*{Implementation} %{{{1
+
+\subsection*{Code and Dependencies} %{{{2
 
 Scaffolder is written in Ruby \cite{ruby-lang} using version 1.8.7. Unit and
-ntegration tests use RSpec and Cucumber\cite{rspec}. The source code is
-documented in-line using Yard\cite{yard} and the Unix manual pages are
-generated using Ronn\cite{ronn}.\pb
+integration tests are implemented using the RSpec and Cucumber libraries
+respectively\cite{rspec}. The Scaffolder source code is documented using the
+Yard\cite{yard} library and the Unix manual pages are generated for the command
+line tools using the Ronn library\cite{ronn}. Programmatic manipulation of
+biological sequences is performed using BioRuby \cite{bioruby}. A full list of
+the scaffolder dependencies can be found in the Gemfile in the source code root
+directory.\pb
 
-The sequence scaffold is defined in YAML\cite{yaml}. YAML is a machine
-readable data format written using indentation of white space. YAML is designed
-to be human readable which is ideal for manual editing of a genome scaffold.
+\subsection*{Scaffold file syntax} %{{{2
+
+The orientation of contigs and inserts in a Scaffolder file is specified using
+YAML syntax\cite{yaml}. YAML was selected as a machine readable markup with
+parsers available for most programming languages. Since YAML is a common data
+interchange format this should make it easier for developers to computationally
+generate a genome scaffold and output to the Scaffolder format. Furthermore the
+YAML syntax can be validated using third party tools such as
+Kwalify\cite{kwalify}.\pb
+
+In addition to being machine readable the YAML syntax is designed to be easier
+to manually edit when compared with XML. YAML uses whitespace to delimit node
+in a directed acyclic graph compared with XML which uses angular braces (`$<$'
+and `$>$') with open and closing tags. By choosing a human readable syntax it is
+aimed that the scaffold should be easier to edit and change manually in simple
+text edit. A scenario which we anticipate is common in the on-going process of
+scaffolding a genome sequence. \pb
+
+The entries in the YAML scaffold are defined as a list. Each entry in the list
+corresponds to a region sequence in the final output sequence which follows
+the previous entry in the scaffold and precedes the following entry. Each
+attribute defined for each entry in the list allows specifications for the
+entry such as if any starting sequence should be clipped from the beginning or
+end, or if the sequence should be reversed. \pb
+
+INSERT IMAGE OF SCAFFOLD GRAPH AND RESULTING OUTPUT.
+
+\subsection*{Parsing the YAML scaffold} %{{{2
+
 Each stretch of sequence in the genome scaffold is defined as a list entry in
 the YAML scaffold file. When parsing the scaffold file Scaffolder iterates over
 each scaffold entry to create an instance of the Scaffolder::Region class.\pb
@@ -187,26 +218,20 @@ a class annotation method\cite{class-annotations} which allows attributes in
 the scaffold method to be defined in the class. This negates having to write
 a custom method to deal with each scaffold variable.  Furthermore this makes
 the process of transferring attributes from the scaffold file to each region
-instance much simpler - each yaml attribute corresponds to a method call on
-the instantiated class. The scaffold file effectively becomes a DSL for
-populating the scaffold region instances while still maintaining the machine
-readable data qualities of YAML.\pb
+instance much simpler - each yaml attribute corresponds to a method call on the
+instantiated class. The scaffold file effectively becomes a DSL for populating
+the scaffold region instances while still maintaining the machine readable data
+qualities of YAML.\pb
 
 The region class provides a sequence hook method. This method returns by
 default the sequence corresponding to the fasta sequence defined by the source
 tag which is then sublclassed or reversed if necessary. Subclasses of the
 region class should override this method to provide custom functionality in
-manipulating the source sequence. For example, the
-Scaffolder::Region::Sequence class overrides the sequence method add any
-sequence inserts specified in the scaffold file.\pb
+manipulating the source sequence. For example, the Scaffolder::Region::Sequence
+class overrides the sequence method add any sequence inserts specified in the
+scaffold file.\pb
 
-% }}}
-% {{{ Results and Discussion
- 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Results and Discussion %%
-%%
-\section*{Results and Discussion}
+\section*{Results and Discussion} %{{{1
   \subsection*{Results sub-heading}
     \subsubsection*{This is a sub-sub-heading}
       Sub-sub-sub-headings are made with the \textsl{\\subsubsection} command. \pb
