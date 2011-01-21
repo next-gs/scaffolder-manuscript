@@ -171,14 +171,34 @@ University, Nunn Drive, Highland Heights, KY 41076 }%
   Text for this section \ldots
 % }}}
 \section*{Results and Discussion} %{{{1
+
 \subsection*{Scaffolder Description} %{{{2
 
-  * Join contigs together
-  * Add inserts
-  * Add unknown gap regions
-  * Specified in a YAML file format
+Scaffolder is a tool aimed at build genome sequence scaffolds through simple to
+edit configuration files. Scaffolder allows contigs to be joined together
+through defintition in the scaffold file. Each contigs is stored in a fasta
+file, as provided by the standard output from an assembler such as
+newbler\cite{newbler} or abyss\cite{abyss}. Scaffolder allows inserts to be
+added to scaffold so that gaps in the assembled data may be bridged and filled
+- a common process in finishing a genome sequence. Scaffolder also allows the
+specification of unknown regions in the scaffold. These may be regions where
+the sequence is unknown but the approximate size can be estimated from the
+sequencing of insert pairs or from estimating distances from contigs aligned to
+reference genomes.
 
-\subsection*{Scaffold file format} %{{{2
+Scaffolder provides a ruby API that allows the scaffold and designated
+sequences to be manipulated through a ruby programme. This allows scaffolder to
+be integrated into exiting genomics works flows such as using Rake. Scaffolder
+all provides a command line binary for the manipulation of the scaffold. This
+binary behaves as a standard unix command line interface returning appropriate
+exit statuses and providing manual pages for each of the commands.
+
+\subsection*{Defining a scaffold in a text file} %{{{2
+
+The genome scaffold is defined YAML format. YAML is an easy to edit data format
+that is both machine readable and easy to edit manually.
+
+INSERT FIGURE WITH EXAMPLE LAYOUT OF SCAFFOLD
 
   * Screen shot with example file
   * Illustrate three types of region in the scaffold file
