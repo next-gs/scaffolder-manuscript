@@ -174,24 +174,41 @@ University, Nunn Drive, Highland Heights, KY 41076 }%
 
 \subsection*{Scaffolder Description} %{{{2
 
-Scaffolder is a tool aimed at build genome sequence scaffolds through simple to
-edit configuration files. Scaffolder allows contigs to be joined together
-through defintition in the scaffold file. Each contigs is stored in a fasta
-file, as provided by the standard output from an assembler such as
-newbler\cite{newbler} or abyss\cite{abyss}. Scaffolder allows inserts to be
-added to scaffold so that gaps in the assembled data may be bridged and filled
-- a common process in finishing a genome sequence. Scaffolder also allows the
-specification of unknown regions in the scaffold. These may be regions where
-the sequence is unknown but the approximate size can be estimated from the
-sequencing of insert pairs or from estimating distances from contigs aligned to
-reference genomes.
+Individual reads produced from nucleotide sequencing can be assembled into
+contiguous regions (``contigs'') of many overlapping individual reads. These
+reads may however not represent a complete genome sequence where all contigs do
+not result in a single complete sequence. The software outlined here
+``Scaffolder'' allows these contigs to be further joined together into
+a continuous single sequence. This selection, order and direction of contigs
+into a final draft genome is often described as the `scaffold'. Scaffolder
+allows the manual or computational specification of a genome scaffold by
+specifying which contig sequences are used in simple to edit configuration
+files. 
 
-Scaffolder provides a ruby API that allows the scaffold and designated
-sequences to be manipulated through a ruby programme. This allows scaffolder to
-be integrated into exiting genomics works flows such as using Rake. Scaffolder
-all provides a command line binary for the manipulation of the scaffold. This
-binary behaves as a standard unix command line interface returning appropriate
-exit statuses and providing manual pages for each of the commands.
+The scaffold file specifies how contigs should be joined together in the draft
+genome sequence. The raw nucleotide sequence for each contig is stored in
+a fasta file, as might be produced from assembly of sequencing reads using
+programs such as newbler\cite{newbler} or abyss\cite{abyss}. Scaffolder then
+the contig to be selected by specifying the name of the contig in the scaffold
+file. The scaffold file also allows a sub-sequence or the reverse complement of
+a contig to used. This therefore preserves the original sequence data but also
+allowing sequences to manipulated in the final genome build.
+
+The majority of a genome can be estimated from scaffolding assembled contigs
+into the most parsimonious build. There may however still be internal gaps in
+the contigs from mate pair assembly based on estimated mate pair insert size.
+Scaffolder allows inserts to be added to scaffolded so that gaps may be bridged
+and filled - a common process in finishing a genome sequence. Inserts may be
+treated the same way as a contig where the raw sequence, as may be produced by
+PCR is stored in a fasta file, and then trimmed and/or reversed to fill the gap
+in the contig.
+
+Scaffolder allows the specification of unknown regions in the scaffold. These
+are areas of the genome where the nucleotide sequence is unknown but the
+approximate size region may be estimated from mate pair insert size or from
+mapping contigs to reference genome and estimating the size of the gap. These
+unknown regions allow a continuous draft sequence to be scaffolded but whilst
+still highlighting regions waiting to be resolved.
 
 \subsection*{Defining a scaffold in a text file} %{{{2
 
@@ -204,6 +221,14 @@ INSERT FIGURE WITH EXAMPLE LAYOUT OF SCAFFOLD
   * Illustrate three types of region in the scaffold file
   * Explanation of what each region does
   * Expected output from each region
+
+Scaffolder provides a ruby API that allows the scaffold and designated
+sequences to be manipulated through a ruby programme. This allows scaffolder to
+be integrated into exiting genomics works flows such as using Rake. Scaffolder
+all provides a command line binary for the manipulation of the scaffold. This
+binary behaves as a standard Unix command line interface returning appropriate
+exit statuses and providing manual pages for each of the commands. These two
+methods are outlined in the following two sections.
 
 \subsection*{Command line usage} %{{{2
 
@@ -219,7 +244,7 @@ INSERT FIGURE WITH EXAMPLE LAYOUT OF SCAFFOLD
 
 \subsection*{Installation} %{{{2
 
-  * Install through rubygems
+  * Install through RubyGems
   * Make sure the bin is in the class path
 
 \section*{Conclusions} %{{{1
