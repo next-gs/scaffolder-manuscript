@@ -169,36 +169,45 @@ University, Nunn Drive, Highland Heights, KY 41076 }%
 
 \subsection*{Code and Dependencies} %{{{2
 
-Scaffolder is written in Ruby \cite{ruby-lang} using version 1.8.7. Unit and
-integration tests are implemented using the RSpec and Cucumber libraries
-respectively\cite{rspec}. The Scaffolder source code is documented using the
-Yard\cite{yard} library and the Unix manual pages are generated for the command
-line tools using the Ronn library\cite{ronn}. Programmatic manipulation of
-biological sequences is performed using BioRuby \cite{bioruby}. A full list of
-the scaffolder dependencies can be found in the Gemfile in the source code root
-directory.\pb
+Scaffolder is written in the Ruby programming language, version 1.8.7
+\cite{ruby-lang}. Unit tests were implemented during development to maintain
+functionality of individual elements of source code. Integration tests were
+also written to test the scaffold software interface as a whole. These unit and
+integration tests were written using the RSpec and Cucumber libraries
+respectively\cite{rspec}.\pb
+
+The Scaffolder source code is documented using the Yard library\cite{yard}.
+Unix manual pages for the command line interface were generated using the Ronn
+library\cite{ronn}. The manipulation of biological sequences in Scaffolder is
+performed using the BioRuby library\cite{bioruby}. A full list of the software
+dependencies in scaffolder can be found in the Gemfile in the root of source
+code directory.\pb
 
 \subsection*{Scaffold file syntax} %{{{2
 
-The orientation of contigs and inserts in a Scaffolder file is specified using
-YAML syntax\cite{yaml}. YAML was selected as a machine readable markup with
-parsers available for most programming languages. Since YAML is a common data
-interchange format this should make it easier for developers to computationally
-generate a genome scaffold and output to the Scaffolder format. Furthermore the
-YAML syntax can be validated using third party tools such as
-Kwalify\cite{kwalify}.\pb
+The specification of the nucleotide sequences comprising the genome scaffold is
+written using YAML \cite{yaml}. YAML is a data format using whitespace and
+identation to produce a standardised machine readable structure. As a commonly
+accepted data format third-party developers have the option to generate
+a genome scaffold using their programming language of choice. As a standardised
+format YAML formatted scaffold files can checked for syntax validity using
+third party tools such as Kwalify\cite{kwalify}. \pb
 
-In addition to being machine readable the YAML syntax is designed to be easier
-to manually edit when compared with XML. YAML uses whitespace to delimit node
-in a directed acyclic graph compared with XML which uses angular braces (`$<$'
-and `$>$') with open and closing tags. By choosing a human readable syntax it is
-aimed that the scaffold should be easier to edit and change manually in simple
-text edit. A scenario which we anticipate is common in the on-going process of
-scaffolding a genome sequence. \pb
+In addition to being machine readable it also important that a genome scaffold
+file also be easy to edit manually. As such this was the second reason the YAML
+syntax was selected for the scaffold file data format. YAML has a concise and
+compact syntax and when compared with formats such as extensible markup
+language (XML) which require angular braces (`$<$' and `$>$') and open and
+closing tags to delimite each data field.
+
+By choosing a human readable syntax it is aimed that the scaffold should be
+easier to edit and change manually in simple text edit.  A scenario which we
+anticipate is common in the on-going process of scaffolding a genome sequence.
+\pb
 
 The entries in the YAML scaffold are defined as a list. Each entry in the list
-corresponds to a region sequence in the final output sequence which follows
-the previous entry in the scaffold and precedes the following entry. Each
+corresponds to a region sequence in the final output sequence which follows the
+previous entry in the scaffold and precedes the following entry.  Each
 attribute defined for each entry in the list allows specifications for the
 entry such as if any starting sequence should be clipped from the beginning or
 end, or if the sequence should be reversed. \pb
