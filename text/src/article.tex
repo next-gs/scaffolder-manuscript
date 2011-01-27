@@ -186,8 +186,8 @@ code directory.\pb
 \subsection*{Scaffold file syntax} %{{{2
 
 The choice of nucleotide sequences comprising the genome scaffold is specified
-in YAML \cite{yaml}. YAML is a language format for data using whitespace and
-identation to produce a machine readable structure. As a standardised data
+in YAML \cite{yaml}. YAML is a language format for data using white-space and
+indentation to produce a machine readable structure. As a standardised data
 format third-party developers have the option to generate a genome scaffold
 using any programming language for which a YAML parser exists. Furthermore YAML
 formatted scaffold files can be validated using third party tools such as
@@ -197,44 +197,38 @@ The initial assembly of sequencing reads may result in an incomplete genome
 build. Comparison of contigs to reference genomes and the generation of
 additional sequence from PCR translates to genome finishing as an ongoing
 process. Therefore the scaffold file should be simple to edit manually in
-additon to being computationally tractable. This requirement for the scaffold
-files to be modifable in a simple simple text editor is the second reason YAML
+addition to being computationally tractable. This requirement for the scaffold
+files to be modifiable in a simple simple text editor is the second reason YAML
 was selected as the format for scaffold files.\pb
 
-\subsection*{Parsing the YAML scaffold} %{{{2
+\subsection*{Processing the scaffold file} %{{{2
 
-The entries in the YAML scaffold are defined as a list. Each entry in the list
-corresponds to a region sequence in the final output sequence which follows the
-previous entry in the scaffold and precedes the following entry.  Each
-attribute defined for each entry in the list allows specifications for the
-entry such as if any starting sequence should be clipped from the beginning or
-end, or if the sequence should be reversed.\pb
+The form of the scaffold file is a list of entries. Each entry corresponds to
+a length of sequence in the the draft genome sequence. When generating the
+genome sequence from the scaffold file each entry is processed in order. Each
+of the nucleotide sequence specified by the scaffold file entries are
+concatenated together to produce the draft genome sequence. Each entry in the
+scaffold file may have attributes which define whether a sub-sequence or the
+reverse complement of the sequence should be used is the scaffold. The types of
+attributes are outlined in the Results and Discussion section below.\pb
 
-INSERT IMAGE OF SCAFFOLD GRAPH AND RESULTING OUTPUT.
+As the scaffold file is processed a corresponding ruby object instance is
+created to correspond to an entry in the scaffold file. as an instance of
+a subclass of Scaffolder::Region.  Scaffolder::Region is the super class for
+all region entries in the scaffold.  This Region class provides the helper
+methods for sub-sequencing and reversing complementing a sequence.  The Region
+class also provides a class annotation method\cite{class-annotations} which
+simplifies defining the attributes for each scaffold entry. Possible attributes
+for scaffold entries can be added by using this helper method. \pb
 
-Each stretch of sequence in the genome scaffold is defined as a list entry in
-the YAML scaffold file. When parsing the scaffold file Scaffolder iterates over
-each scaffold entry to create an instance of the Scaffolder::Region class.\pb
-
-The Region class is inherited by all types of sequence in the scaffold. The
-Region provides helper methods common to the tasks in manipulating scaffold
-sequence, subsequencing and reversing. In particular the region class has
-a class annotation method\cite{class-annotations} which allows attributes in
-the scaffold method to be defined in the class. This negates having to write
-a custom method to deal with each scaffold variable.  Furthermore this makes
-the process of transferring attributes from the scaffold file to each region
-instance much simpler - each yaml attribute corresponds to a method call on the
-instantiated class. The scaffold file effectively becomes a DSL for populating
-the scaffold region instances while still maintaining the machine readable data
-qualities of YAML.\pb
-
-The region class provides a sequence hook method. This method returns by
-default the sequence corresponding to the fasta sequence defined by the source
-tag which is then sublclassed or reversed if necessary. Subclasses of the
-region class should override this method to provide custom functionality in
-manipulating the source sequence. For example, the Scaffolder::Region::Sequence
-class overrides the sequence method add any sequence inserts specified in the
-scaffold file.\pb
+An noteworthy method of the Scaffolder::Region class is the ``raw_sequence''
+method. In the Scaffolder::Region class method returns by the sequence defined
+by the ``source'' tag in the scaffold file. This sequence is then sub-sequenced
+or reversed complemented if necessary. Subclasses of the Scaffolder::Region
+class override this method to additional manipulate the nucleotide sequence.
+For example, the Scaffolder::Region::Sequence class overrides the sequence
+method to insert any specified inserts specified in the scaffold file before
+this sequence is returned up the method chain.\pb
 
 \section*{Results and Discussion} %{{{1
   \subsection*{Results sub-heading}
