@@ -201,8 +201,6 @@ addition to being computationally tractable. This requirement for the scaffold
 files to be modifiable in a simple simple text editor is the second reason YAML
 was selected as the format for scaffold files.\pb
 
-\subsection*{Processing the scaffold file} %{{{2
-
 The form of the scaffold file is a list of entries. Each entry corresponds to
 a length of sequence in the the draft genome sequence. When generating the
 genome sequence from the scaffold file each entry is processed in order. Each
@@ -212,32 +210,12 @@ scaffold file may have attributes which define whether a sub-sequence or the
 reverse complement of the sequence should be used is the scaffold. The types of
 attributes are outlined in the Results and Discussion section below.\pb
 
-As the scaffold file is processed a corresponding ruby object instance is
-created to correspond to an entry in the scaffold file. as an instance of
-a subclass of Scaffolder::Region.  Scaffolder::Region is the super class for
-all region entries in the scaffold.  This Region class provides the helper
-methods for sub-sequencing and reversing complementing a sequence.  The Region
-class also provides a class annotation method\cite{class-annotations} which
-simplifies defining the attributes for each scaffold entry. Possible attributes
-for scaffold entries can be added by using this helper method. \pb
-
-An noteworthy method of the Scaffolder::Region class is the ``raw_sequence''
-method. In the Scaffolder::Region class method returns by the sequence defined
-by the ``source'' tag in the scaffold file. This sequence is then sub-sequenced
-or reversed complemented if necessary. Subclasses of the Scaffolder::Region
-class override this method to additional manipulate the nucleotide sequence.
-For example, the Scaffolder::Region::Sequence class overrides the sequence
-method to insert any specified inserts specified in the scaffold file before
-this sequence is returned up the method chain.\pb
-
-\section*{Results and Discussion} %{{{1
-  \subsection*{Results sub-heading}
-    \subsubsection*{This is a sub-sub-heading}
-      Sub-sub-sub-headings are made with the \textsl{\\subsubsection} command. \pb
-      pb at end of lines ensures correct paragraph spacing.\pb
-	  Text for this sub-sub-section \ldots
-    \subsubsection*{Another sub-sub-sub-heading}
-      Text for this sub-sub-section \ldots
+\section*{Results and Discussion} %{{{1 \subsection*{Results sub-heading}
+\subsubsection*{This is a sub-sub-heading} Sub-sub-sub-headings are made with
+the \textsl{\\subsubsection} command. \pb pb at end of lines ensures correct
+paragraph spacing.\pb Text for this sub-sub-section \ldots
+\subsubsection*{Another sub-sub-sub-heading} Text for this sub-sub-section
+\ldots
 
   \subsection*{Another results sub-heading}
     Text for this sub-section \ldots
