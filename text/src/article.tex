@@ -286,10 +286,31 @@ different order can result in a different sequence. For instance reverse
 complementing the sequence then adding inserts will have a different effect
 compared with performing these actions in the reverse order. Scaffolder
 therefore follows the following protocol for processing each entry in the
-scaffold file.
+scaffold file. \pb
 
-\paragraph{Process inserts}
+\paragraph{Reverse sort inserts:} If the entry is a sequence and has sequence
+inserts these are reverse sorted by insert close position. The insert with the
+largest close position is first and and the smallest close position is last.
+This is done to preserve the the insert open/close coordinates as they are
+added to the scaffold. \pb
 
+\paragraph{Update sequence with insert:} Each insert is added to the sequence
+replacing the region specified by the open an close position with the specified
+source sequence.\pb
+
+\paragraph{Update sequence start/stop co-ordinates:} If the insert added to the
+sequence is a different length than the region replaced the start and stop
+co-ordinates of the sequence are correspondingly updated if necessary. E.g. if
+a 7 bp insert filled a bp region this would result in a 2bp difference in the
+length of the sequence. The stop coordinated would be updated to reflect this.
+\pb
+
+\paragraph{Sub-sequence selected:} If the sequence is has start or stop
+sequences specified these are used to trip the sequence to these co-ordinates.
+\pb 
+
+\paragraph{Sub-sequence reverse complemented: } If specified with the reverse keyworkd the sequence is reverse complemented.
+\pb
 
 \subsection*{Scaffolder usage} %{{{2
 
@@ -299,13 +320,36 @@ be integrated into exiting genomics works flows such as using Rake.  Scaffolder
 all provides a command line binary for the manipulation of the scaffold. This
 binary behaves as a standard Unix command line interface returning appropriate
 exit statuses and providing manual pages for each of the commands. These two
-methods are outlined in the following two sections. \pb
+methods are outlined in the following three sections. \pb
 
 \subsubsection*{Installation} %{{{3
 
-  * Install through RubyGems
+Scaffolder relies on both the ruby programming language and the RubyGems
+package management system. These are commonly installed on recent versions of
+Mac OSX and linux distrubtions. The installation of these can be tested on the
+command line by typing the following commands. \pb
 
-  * Make sure the bin is in the class path
+\begin{verbatim}
+ruby -v
+gem -v
+\end{verbatim}
+
+If both these commands return without error this indicates the necessary
+requirements to install scaffolder. The scaffolder API and command line tools
+can then be installed with the follow command.
+
+\begin{verbatim}
+gem install scaffolder scaffolder-tools
+\end{verbatim}
+
+Finally to ensure that the command line tools are accessible these the
+RubyGems binary directory should be in the command line path. This can be done
+by adding the following to the ~/.bashrc file or other corresponding shell
+configure file. Assuming that ~/.gem is the install path for RubyGems.
+
+\begin{verbatim}
+export PATH=~/.gem/bin:$PATH
+\end{verbatim}
 
 \subsubsection*{Command line interface} %{{{3
 
@@ -323,7 +367,7 @@ methods are outlined in the following two sections. \pb
 
 \section*{Conclusions} %{{{1
 
-Text for this section \ldots }}} {{{ Availability and Requirements
+Text for this section \ldots
 
 \section*{Availability and Requirements}
 
