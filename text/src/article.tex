@@ -185,36 +185,32 @@ code directory.\pb
 
 \subsection*{Scaffold file syntax} %{{{2
 
-The specification of the nucleotide sequences comprising the genome scaffold is
-written using YAML \cite{yaml}. YAML is a data format using whitespace and
-identation to produce a standardised machine readable structure. As a commonly
-accepted data format third-party developers have the option to generate
-a genome scaffold using their programming language of choice. As a standardised
-format YAML formatted scaffold files can checked for syntax validity using
-third party tools such as Kwalify\cite{kwalify}. \pb
+The choice of nucleotide sequences comprising the genome scaffold is specified
+in YAML \cite{yaml}. YAML is a language format for data using whitespace and
+identation to produce a machine readable structure. As a standardised data
+format third-party developers have the option to generate a genome scaffold
+using any programming language for which a YAML parser exists. Furthermore YAML
+formatted scaffold files can be validated using third party tools such as
+Kwalify\cite{kwalify}.\pb
 
-In addition to being machine readable it also important that a genome scaffold
-file also be easy to edit manually. As such this was the second reason the YAML
-syntax was selected for the scaffold file data format. YAML has a concise and
-compact syntax and when compared with formats such as extensible markup
-language (XML) which require angular braces (`$<$' and `$>$') and open and
-closing tags to delimite each data field.
+The initial assembly of sequencing reads may result in an incomplete genome
+build. Comparison of contigs to reference genomes and the generation of
+additional sequence from PCR translates to genome finishing as an ongoing
+process. Therefore the scaffold file should be simple to edit manually in
+additon to being computationally tractable. This requirement for the scaffold
+files to be modifable in a simple simple text editor is the second reason YAML
+was selected as the format for scaffold files.\pb
 
-By choosing a human readable syntax it is aimed that the scaffold should be
-easier to edit and change manually in simple text edit.  A scenario which we
-anticipate is common in the on-going process of scaffolding a genome sequence.
-\pb
+\subsection*{Parsing the YAML scaffold} %{{{2
 
 The entries in the YAML scaffold are defined as a list. Each entry in the list
 corresponds to a region sequence in the final output sequence which follows the
 previous entry in the scaffold and precedes the following entry.  Each
 attribute defined for each entry in the list allows specifications for the
 entry such as if any starting sequence should be clipped from the beginning or
-end, or if the sequence should be reversed. \pb
+end, or if the sequence should be reversed.\pb
 
 INSERT IMAGE OF SCAFFOLD GRAPH AND RESULTING OUTPUT.
-
-\subsection*{Parsing the YAML scaffold} %{{{2
 
 Each stretch of sequence in the genome scaffold is defined as a list entry in
 the YAML scaffold file. When parsing the scaffold file Scaffolder iterates over
