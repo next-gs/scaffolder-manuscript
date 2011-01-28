@@ -423,24 +423,37 @@ This program illustrates that the scaffold object is initialised with two argume
 
 \subsection*{Discussion of scaffolder approach} %{{{2
 
-Pros
-  * Do one thing and do it well
-  * If your data structures are good enough, the algorithm to manipulate them should be trivial."
+The main aims of scaffolder are two fold. The first is usuability and the second is reproducibility.
 
-  * Reproducable steps in building a scaffold
-  * Extensive documentation. Should be easy to use as possible.
-  * Scaffold file allows meaningful construction of a scaffold
-  * See of each sequence in building final draft genome
-  * Keeping genome sequence in a scaffold file means it is simpler to edit after the fact.
-  * Versionable plain text. Easy to store and see diffs
-  * Common format for scaffold file means it can be easily manipulated programmatically.
-  * Command line interface for using as is
-  * Ruby API allowing more complex manipulation of the scaffold
-  * Simple to install.  Automatically installed. No manual installation. 
+\subsubsection{Simple to use}
+
+Scaffolder is designed to be as simple to use as possible. Assuming the
+existence of Ruby and RubyGems, scaffolder can be installed with a single
+command. Scaffolder uses a minimal and compact syntax to described the
+scaffold. This syntax is simple to construct and edit whilst being succint and
+readable in describing how the scaffold was constructed. Scaffolder provides
+extensive documentation both for the command line tools and for the Scaffolder
+Ruby API.
+
+\subsubsection{Reproducible genome construction}
+
+Constructing a genome sequence using a plain text scaffold file means the same
+sequence is always output for the same file. The sequence produced from
+manually joining separate contigs in a text editor can not be reliably
+reproduced. Constructing the scaffold in a plain text file means that the
+sequence is reproducible. Furthermore the source of each region in final
+sequence can be identified. The scaffold file provides a readable record of
+how the sequence was constructed. The scaffold file also means the scaffold is
+easer to edit once already constructed. Much more difficult to do when working
+on the sequence alone. The YAML text format is also much easier to compare
+differences using standard diff commands. This makes scaffold files much more
+simple to store in version control and to see the stages in the construction
+of the genome sequence.
 
 \section*{Conclusions} %{{{1
 
-Text for this section \ldots
+  * Do one thing and do it well
+  * If your data structures are good enough, the algorithm to manipulate them should be trivial."
 
 \section*{Availability and Requirements} %{{{1
 
