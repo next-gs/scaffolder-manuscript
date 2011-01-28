@@ -172,18 +172,6 @@ University, Nunn Drive, Highland Heights, KY 41076 }%
 % }}}
 \section*{Results and Discussion} %{{{1
 
-Pros
-  * Reproducable steps in building a scaffold
-  * Extensive documentation. Should be easy to use as possible.
-  * Scaffold file allows meaningful construction of a scaffold
-  * See of each sequence in building final draft genome
-  * Keeping genome sequence in a scaffold file means it is simpler to edit after the fact.
-  * Versionable plain text. Easy to store and see diffs
-  * Common format for scaffold file means it can be easily manipulated programmatically.
-  * Command line interface for using as is
-  * Ruby API allowing more complex manipulation of the scaffold
-  * Simple to install.  Automatically installed. No manual installation. 
-
 \subsection*{Scaffolder Description} %{{{2
 
 Individual reads produced from nucleotide sequencing can be assembled into
@@ -369,7 +357,7 @@ Scaffolder provides a command line interface to validate and build a genome
 sequence from a scaffold. Assuming scaffolder has been installed and the
 binary is available in the command line path the following command can be used
 to invoke scaffolder. This will list the available commands for running
-scaffolder.
+scaffolder. \pb
 
 \begin{verbatim}
 $ scaffolder
@@ -378,7 +366,7 @@ $ scaffolder
 Help on each command can be found by type `help' followed by the name of the
 command. This will return the Unix manual page for the command of interest.
 For example the following command will return the manual page for sequence
-listing the available options for running the sequence command.
+listing the available options for running the sequence command. \pb
 
 \begin{verbatim}
 $ scaffolder help sequence
@@ -387,7 +375,7 @@ $ scaffolder help sequence
 To the generate the fasta sequence from a scaffold the sequence command should
 be used. This should be passed the name of the file with containing the YAML
 formatted scaffold and the corresponding fasta file of sequences. This will
-then return the complete drafted sequence to the standard out.
+then return the complete drafted sequence to the standard out. \pb
 
 \begin{verbatim}
 $ scaffolder sequence scaffold.yml sequences.fna
@@ -398,7 +386,7 @@ insert sequence co-ordinates. As described in the section above overlapping
 inserts will result in unexpected behaviour as the coordinates for the first
 insert will change the expected insert location for the second insert. The
 validate command will check the scaffold for any overlapping inserts and
-return them as a YAML formatted list describing each one.
+return them as a YAML formatted list describing each one. \pb
 
 \begin{verbatim}
 $ scaffolder validate scaffold.yml sequences.fna
@@ -406,15 +394,49 @@ $ scaffolder validate scaffold.yml sequences.fna
 
 \subsubsection*{Application programming interface} %{{{3
 
-  * Demonstrate how scaffolder can be manipulated programmatically
-  * Examine scaffolder data using a ruby program
-  * Example of extending sequence class with a new method \%GC content
-  * Create a new class to do something
+The scaffolder tool has a defined application programming interface (API) to
+allow ruby programs to manipulate the scaffold. Detailing the complete API
+would be overwhelming to this document. The scaffolder API is fully documented
+online using at the scaffolder website. The following code snippet gives and
+outline of how the API may be used to create a script to replicate the
+function of the `scaffolder sequence' command described above. \pb
+
+\begin{verbatim}
+  #!/usr/bin/env ruby
+
+  require 'rubygems'
+  require 'scaffolder'
+
+  scaffold_file = ARGV.shift
+  sequence_file = ARGV.shift
+
+  scaffold = Scaffolder.new(
+    YAML.load(File.read(scaffold_file)),
+    sequence_file)
+
+  sequence = scaffold.map{|entry| entry.sequence }.join
+
+  puts sequence
+\end{verbatim}
+
+This program illustrates that the scaffold object is initialised with two arguments: the YAML loaded scaffold file and the location of the fasta formatted sequence file. The scaffold is then enumerable as the next line illustrates the trivial code required to generate the scaffold. Further details of the attributes for each entry in the scaffold can be found in the documentation for the Scaffolder::Region class. \pb
 
 \subsection*{Discussion of scaffolder approach} %{{{2
 
+Pros
+  * Do one thing and do it well
+  * If your data structures are good enough, the algorithm to manipulate them should be trivial."
 
-
+  * Reproducable steps in building a scaffold
+  * Extensive documentation. Should be easy to use as possible.
+  * Scaffold file allows meaningful construction of a scaffold
+  * See of each sequence in building final draft genome
+  * Keeping genome sequence in a scaffold file means it is simpler to edit after the fact.
+  * Versionable plain text. Easy to store and see diffs
+  * Common format for scaffold file means it can be easily manipulated programmatically.
+  * Command line interface for using as is
+  * Ruby API allowing more complex manipulation of the scaffold
+  * Simple to install.  Automatically installed. No manual installation. 
 
 \section*{Conclusions} %{{{1
 
