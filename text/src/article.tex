@@ -353,10 +353,46 @@ export PATH=~/.gem/bin:$PATH
 
 \subsubsection*{Command line interface} %{{{3
 
-  * Illustrate running command line to generate output
-  * Demonstrate scaffold validate to test inserts overlap
+Scaffolder provides a command line interface to validate and build a genome
+sequence from a scaffold. Assuming scaffolder has been installed and the
+binary is available in the command line path the following command can be used
+to invoke scaffolder. This will list the available commands for running
+scaffolder.
 
-\subsubsection*{Accessible programmatic interface} %{{{3
+\begin{verbatim}
+$ scaffolder
+\end{verbatim}
+
+Help on each command can be found by type `help' followed by the name of the
+command. This will return the Unix manual page for the command of interest.
+For example the following command will return the manual page for sequence
+listing the available options for running the sequence command.
+
+\begin{verbatim}
+$ scaffolder help sequence
+\end{verbatim} 
+
+To the generate the fasta sequence from a scaffold the sequence command should
+be used. This should be passed the name of the file with containing the YAML
+formatted scaffold and the corresponding fasta file of sequences. This will
+then return the complete drafted sequence to the standard out.
+
+\begin{verbatim}
+$ scaffolder sequence scaffold.yml sequences.fna
+\end{verbatim}
+
+Scaffolder also provides a function to test the scaffold for overlapping
+insert sequence co-ordinates. As described in the section above overlapping
+inserts will result in unexpected behaviour as the coordinates for the first
+insert will change the expected insert location for the second insert. The
+validate command will check the scaffold for any overlapping inserts and
+return them as a YAML formatted list describing each one.
+
+\begin{verbatim}
+$ scaffolder validate scaffold.yml sequences.fna
+\end{verbatim}
+
+\subsubsection*{Application programming interface} %{{{3
 
   * Demonstrate how scaffolder can be manipulated programmatically
   * Examine scaffolder data using a ruby program
