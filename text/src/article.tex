@@ -161,13 +161,30 @@ University, Nunn Drive, Highland Heights, KY 41076 }%
 \ifthenelse{\boolean{publ}}{\begin{multicols}{2}}{}
 
 % }}}
-% {{{ Background
-\section*{Background}
- Text for this section.\cite{koon,oreg,khar,zvai,xjon,schn,pond,smith,marg,hunn,advi,koha,mouse}
-% }}}
-% {{{ Implementation
-%%%%%%%%%%%%%%%%%%%%%%
-\section*{Implementation}
+\section*{Background} %{{{1
+
+Large-scale parallel genome sequencing can produces hundreds of thousands to
+millions of nucleotide reads. These reads describe the nucleotide sequence in
+a region of the genome. The current status of parallel nucleotide sequencing
+limits the largest read length to $>$1000 nucleotides and to obtain
+a contiguous complete genome sequence these sequence reads must be joined
+together. \pb
+
+The process of joining these reads together is described as the `assembly'
+stage in a genome sequencing project. Assembly software joins these numerous
+sequence reads together, usually from the overlap between reads, into
+contiguous regions (`contigs') composing many of the individual reads. The goal
+of the assembly stage is produce a contiuous genome sequence describing the
+complete genome from start to finish. \pb
+
+These reads may however not represent a complete genome sequence where all
+contigs do not result in a single complete sequence. The software outlined here
+``Scaffolder'' allows these contigs to be further joined together into
+a continuous single sequence. This selection, order and direction of contigs
+into a final draft genome is often described as the `scaffold'. \pb
+
+\section*{Implementation} %{{{1
+
   Text for this section \ldots
 % }}}
 % {{{ Results and Discussion
