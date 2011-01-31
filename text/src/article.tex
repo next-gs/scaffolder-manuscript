@@ -172,44 +172,44 @@ University, Nunn Drive, Highland Heights, KY 41076 }%
 % }}}
 \section*{Results and Discussion} %{{{1
 
-\subsection*{Scaffolder Description} %{{{2
+\subsection*{Scaffolder Simplifies Genome Finishing} %{{{2
 
-Individual reads produced from nucleotide sequencing can be assembled into
-contiguous regions (``contigs'') of many overlapping individual reads. These
-reads may however not represent a complete genome sequence where all contigs do
-not result in a single complete sequence. The software outlined here
-``Scaffolder'' allows these contigs to be further joined together into
-a continuous single sequence. This selection, order and direction of contigs
-into a final draft genome is often described as the `scaffold'. Scaffolder
-allows the manual or computational specification of a genome scaffold by
-specifying which contig sequences are used in simple to edit configuration
-files. \pb
+The Scaffolder software allows manual or computational joining of mutliple
+discontiguous nucleotide sequences together into a contiguous super sequence.
+Simple plain-text configuration files are used to select the nucleotide
+sequences in the scaffold and how they should be joined together. This is
+called the ``scaffold file''. \pb
 
-The scaffold file specifies how contigs should be joined together in the draft
-genome sequence. The raw nucleotide sequence for each contig is stored in
-a fasta file, as might be produced from assembly of sequencing reads using
-programs such as Newbler\cite{miller2010} or ABySS\cite{simpson2009}.
-Scaffolder then the contig to be selected by specifying the name of the contig
-in the scaffold file. The scaffold file also allows a sub-sequence or the
-reverse complement of a contig to used. This therefore preserves the original
-sequence data but also allowing sequences to manipulated in the final genome
-build. \pb
+The scaffold file is read by the scaffolder software to determine how the
+scaffold super sequence is generated. In addition to specifying which
+nucleotides should be used to generate the draft super sequence, the scaffold
+file allows the sequences to trimmed down to smaller sub-sequences and to
+reverse complement the sequence if necessary. \pb
 
-The majority of a genome can be estimated from scaffolding assembled contigs
-into the most parsimonious build. There may however still be internal gaps in
-the contigs from mate pair assembly based on estimated mate pair insert size.
-Scaffolder allows inserts to be added to scaffolded so that gaps may be bridged
-and filled - a common process in finishing a genome sequence. Inserts may be
-treated the same way as a contig where the raw sequence, as may be produced by
-PCR is stored in a fasta file, and then trimmed and/or reversed to fill the gap
-in the contig. \pb
+There may be unknown regions in the sequences used in the scaffold. Region of
+nucleotide sequence the assembler was unable to determine the nucleotide
+sequence. The process of genome finishing may involve determining the correct
+nucleotide sequence for these regions then filling the gaps with the additional
+correct sequence. The scaffold file specifically allows these inserts to be
+added to scaffold. These inserts can be treated the same way as a larger
+contig: trimmed and/or reversed to match the required gap region. \pb
 
-Scaffolder allows the specification of unknown regions in the scaffold. These
-are areas of the genome where the nucleotide sequence is unknown but the
-approximate size region may be estimated from mate pair insert size or from
-mapping contigs to reference genome and estimating the size of the gap. These
-unknown regions allow a continuous draft sequence to be scaffolded but whilst
-still highlighting regions waiting to be resolved. \pb
+When scaffolding a genome there may be regions of sequence approximate size
+region may be estimated from mate-pair insert size or from mapping the contigs
+to reference genome. These unknown regions are useful to join non-contiguous
+sequences together by the estimated size of the region whilst still
+highlighting areas in the genome to be resolved. These unknown regions can be
+specified in the scaffold file for the above reasons. \pb
+
+The original raw nucleotide sequence for each assembled contig or insert
+sequence is maintained in a fasta file. The fasta file of contigs is a common
+output for assemblers and as such should be readily available after assembly
+without additional processing. The choice of the nucleotide sequence to use in
+the scaffold is specified using the first space-delimited word from the fasta
+header of the sequence. By maintaining the nucleotide sequences in a separate
+file this preserves the original raw sequence in the fasta file. Furthermore
+this separates the actual nucleotide sequence from the determination of how it
+is selected and editted in the final genome sequence. \pb
 
 \subsection*{Defining a scaffold in a text file} %{{{2
 
