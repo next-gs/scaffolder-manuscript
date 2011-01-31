@@ -174,7 +174,7 @@ University, Nunn Drive, Highland Heights, KY 41076 }%
 
 \subsection*{Scaffolder Simplifies Genome Finishing} %{{{2
 
-The Scaffolder software allows manual or computational joining of mutliple
+The Scaffolder software allows manual or computational joining of multiple
 discontiguous nucleotide sequences together into a contiguous super sequence.
 Simple plain-text configuration files are used to select the nucleotide
 sequences in the scaffold and how they should be joined together. This is
@@ -209,11 +209,11 @@ the scaffold is specified using the first space-delimited word from the fasta
 header of the sequence. By maintaining the nucleotide sequences in a separate
 file this preserves the original raw sequence in the fasta file. Furthermore
 this separates the actual nucleotide sequence from the determination of how it
-is selected and editted in the final genome sequence. \pb
+is selected and edited in the final genome sequence. \pb
 
 \subsection*{Defining a scaffold in a text file} %{{{2
 
-The genome scaffold is wriiten in YAML format. YAML is a data format designed
+The genome scaffold is written in YAML format. YAML is a data format designed
 to be both machine readable and easy to manually edit. An example of this
 format illustrating all the features of scaffolder is shown in Figure 1. \pb
 
@@ -227,14 +227,14 @@ contains an entry type. The ``sequence'' tag is used indicate a sequence is
 inserted at this region in the scaffold. The following line contain is
 indented by two spaces and indicates that this an attribute of the sequence
 entry. In this case the ``source'' keyword is used to indicate used which
-sequence should be inserted into the scaffold. This sequence is indentified by
+sequence should be inserted into the scaffold. This sequence is identified by
 the first word of the fasta header of the selected sequence. This indicates
 a simple sequence region added to the scaffold. \pb
 
-\subsubsection*{Unresolved seqeunce region} %{{{3
+\subsubsection*{Unresolved sequence region} %{{{3
 
 The following line has no indentation and begins with dash indicating the next
-entry in the scaffold. The following entry is indentified by the ``unresolved''
+entry in the scaffold. The following entry is identified by the ``unresolved''
 tag. This identifies a region of unknown nucleotide sequence but is included
 because the approximate size of the region is known. The following line defines
 that the size of this unknown region in the genome scaffold should be 20
@@ -263,10 +263,10 @@ on one line then indented by an additional two spaces on the following lines.
 
 Inserts are listed similarly to sequence entries where reverse, start and stop
 attributes can be used to trim and reverse the sequence. The `source' tag is
-used to indentify which fasta sequence entry should be used as the insert.  The
+used to identify which fasta sequence entry should be used as the insert.  The
 insert has two additional tags ``open'' and ``close'' which determine where the
 insert is added to the hosting sequence. These coordinates are inclusive
-replaceing the coordinate nucleotides. The open and close positions need not be
+replacing the coordinate nucleotides. The open and close positions need not be
 the same size as the insert size. Any difference in size to the replaced
 nucleotides will result in the length on the encoding sequence being adjusted.
 \pb
@@ -309,7 +309,7 @@ length of the sequence. The stop coordinated would be updated to reflect this.
 sequences specified these are used to trip the sequence to these co-ordinates.
 \pb 
 
-\paragraph{Sub-sequence reverse complemented: } If specified with the reverse keyworkd the sequence is reverse complemented.
+\paragraph{Sub-sequence reverse complemented: } If specified with the reverse keyword the sequence is reverse complemented.
 \pb
 
 \subsection*{Scaffolder usage} %{{{2
@@ -326,7 +326,7 @@ methods are outlined in the following three sections. \pb
 
 Scaffolder relies on both the ruby programming language and the RubyGems
 package management system. These are commonly installed on recent versions of
-Mac OSX and linux distrubtions. The installation of these can be tested on the
+Mac OSX and Linux distributions. The installation of these can be tested on the
 command line by typing the following commands. \pb
 
 \begin{verbatim}
@@ -423,14 +423,14 @@ This program illustrates that the scaffold object is initialised with two argume
 
 \subsection*{Discussion of scaffolder approach} %{{{2
 
-The main aims of scaffolder are two fold. The first is usuability and the second is reproducibility.
+The main aims of scaffolder are two fold. The first is usability and the second is reproducibility.
 
 \subsubsection{Simple to use}
 
 Scaffolder is designed to be as simple to use as possible. Assuming the
 existence of Ruby and RubyGems, scaffolder can be installed with a single
 command. Scaffolder uses a minimal and compact syntax to described the
-scaffold. This syntax is simple to construct and edit whilst being succint and
+scaffold. This syntax is simple to construct and edit whilst being succinct and
 readable in describing how the scaffold was constructed. Scaffolder provides
 extensive documentation both for the command line tools and for the Scaffolder
 Ruby API.
@@ -444,7 +444,7 @@ reproduced. Constructing the scaffold in a plain text file means that the
 sequence is reproducible. Furthermore the source of each region in final
 sequence can be identified. The scaffold file provides a readable record of
 how the sequence was constructed. The scaffold file also means the scaffold is
-easer to edit once already constructed. Much more difficult to do when working
+easier to edit once already constructed. Much more difficult to do when working
 on the sequence alone. The YAML text format is also much easier to compare
 differences using standard diff commands. This makes scaffold files much more
 simple to store in version control and to see the stages in the construction
@@ -452,7 +452,7 @@ of the genome sequence.
 
 \section*{Conclusions} %{{{1
 
-Scaffolder follows the Unix philospophy ``Do one thing and do it well''.
+Scaffolder follows the Unix philosophy ``Do one thing and do it well''.
 Scaffolder focuses on creating a simple to use and install tool for generating
 a genome scaffold. The YAML data format for creating a scaffold file is
 standardised and easily manipulated programmatically. This thereby follows
