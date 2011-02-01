@@ -419,34 +419,39 @@ trivial code required to generate the scaffold sequence. Further details of
 the classes and method related to each scaffold entry can be found in the
 documentation for the Scaffolder::Region class. \pb
 
-\subsection*{Discussion of scaffolder approach} %{{{2
+\subsection*{Discussion of Scaffolder Approach} %{{{2
 
-The main aims of scaffolder are two fold. The first is usability and the second is reproducibility.
+The main aims of scaffolder are two foldfold. The first is produce easy to
+install and simplifies the task of genome finishing. The second aim is to
+allow to create a tool to facilitate reproducibility in the task of joining
+large nucleotide sequences together. \pb
 
 \subsubsection{Simple to use}
 
-Scaffolder is designed to be as simple to use as possible. Assuming the
-existence of Ruby and RubyGems, scaffolder can be installed with a single
-command. Scaffolder uses a minimal and compact syntax to described the
-scaffold. This syntax is simple to construct and edit whilst being succinct and
-readable in describing how the scaffold was constructed. Scaffolder provides
+Scaffolder is designed to be simple to use as possible. Assuming the existence
+of Ruby and RubyGems, scaffolder can be installed in a single command line
+step. Scaffolder uses a minimal and compact syntax to described the genome
+scaffold. This syntax is simple to construct and edit whilst being succinct
+and readable. This aims to allow creating a genome scaffold to relatively
+simple to do in a common text editor. Furthermore scaffolder provides
 extensive documentation both for the command line tools and for the Scaffolder
-Ruby API.
+Ruby API. Therefore should any part of the scaffolder tool be unclear the
+documentation should make an solution easy to find. \pb
 
 \subsubsection{Reproducible genome construction}
 
 Constructing a genome sequence using a plain text scaffold file means the same
-sequence is always output for the same file. The sequence produced from
-manually joining separate contigs in a text editor can not be reliably
-reproduced. Constructing the scaffold in a plain text file means that the
-sequence is reproducible. Furthermore the source of each region in final
-sequence can be identified. The scaffold file provides a readable record of
-how the sequence was constructed. The scaffold file also means the scaffold is
-easier to edit once already constructed. Much more difficult to do when working
-on the sequence alone. The YAML text format is also much easier to compare
-differences using standard diff commands. This makes scaffold files much more
-simple to store in version control and to see the stages in the construction
-of the genome sequence.
+sequence is always output for the same file. Joining large nucleotide
+sequences manually cannot however be reliably reproduced. The layout of the
+scaffold file furthermore provides a human readable record of how the sequence
+was constructed. \pb
+
+Configuring the final sequence in the scaffold file means the build is easier
+to edit once already constructed compared with working on the sequence alone.
+The YAML text format is also much easier to compare differences using standard
+text comparison tools such as diff. This makes scaffold files easier to store
+in version control systems. This affords genome scaffolding the same benefits
+enjoyed by software developers. \pb
 
 \section*{Conclusions} %{{{1
 
