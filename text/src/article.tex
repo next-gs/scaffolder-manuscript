@@ -277,36 +277,35 @@ gap regions in sequences. \pb
 
 \subsubsection*{Scaffolder file attribute processing} %{{{3
 
-Each scaffolder sequence entry can have multiple attributes which applied in
-different order can result in a different sequence. For instance reverse
-complementing the sequence then adding inserts will have a different effect
-compared with performing these actions in the reverse order. Scaffolder
-therefore follows the following protocol for processing each entry in the
-scaffold file. \pb
+The sequence entry in the scaffold file allows multiple sequence-editting
+attributes which when applied in different combinations will result in
+different output sequence. An example is reverse complementing the sequence
+then follwing adding sequence inserts. Performing these actions in the reverse
+order will produce a difference output sequence. This section therefore
+outlines the scaffolder protocol for processing sequence entries. \pb
 
-\paragraph{Reverse sort inserts:} If the entry is a sequence and has sequence
-inserts these are reverse sorted by insert close position. The insert with the
-largest close position is first and and the smallest close position is last.
-This is done to preserve the the insert open/close coordinates as they are
-added to the scaffold. \pb
+\paragraph{Reverse sort inserts:} If the sequence entry contains a list of
+inserts these are reverse sorted by close position. The insert with the
+largest close position is first in the list and inserts with the smallest
+close position is last. This preserves the original indented coordinates for
+insert during the process of adding inserts to the sequence. \pb
 
-\paragraph{Update sequence with insert:} Each insert is added to the sequence
-replacing the region specified by the open an close position with the specified
-source sequence.\pb
+\paragraph{Update sequence with insert:} Each insert sequence is processed
+according to any specified attributes. The insert is added to the enclosing
+sequence in the region specified by the open and close coordinates. \pb
 
-\paragraph{Update sequence start/stop co-ordinates:} If the insert added to the
-sequence is a different length than the region replaced the start and stop
-co-ordinates of the sequence are correspondingly updated if necessary. E.g. if
-a 7 bp insert filled a bp region this would result in a 2bp difference in the
-length of the sequence. The stop coordinated would be updated to reflect this.
-\pb
+If the insert added to the sequence is a different length than the region
+replaced the sequence start and stop co-ordinates are updated. For example if
+a 7bp insert replaced a 5bp region the stop coordinate of the enclosing
+sequence would be incremented by the 2bp difference. \pb
 
-\paragraph{Sub-sequence selected:} If the sequence is has start or stop
-sequences specified these are used to trip the sequence to these co-ordinates.
-\pb 
+\paragraph{Triming sequence:} If the sequence is has start or stop sequences
+specified these are used to trip the sequence to these co-ordinates
+inclusively. \pb 
 
-\paragraph{Sub-sequence reverse complemented: } If specified with the reverse keyword the sequence is reverse complemented.
-\pb
+\paragraph{Reverse complement sequence:} If the ``reverse'' keyword is
+specified the sequence is reverse complemented. This is final step in
+processing the sequence with results in the sequence being returned. \pb
 
 \subsection*{Scaffolder usage} %{{{2
 
