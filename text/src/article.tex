@@ -213,71 +213,67 @@ is selected and edited in the final genome sequence. \pb
 
 \subsection*{Defining a scaffold in a text file} %{{{2
 
-The genome scaffold is written in YAML format. YAML is a data format designed
-to be both machine readable and easy to manually edit. An example of this
-format illustrating all the features of scaffolder is shown in Figure 1. \pb
+The scaffold file is written using `YAML', a data format designed to be both
+machine readable and manually editable. An example of a scaffold file in YAML
+format is shown in Figure 1. This example scaffold file illustrates the
+available features in scaffolder. The basic layout of the scaffold file is as
+a list - a series of entries where each entry defines a region of sequence to
+be generated for the final super sequence. In the final super sequence each of
+the entries are joined together to generate a single continuous sequences. \pb
 
 \subsubsection*{Simple sequence region} %{{{3
 
-The first line of the file begins with three dashes. This is required to
-signify the start of a YAML document. Lines 2 begins with a dash character `-'
-which denotes the start of an entry in the sequence scaffold, in this case the
-first entry. Line 3 is indented by two spaces which therefore means this line
-contains an entry type. The ``sequence'' tag is used indicate a sequence is
-inserted at this region in the scaffold. The following line contain is
-indented by two spaces and indicates that this an attribute of the sequence
-entry. In this case the ``source'' keyword is used to indicate used which
-sequence should be inserted into the scaffold. This sequence is identified by
-the first word of the fasta header of the selected sequence. This indicates
-a simple sequence region added to the scaffold. \pb
+The first line of the scaffold file begins with three dashes. This is
+a requirement to indicate the start of a YAML formatted document. Line 2 begins
+with a dash character `-' denoting the first entry in the sequence scaffold.
+Line 3 is indented by two spaces. Whitespace is used to delimite attributes in
+the file. Lines with an incremented level of white space are considered linked
+to the first preceeding non-indented line. \pb
+
+The ``sequence'' tag used on line 3 indicates that this region is in the
+scaffold will contain nucleotide sequence from the fasta file. The following
+line indented by two spaces and indicating an attribute of the sequence entry
+defined on line 3. In this case the ``source'' keyword identifies the name of
+the sequence to be inserted into the scaffold. As described above the first
+space-delimited word of the fasta header should be used to identify the
+sequence. Taken together lines 2-4 describe the first entry in the scaffold is
+a simple sequence which the identifier `sequence'. \pb
 
 \subsubsection*{Unresolved sequence region} %{{{3
 
-The following line has no indentation and begins with dash indicating the next
-entry in the scaffold. The following entry is identified by the ``unresolved''
-tag. This identifies a region of unknown nucleotide sequence but is included
-because the approximate size of the region is known. The following line defines
-that the size of this unknown region in the genome scaffold should be 20
-nucleotides. This therefore results in the region being filled with 20 `N'
-characters in draft sequence. \pb
+Line 5 has no whitespace indentation and begins with a dash and therefore
+describes the next entry in the scaffold. This entry is identified by the
+``unresolved'' tag, and specifies a region of unknown nucleotides but known
+length. The following line specifies the size of this unknown region. Lines 5-6
+therefore insert a region of 20 `N' characters in the super sequence directly
+following the region defined by the first entry on lines 2-5. \pb
 
 \subsubsection*{Trimmed sequence region with multiple inserts} %{{{3
 
-The following entry is another sequence using the sequence from 'sequence2' in
-the scaffold file. This sequence entry has three further attributes in addition
-to defining the source sequence. The first two are start and stop. These are
-used to trim the final sequence inserted into the scaffold. In this case the
-first two nucleotides of the sequence are removed so that that sequence starts
-at position 3 of the original raw sequence. Similarly the sequence after
-position is trimmed away after position 100. These sequence is also reverse
-complemented using the ``reverse'' tag. Reverse complementation is performed
-after the sequence has been trimmed to the specified coordinates. \pb
+The last entry adds the sequence 'sequence2' in the scaffold file. This entry
+demonstrates three further attributes for a sequence entry.The `start' and
+`stop' tags are used to trim the sequence used in the scaffold to these
+coordinates inclusively. The ``reverse'' tag is used to reverse complement this
+region in the final super sequence. \pb
 
-The final attribute for this sequence entry defines inserts to be added to the
-sequence. These are additional regions of sequence that can be added to
-a sequence entry to alter the existing sequence such to fill gaps or correct
-sequencing errors. Inserts are defined using the ``inserts'' tag. Each insert
-is then listed similarly to the entries in the scaffold: beginning with a dash
-on one line then indented by an additional two spaces on the following lines.
-\pb
+This region further includes the ``inserts'' tag to update the inserted
+sequence with additional regions of sequence. These inserts are also added as
+a YAML list with each insert listed with a dash on one line followed by the
+remainder of the insert errata. \pb
 
-Inserts are listed similarly to sequence entries where reverse, start and stop
-attributes can be used to trim and reverse the sequence. The `source' tag is
-used to identify which fasta sequence entry should be used as the insert.  The
-insert has two additional tags ``open'' and ``close'' which determine where the
-insert is added to the hosting sequence. These coordinates are inclusive
-replacing the coordinate nucleotides. The open and close positions need not be
-the same size as the insert size. Any difference in size to the replaced
-nucleotides will result in the length on the encoding sequence being adjusted.
-\pb
+Lines 16-19 illustrate an insert using similar attributes to that of a sequence
+entry. The reverse, start and stop tags trim the inserted sequence and the
+`source' tag identifies the corresponding fasta sequence. The ``open'' and
+``close'' tags on lines 20-21 determine where the insert is added to the
+enclosing sequence.  These coordinates inclusively replace the region within
+these coordinates with the specified fasta sequence. The open and close
+positions need not be the same size as the inserted sequence. \pb
 
-The next insert entry shows an insert with only the open position specified.
-This is to illustrate that only the one of the `open' or `close' keywords is
-sufficient to add an insert. If only one of these words is used then the
-opposing insert position is calculated from the length on the insert sequence
-in the fasta file. This feature is designed for using inserts to close gaps
-where the length of the insert may not completely fill the gap but can still be
-used to fill a portion of the gap sequence. \pb
+The next insert on lines 23-24 specifies only the open position. This
+illustrate that only the one of the `open' or `close' tags is required.  When
+only open or close tag is used then the opposing position is calculated from
+the length on the insert fasta sequence. This allows inserts to partially fill
+gap regions in sequences. \pb
 
 \subsubsection*{Scaffolder file attribute processing} %{{{3
 
