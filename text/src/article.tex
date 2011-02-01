@@ -309,91 +309,89 @@ processing the sequence with results in the sequence being returned. \pb
 
 \subsection*{Scaffolder usage} %{{{2
 
-Scaffolder provides a ruby API that allows the scaffold and designated
-sequences to be manipulated through a ruby programme. This allows scaffolder to
-be integrated into exiting genomics works flows such as using Rake.  Scaffolder
-all provides a command line binary for the manipulation of the scaffold. This
-binary behaves as a standard Unix command line interface returning appropriate
-exit statuses and providing manual pages for each of the commands. These two
-methods are outlined in the following three sections. \pb
+Scaffolder provides a standardised set of Ruby classes and methods (the
+application programming interface or API) allowing the scaffold to be
+manipulated programmatically. This allows scaffolder to be integrated into
+existing genomics workflows or used with Ruby build tools such as using Rake.
+\pb
+
+Scaffolder also provides a command line interface (CLI) through a scaffolder
+binary. This the scaffold sequence to be produced and validated without
+requiring any Ruby knowledge. The scaffolder CLI behaves as a standard Unix
+tool - returning appropriate exit statuses and providing appropriate manual
+pages. The use of both these scaffolder interfaces is outlined in the following
+sections. \pb
 
 \subsubsection*{Installation} %{{{3
 
 Scaffolder relies on both the ruby programming language and the RubyGems
-package management system. These are commonly installed on recent versions of
-Mac OSX and Linux distributions. The installation of these can be tested on the
-command line by typing the following commands. \pb
+package management system to work. These are either already present easily
+installed on recent distributions of Mac OSX or Linux. The presences of these
+tools can be tested by typing the following on the command line. \pb
 
 \begin{verbatim}
-ruby -v
-gem -v
+  ruby -v
+  gem -v
 \end{verbatim}
 
 If both these commands return without error this indicates the necessary
-requirements to install scaffolder. The scaffolder API and command line tools
-can then be installed with the follow command.
+system requirements to install and run scaffolder. The scaffolder API and CLI
+can then be installed through RubyGems with the following command.
 
 \begin{verbatim}
-gem install scaffolder scaffolder-tools
+  gem install scaffolder scaffolder-tools
 \end{verbatim}
 
-Finally to ensure that the command line tools are accessible these the
-RubyGems binary directory should be in the command line path. This can be done
-by adding the following to the ~/.bashrc file or other corresponding shell
-configure file. Assuming that ~/.gem is the install path for RubyGems.
+To ensure that the scaffolder CLI is accessible the RubyGems `bin' directory
+should be in the command line path. Assuming that RubyGems are installed in
+~/.gem this can be done by adding the following to the ~/.bashrc file. This
+should be adjusted for other shells such as zsh etc..
 
 \begin{verbatim}
-export PATH=~/.gem/bin:$PATH
+  export PATH=~/.gem/bin:$PATH
 \end{verbatim}
 
-\subsubsection*{Command line interface} %{{{3
+\subsubsection*{Command Line Interface} %{{{3
 
-Scaffolder provides a command line interface to validate and build a genome
-sequence from a scaffold. Assuming scaffolder has been installed and the
-binary is available in the command line path the following command can be used
-to invoke scaffolder. This will list the available commands for running
-scaffolder. \pb
+The Scaffolder CLI provides functions to validate the scaffold file and build the draft scaffold sequence. Assuming scaffolder has been installed and the
+binary is available in the command line path the following command should run without error and list the available functions. \pb
 
 \begin{verbatim}
-$ scaffolder
+  scaffolder
 \end{verbatim}
 
-Help on each command can be found by type `help' followed by the name of the
-command. This will return the Unix manual page for the command of interest.
-For example the following command will return the manual page for sequence
-listing the available options for running the sequence command. \pb
+Help on a specific command can be found by typing `help' followed by the name
+of the command. This will return the corresponding Unix manual page. The
+following example will return the manual page for the sequence command. \pb
 
 \begin{verbatim}
-$ scaffolder help sequence
+  scaffolder help sequence
 \end{verbatim} 
 
-To the generate the fasta sequence from a scaffold the sequence command should
-be used. This should be passed the name of the file with containing the YAML
-formatted scaffold and the corresponding fasta file of sequences. This will
-then return the complete drafted sequence to the standard out. \pb
+The ``sequence'' command builds the fasta sequence from the scaffold and fasta
+file. Running this command requires the locations of both the scaffold file and
+the fasta file of sequences. This will then return the complete scaffold
+sequence. \pb
 
 \begin{verbatim}
-$ scaffolder sequence scaffold.yml sequences.fna
+  scaffolder sequence scaffold.yml sequences.fna
 \end{verbatim}
 
-Scaffolder also provides a function to test the scaffold for overlapping
-insert sequence co-ordinates. As described in the section above overlapping
-inserts will result in unexpected behaviour as the coordinates for the first
-insert will change the expected insert location for the second insert. The
-validate command will check the scaffold for any overlapping inserts and
-return them as a YAML formatted list describing each one. \pb
+Scaffolder provides a function to test the scaffold for overlapping insert
+coordinates. Overlapping inserts will result in unexpected behaviour as the
+coordinates for the first insert may change the insert location for subsequent
+inserts. The ``validate'' command will check the scaffold for any such inserts
+and return them as a YAML list. \pb
 
 \begin{verbatim}
-$ scaffolder validate scaffold.yml sequences.fna
+  scaffolder validate scaffold.yml sequences.fna
 \end{verbatim}
 
 \subsubsection*{Application programming interface} %{{{3
 
-The scaffolder tool has a defined application programming interface (API) to
-allow ruby programs to manipulate the scaffold. Detailing the complete API
-would be overwhelming to this document. The scaffolder API is fully documented
-online using at the scaffolder website. The following code snippet gives and
-outline of how the API may be used to create a script to replicate the
+Scaffolder provides an API allowing Ruby programs to manipulate the scaffold.
+This API is detailed in full on the scaffolder website. The following code
+snippet outlines how the API may be used to create a script to replicate the
 function of the `scaffolder sequence' command described above. \pb
 
 \begin{verbatim}
@@ -414,7 +412,12 @@ function of the `scaffolder sequence' command described above. \pb
   puts sequence
 \end{verbatim}
 
-This program illustrates that the scaffold object is initialised with two arguments: the YAML loaded scaffold file and the location of the fasta formatted sequence file. The scaffold is then enumerable as the next line illustrates the trivial code required to generate the scaffold. Further details of the attributes for each entry in the scaffold can be found in the documentation for the Scaffolder::Region class. \pb
+This code snippet illustrates that the scaffold object is initialised with two
+arguments: the YAML loaded scaffold and the location of the fasta sequence
+file. The scaffold is an enumerable object as the next line illustrates the
+trivial code required to generate the scaffold sequence. Further details of
+the classes and method related to each scaffold entry can be found in the
+documentation for the Scaffolder::Region class. \pb
 
 \subsection*{Discussion of scaffolder approach} %{{{2
 
