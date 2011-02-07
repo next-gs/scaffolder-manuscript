@@ -161,28 +161,127 @@ University, Nunn Drive, Highland Heights, KY 41076 }%
 \ifthenelse{\boolean{publ}}{\begin{multicols}{2}}{}
 
 % }}}
-% {{{ Background
 \section*{Background} %{{{1
+%{{{2
 
-Large-scale parallel genome sequencing can produces hundreds of thousands to
-millions of nucleotide reads. These reads describe the nucleotide sequence in
-a region of the genome. The current status of parallel nucleotide sequencing
-limits the largest read length to $>$1000 nucleotides and to obtain
-a contiguous complete genome sequence these sequence reads must be joined
-together. \pb
+High throughput sequencing can be reads short regions of a genome sequence to
+produce hundreds of thousands to millions of lines of nucleotide sequence. The
+current status of parallel nucleotide sequencing is limited to producing reads
+less than $>$1000 nucleotides long. Therefore to obtain a contiguous complete
+genome sequence these sequence reads must therefore be joined together. \pb
 
-The process of joining these reads together is described as the `assembly'
-stage in a genome sequencing project. Assembly software joins these numerous
-sequence reads together, usually from the overlap between reads, into
-contiguous regions (`contigs') composing many of the individual reads. The goal
-of the assembly stage is produce a contiuous genome sequence describing the
-complete genome from start to finish. \pb
+The process of joining sequencing reads together is described as the
+`assembly' stage in a genome project. Assembly software joins these numerous
+sequence reads together into contiguous regions (`contigs') composed of many
+overlapping individual reads. The goal of the assembly stage is produce
+a continuous genome sequence describing the complete genome from start to
+finish. \pb
 
-These reads may however not represent a complete genome sequence where all
-contigs do not result in a single complete sequence. The software outlined here
-``Scaffolder'' allows these contigs to be further joined together into
-a continuous single sequence. This selection, order and direction of contigs
-into a final draft genome is often described as the `scaffold'. \pb
+Often repetitive nucleotide `repeat' regions in the genome or biased and
+incomplete sequencing data may prevent the genome being assembled into
+a continuous sequence. This sequence data can however describe the majority of
+the genetic information in the genome and in the case of microbes and moving
+forward with the current sequence data at this stage may be the best
+investment of time and money \cite{branscomb2002}. \pb
+
+A continuous high-quality `finished' genome sequence provides a much greater
+depth of information as compared to a draft sequence
+\cite{parkhill2002,fraser2002}. Examples of depth of information are complete
+resolution of repeat regions and the exact distances between genomic elements.
+The process of moving from a draft sequence to a finished continuous sequence
+involves the process of `scaffolding' the contigs produced by the assembly
+software together. \pb
+
+\subsection*{Scaffolding} %{{{2
+
+Scaffolding can be described as the process of moving from a series of
+disconnected contigs to complete continuous sequence of all the contigs joined
+together. The scaffolding process may not be completed but may still resolve
+and join some contigs together or add additional regions of sequence to fill
+gaps. In the case of a microbial genome, the process of scaffolding may
+include the following steps:
+
+\subsubsection*{Contig Orientation} %{{{3
+
+Sequence reads may be produced from either DNA strand during the sequencing
+process. Therefore the resulting contigs produced from these sequences may are
+likely to be representative from either of the genome strands. Contig
+orientation involves correcting the sequence data so that all contigs
+represent sequence data from the same DNA strand. In the case of microbes this
+orientation is often the 5`-3` strand from the origin of DNA replication.
+
+\subsubsection*{Contig Ordering} %{{{3
+
+The source location of each contig from the genome is unknown. Contig ordering
+represents determining the order of contigs which most accurately represent
+the actual genome sequence. This process can also determine if any contigs
+represent extra-genomic DNA such as plasmids and therefore should be separated
+from the genomic contigs. Contigs are usually ordered in reference to the
+origin of replication where the contig enclosing this region is the first
+contigs and subsequent contigs are labelled in the direction of DNA
+replication.
+
+\subsubsection*{Contig Distancing} %{{{3
+
+Once the order of contigs in the genome sequence is known it is useful to
+determine their approximate distance from each other. This allows the size of
+the gaps between contigs to be determined. Filling in these regions in with
+unknown nucleotide characters allows a draft continuous representation of the
+genome to determined.
+
+\subsubsection*{Gap Closing and Filling} %{{{3
+
+The final stage of producing a genome sequence is to close and fill gaps in
+the sequence. This may require returning to the laboratory to perform
+additional sequencing to close gaps or \emph{in silico} methods may be able to
+close gaps using existing data. Once all gaps in a scaffold have been closed
+the genome may be considered finished. Though additional sequencing may be
+performed to `proof' any low coverage regions for erroneous nucleotide
+insertions, deletions or substitutions.
+
+\subsection*{Computational Methods for Scaffolding} %{{{2
+
+Scaffolding may be considered a combination of \emph{in vitro} and \emph{in
+silico} methods. Several steps may be performed computationally by using
+available data to generate a scaffold. Examples may be the use of pair reads
+sequencing, where reads a known distance apart, or from comparing contigs to
+a reference genome. In the case where \emph{in silico} methods are unable to
+complete the scaffold in may be necessary to use PCR to amplify then use
+traditional Sanger sequencing to find the sequence and close gaps. Obviously
+\emph{in silico} methods are preferable as they less costly in laboratory time
+and materials \cite{nagaryan2010}. \pb
+
+For these reason may examples exist for software to generate genome scaffolds
+from assembly data. These software use a variety of approaches. Synteny
+approaches use a reference genome to order and orient contigs
+\cite{richter2007,zhao2008}. Repeat regions which may be responsible for many
+of the gaps between contigs may be reassembled using algorithms specifically
+for repeat resolution \cite{mulkov2002,koren2010}. Uniquely matching reads may
+be used to try and bridge gaps between scaffolds \cite{tsai2010}. Whole genome
+may use heuristic graph algorithms to build a path between contigs using
+multiple input data \cite{pop2004,dayarian2010}. Finally when the scaffold
+cannot be completely resolved \emph{in silico} software packages exist to
+suggest the likely primers necessary for determining the sequence in gap
+regions \cite{gordon2001,nagaryan2010}. Taken together these tools provide
+a wide variety of possible options for scaffolding a genome should an
+assembler be unable to produce a continuous sequence from the sequencing
+reads. \pb
+
+Scaffolding however will inevitably require manual editing if computational
+methods do not completely resolve the final genome sequence. This involves
+moving an joining larges blocks of nucleotide text together in what the genome
+finisher perceives to be the correct scaffold. This process may be expected to
+be error-prone. Further manual editing cannot be reliably reproduced which
+precludes reproducibility in a genome scaffolding process. \pb
+
+\subsection*{The Scaffolder Software} %{{{2
+
+The software outlined here ``Scaffolder'' is aimed at joining contigs together
+to build a genome scaffold. Scaffolder uses a specific data syntax to define
+how contigs are joined together. Furthermore scaffolder allows inserts into
+contigs and unknown regions in a scaffold to be defined. This syntax allows
+a scaffold to be edited in much easier way than editing large blocks of
+nucleotides. Further more this makes genome scaffolds reproducible.
 
 \section*{Implementation} %{{{1
 
