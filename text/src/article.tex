@@ -164,33 +164,42 @@ University, Nunn Drive, Highland Heights, KY 41076 }%
 \section*{Background} %{{{1
 %{{{2
 
-High throughput sequencing can be reads short regions of a genome sequence to
-produce hundreds of thousands to millions of lines of nucleotide sequence. The
-current status of parallel nucleotide sequencing is limited to producing reads
-less than $>$1000 nucleotides long. Therefore to obtain a contiguous complete
-genome sequence these sequence reads must therefore be joined together. \pb
+High throughput sequencing can produce hundreds of thousands to millions of
+sequence reads from a genome. Each read represents the machine-interpreted
+nucleotide sequence from a short region in the genome. At the time of writing
+high throughput sequencing is limited to producing reads less than $>$1000
+nucleotides. Therefore to produce to produce a sequence longer than this
+length, e.g. a complete genome, these numerous individual reads must be pieced
+together. The process of joining reads into longer sequences is the `assembly'
+stage in a genome project \cite{assembly-reviews}. \pb
 
-The process of joining sequencing reads together is described as the
-`assembly' stage in a genome project. Assembly software joins these numerous
-sequence reads together into contiguous regions (`contigs') composed of many
-overlapping individual reads. The goal of the assembly stage is produce
-a continuous genome sequence describing the complete genome from start to
-finish. \pb
+Assembly software takes the nucleotide reads produced by the sequencing
+hardware and, in the ideal case, outputs a complete genome sequence compose of
+these individual reads. An analogy to describe this is a jigsaw puzzle. Each
+nucleotide read represents a single piece and the final genome sequence is the
+completed puzzle. Repetitive nucleotide `repeat' regions within a genome or
+biased and incomplete sequencing data may however prevent the genome being
+assembled into a continuous sequence. This is analogous to missing jigsaw
+pieces or pieces that fit to multiple other pieces. \pb
 
-Often repetitive nucleotide `repeat' regions in the genome or biased and
-incomplete sequencing data may prevent the genome being assembled into
-a continuous sequence. This sequence data can however describe the majority of
-the genetic information in the genome and in the case of microbes and moving
-forward with the current sequence data at this stage may be the best
-investment of time and money \cite{branscomb2002}. \pb
+The recent advent of these current high throughput sequencing methods has lead
+to a renewed interest into algorithms for solving the problem of genome
+assembly \cite{assembly-reviews}. Genome assembly software is often unable to
+completely these sequence reads together due to problems outlined above.
+Instead assembly algorithms will generate large contiguous regions of sequence
+(`contigs') composed of many individual reads. These represent optimum assembly
+of reads into the longest sequences for the assembly algorithm. \pb
 
-A continuous high-quality `finished' genome sequence provides a much greater
-depth of information as compared to a draft sequence
-\cite{parkhill2002,fraser2002}. Examples of depth of information are complete
-resolution of repeat regions and the exact distances between genomic elements.
-The process of moving from a draft sequence to a finished continuous sequence
-involves the process of `scaffolding' the contigs produced by the assembly
-software together. \pb
+The process of ameliorating a draft sequence to a finished continuous sequence
+can be expensive in time and laboratory effort. Therefore in many cases a set
+of contigs may often describe enough of the genomic content for many research
+questions \cite{branscomb2002}. A continuous high-quality `finished' genome
+sequence does however provide further depth of information
+\cite{parkhill2002,fraser2002}. The benefits of a complete genome sequence
+include complete resolution of repeat regions and the exact distances between
+genomic elements. This process of joining contigs from assembly together to form
+a continuous sequence may be called `scaffolding' or `finishing'. Here on we
+use the term scaffolding. \pb
 
 \subsection*{Scaffolding} %{{{2
 
