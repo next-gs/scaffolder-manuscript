@@ -203,50 +203,51 @@ use the term scaffolding. \pb
 
 \subsection*{Scaffolding} %{{{2
 
-Scaffolding can be described as the process of moving from a series of
-disconnected contigs to complete continuous sequence of all the contigs joined
-together. The scaffolding process may not be completed but may still resolve
-and join some contigs together or add additional regions of sequence to fill
-gaps. In the case of a microbial genome, the process of scaffolding may
-include the following steps:
+Scaffolding is the process of joining a series disconnected contigs into
+complete continuous sequence. Due to genomic complexity, missing data and
+diminishing returns scaffolding may not ultimately produce a final completed
+sequence. The process of scaffolding may still however joining a subset of
+contigs or additional regions of sequence to fill gaps.
 
 \subsubsection*{Contig Orientation} %{{{3
 
-Sequence reads may be produced from either DNA strand during the sequencing
-process. Therefore the resulting contigs produced from these sequences may are
-likely to be representative from either of the genome strands. Contig
-orientation involves correcting the sequence data so that all contigs
-represent sequence data from the same DNA strand. In the case of microbes this
-orientation is often the 5`-3` strand from the origin of DNA replication.
+The sequencing process produces reads from either strand of the DNA helix. The
+resulting contigs constructed from these reads therefore point in either of two
+DNA strand directions. Contig orientation involves reverse complementing
+sequences so that all contigs point in the same direction and represent the
+same DNA strand. In the case of microbes this orientation is often the 5`-3`
+strand leading away from the origin of replication.
 
 \subsubsection*{Contig Ordering} %{{{3
 
-The source location of each contig from the genome is unknown. Contig ordering
-represents determining the order of contigs which most accurately represent
-the actual genome sequence. This process can also determine if any contigs
-represent extra-genomic DNA such as plasmids and therefore should be separated
-from the genomic contigs. Contigs are usually ordered in reference to the
-origin of replication where the contig enclosing this region is the first
-contigs and subsequent contigs are labelled in the direction of DNA
-replication.
+Contig ordering determines the placement of contigs to best represent the
+actual nucleotides as appearing in the genome sequence. This may also determine
+if any contigs represent extra-genomic DNA, such as plasmids, and therefore
+should be treated separately from genomic contigs. The contig order is commonly
+referenced to the origin of replication where the contig containing the
+replication start point is first. All subsequent contigs then follow in the
+direction of DNA replication.
 
 \subsubsection*{Contig Distancing} %{{{3
 
-Once the order of contigs in the genome sequence is known it is useful to
-determine their approximate distance from each other. This allows the size of
-the gaps between contigs to be determined. Filling in these regions in with
-unknown nucleotide characters allows a draft continuous representation of the
-genome to determined.
+Given the order and orientation of contigs determining the distances between
+contigs may be useful for estimating genome size. The size of each gaps between
+contigs represents the length of an unknown region in the genome. Filling in
+these regions in with unknown nucleotide characters (`N') allows a draft
+continuous representation of the genome to produced. This draft scaffold
+sequence represents both the contigs and unknown regions of sequence between
+them.
 
 \subsubsection*{Gap Closing and Filling} %{{{3
 
-The final stage of producing a genome sequence is to close and fill gaps in
-the sequence. This may require returning to the laboratory to perform
-additional sequencing to close gaps or \emph{in silico} methods may be able to
-close gaps using existing data. Once all gaps in a scaffold have been closed
-the genome may be considered finished. Though additional sequencing may be
-performed to `proof' any low coverage regions for erroneous nucleotide
-insertions, deletions or substitutions.
+During the scaffolding process closing and filling sequence gaps improves the
+accuracy of the genome scaffold. This may require returning to the laboratory
+to perform additional sequencing or using computational methods. Once all
+contigs have been joined and gaps in a scaffold closed the genome may be
+considered as finished. In the case of organisms or particular interest
+additional sequencing may be performed to further `proof' any low coverage
+regions or detect erroneous nucleotides resulting from insertions, deletions or
+substitutions.
 
 \subsection*{Computational Methods for Scaffolding} %{{{2
 
