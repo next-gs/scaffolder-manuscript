@@ -16,9 +16,9 @@ class References < Thor::Group
 
   def tidy
     command = String.new
-    command << '/url/d;'
-    command << '/day/d;'
-    command << '/citeulike/d;'
+    command << '/url = /d;'
+    command << '/day = /d;'
+    command << '/citeulike = /d;'
     `sed -i -e '#{command}' #{BIB}`
     `rm #{BIB}-e`
   end
