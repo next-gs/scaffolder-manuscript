@@ -326,9 +326,9 @@ the entries are joined together to generate a single continuous sequences. \pb
 The first line of the scaffold file begins with three dashes. This is
 a requirement to indicate the start of a YAML formatted document. Line 2 begins
 with a dash character `-' denoting the first entry in the sequence scaffold.
-Line 3 is indented by two spaces. Whitespace is used to delimite attributes in
+Line 3 is indented by two spaces. Whitespace is used to delimit attributes in
 the file. Lines with an incremented level of white space are considered linked
-to the first preceeding non-indented line. \pb
+to the first preceding non-indented line. \pb
 
 The ``sequence'' tag used on line 3 indicates that this region is in the
 scaffold will contain nucleotide sequence from the fasta file. The following
@@ -377,10 +377,10 @@ gap regions in sequences. \pb
 
 \subsubsection*{Scaffolder file attribute processing} %{{{3
 
-The sequence entry in the scaffold file allows multiple sequence-editting
+The sequence entry in the scaffold file allows multiple sequence-editing
 attributes which when applied in different combinations will result in
 different output sequence. An example is reverse complementing the sequence
-then follwing adding sequence inserts. Performing these actions in the reverse
+then following adding sequence inserts. Performing these actions in the reverse
 order will produce a difference output sequence. This section therefore
 outlines the scaffolder protocol for processing sequence entries. \pb
 
@@ -399,7 +399,7 @@ replaced the sequence start and stop co-ordinates are updated. For example if
 a 7bp insert replaced a 5bp region the stop coordinate of the enclosing
 sequence would be incremented by the 2bp difference. \pb
 
-\paragraph{Triming sequence:} If the sequence is has start or stop sequences
+\paragraph{Trimming sequence:} If the sequence is has start or stop sequences
 specified these are used to trip the sequence to these co-ordinates
 inclusively. \pb 
 
@@ -445,7 +445,7 @@ can then be installed through RubyGems with the following command.
 To ensure that the scaffolder CLI is accessible the RubyGems `bin' directory
 should be in the command line path. Assuming that RubyGems are installed in
 ~/.gem this can be done by adding the following to the ~/.bashrc file. This
-should be adjusted for other shells such as zsh etc..
+should be adjusted for other shells such as Zsh etc..
 
 \begin{verbatim}
   export PATH=~/.gem/bin:$PATH
@@ -521,7 +521,7 @@ documentation for the Scaffolder::Region class. \pb
 
 \subsection*{Discussion of Scaffolder Approach} %{{{2
 
-The main aims of scaffolder are two foldfold. The first is produce easy to
+The main aims of scaffolder are two fold. The first is produce easy to
 install and simplifies the task of genome finishing. The second aim is to
 allow to create a tool to facilitate reproducibility in the task of joining
 large nucleotide sequences together. \pb
