@@ -1,6 +1,6 @@
 class References < Thor::Group
 
-  BIB = File.join(File.dirname(__FILE__),'..','text','src','article.bib')
+  BIB = File.join(File.dirname(__FILE__),'..','src','article.bib')
 
   def fetch
     address = "http://www.citeulike.org/bibtex/user/michaelbarton/tag/mdb-manuscript-2"
