@@ -1,180 +1,449 @@
-% bmc_article.bib
-% 
-%  An example of bibtex entries.
-%  Entries taken from BMC instructions for authors page.
-
-
-@article{blank,
-	author  = {}, 
-	title   = {},
-	journal = {}, 
-	year  = {},
-	  month = {}, 
-	  volume= {}, 
-	  number= {}, 
-	  pages = {},
-	  note  = {} 
-}	
-
-% Article within a journal
-@ARTICLE{koon,
-	author  = {Koonin, E V and Altschul, S F and P Bork}, 
-	title   = {BRCA1 protein products: functional motifs}, 
-	journal = {Nat Genet}, 
-	year    = {1996},
-	volume  = {13}, 
-	pages   = {266-267}
-}	
-
-% Article within a journal supplement
-@ARTICLE{oreg,
-	author  = {Orengo, C A and Bray, J E and Hubbard, 
-		   T and LoConte, L and Sillitoe, I}, 
-	title   = {Analysis and assessment of ab initio 
-		   three-dimensional prediction, secondary 
-		   structure, and contacts prediction},
-	journal = {Proteins}, 
-	year    = {1999},
-	volume  = {Suppl 3}, 
-	pages   = {149-170}
-}	
-
-% In press article
-@inpress{khar,
-	author  = {Kharitonov, S A and Barnes, P J}, 
-	title   = {Clinical aspects of exhaled nitric oxide},
-	journal = {Eur Respir J}, 
-	note    = {in press} 
-}	
-
-%
-% Published abstract
-%
-@ARTICLE{zvai,
-	author  = {Zvaifler, N J and Burger, J A and Marinova-Mutafchieva, 
-		   L and Taylor, P and Maini, R N},
-	title   = {Mesenchymal cells, stromal derived factor-1 and 
-		   rheumatoid arthritis [abstract]},
-	journal = {Arthritis Rheum}, 
-	year    = {1999},
-	volume  = {42}, 
-	pages   = {s250},
-}	
-
-
-%
-% Article within conference proceedings
-%
-@Inproceedings{xjon,
-	author    = {X Jones}, 
-	title     = {Zeolites and synthetic mechanisms},
-	booktitle = {Proceedings of the First National Conference on 
-		     Porous Sieves: 27-30 June 1996; Baltimore},
-	year      = {1996},
-	  editor  = {Y Smith}, 
-	  pages   = {16-27},
-	  organization  = {Stoneham: Butterworth-Heinemann}
-}	
-
-%%%%%%%%
-%  Book chapter, or article within a book
-%
-@incollection{schn,
-	author    = {E Schnepf}, 
-	title     = {From prey via endosymbiont to plastids: 
-		     comparative studies in dinoflagellates},
-	booktitle = {Origins of Plastids}, 
-	editor    = {R A Lewin}, 
-	publisher = {Chapman and Hall},
-	pages     = {53-76}, 
-	year      = {1993},
-	  address = {New York}, 
-	  volume  = {2}, 
-	  edition = {2nd} 
-}	
-
-%%%%%%%%
-% Whole issue of journal
-%
-@wholejournal{pond,
-	editor  = {B Ponder and S Johnston and L Chodosh}, 
-	title   = {Innovative oncology},
-	journal = {Breast Cancer Res}, 
-	year  = {1998},
-	  volume= {10}, 
-	  pages = {1-72}
-}	
-
-
-%%%%%%%%
-% Whole conference proceedings
-%
-@proceedings{smith,
-	editor  = {Y Smith}, 
-	title   = {Proceedings of the First National Conference
-		   on Porous Sieves: 27-30 June 1996; Baltimore},
-	year = 1996,
-	  address= {Stoneham}, 
-	  publisher = {Butterworth-Heinemann},
-}	
-
-
-%%%%%%%%
-% Complete book
-%
-@book{marg,
-	author    = {L Margulis}, 
-	title     = {Origin of Eukaryotic Cells},
-	publisher = {Yale University Press}, 
-	year      = {1970},
-	address   = {New Haven} 
+@article{koren2010,
+    abstract = {{The algorithm is useful for small-genome automated finishing projects. Our implementation is available as open-source from http://wgs-assembler.sourceforge.net under the GNU Public License.}},
+    author = {Koren, Sergey and Miller, Jason R. and Walenz, Brian P. and Sutton, Granger},
+    citeulike-article-id = {7836368},
+    citeulike-linkout-0 = {http://dx.doi.org/10.1186/1471-2105-11-457},
+    citeulike-linkout-1 = {http://view.ncbi.nlm.nih.gov/pubmed/20831800},
+    citeulike-linkout-2 = {http://www.hubmed.org/display.cgi?uids=20831800},
+    doi = {10.1186/1471-2105-11-457},
+    issn = {1471-2105},
+    journal = {BMC bioinformatics},
+    keywords = {genome-finishing, mdb-manuscript-2},
+    month = {September},
+    number = {1},
+    pages = {457+},
+    posted-at = {2011-02-06 19:21:44},
+    priority = {2},
+    title = {{An algorithm for automated closure during assembly.}},
+    volume = {11},
+    year = {2010}
 }
 
-
-
-%%%%%%%%
-% Monograph or book in series 
-%
-@incollection{hunn,
-	author    = {G W Hunninghake and J E Gadek}, 
-	title     = {The alveloar macrophage},
-	booktitle = {Cultured Human Cells and Tissues},
-	publisher = {Academic Press}, 
-	year      = {1995},
-  pages      = {54-56},
-	  editor   = {T J R Harris}, 
-	  address  = {New York}, 
-	  note     = {Stoner G (Series Editor): Methods and Perspectives in Cell Biology, vol 1} 
+@article{gordon2001,
+    abstract = {{Currently, the genome sequencing community is producing shotgun sequence data at a very high rate, but finishing (collecting additional directed sequence data to close gaps and improve the quality of the data) is not matching that rate. One reason for the difference is that shotgun sequencing is highly automated but finishing is not: Most finishing decisions, such as which directed reads to obtain and which specialized sequencing techniques to use, are made by people. If finishing rates are to increase to match shotgun sequencing rates, most finishing decisions also must be automated. The Autofinish computer program (which is part of the computer software package) does this by automatically choosing finishing reads. Autofinish is able to suggest most finishing reads required for completion of each sequencing project, greatly reducing the amount of human attention needed. sometimes completely finishes the project, with no human decisions required. It cannot solve the most complex problems, so we recommend that Autofinish be allowed to suggest reads for the first three rounds of finishing, and if the project still is not finished completely, a human finisher complete the work. We compared this Autofinish-Hybrid method of finishing against a human finisher in five different projects with a variety of shotgun depths by finishing each project twice--once with each method. This comparison shows that the Autofinish-Hybrid method saves many hours over a human finisher alone, while using roughly the same number and type of reads and closing gaps at roughly the same rate. Autofinish currently is in production use at several large sequencing centers. It is designed to be adaptable to the finishing strategy of the lab--it can finish using some or all of the following: resequencing reads, reverses, custom primer walks on either subclone templates or whole clone templates, PCR, or minilibraries. Autofinish has been used for finishing cDNA, genomic clones, and whole bacterial genomes (see http://www.phrap.org).}},
+    author = {Gordon, D. and Desmarais, C. and Green, P.},
+    citeulike-article-id = {4163637},
+    citeulike-linkout-0 = {http://dx.doi.org/10.1101/gr.171401},
+    citeulike-linkout-1 = {http://genome.cshlp.org/content/11/4/614.abstract},
+    citeulike-linkout-2 = {http://genome.cshlp.org/content/11/4/614.full.pdf},
+    citeulike-linkout-3 = {http://genome.cshlp.org/cgi/content/abstract/11/4/614},
+    citeulike-linkout-4 = {http://view.ncbi.nlm.nih.gov/pubmed/11282977},
+    citeulike-linkout-5 = {http://www.hubmed.org/display.cgi?uids=11282977},
+    doi = {10.1101/gr.171401},
+    issn = {1088-9051},
+    journal = {Genome research},
+    keywords = {genome-finishing, mdb-manuscript-2},
+    month = {April},
+    number = {4},
+    pages = {614--625},
+    posted-at = {2011-02-06 19:09:28},
+    priority = {2},
+    title = {{Automated finishing with autofinish.}},
+    volume = {11},
+    year = {2001}
 }
 
-
-%%%%%%%%
-% Book with institutional author
-@manual{advi,
-	  title   = {Annual Report}, 
-	    organization  = {Advisory Committee on Genetic Modification}, 
-	    address = {London},
-	    year    = {1999}
+@article{dayarian2010,
+    abstract = {{Applying SOPRA to real data from bacterial genomes, we were able to assemble contigs into scaffolds of significant length (N50 up to 200 Kb) with very few errors introduced in the process. In general, the methodology presented here will allow better scaffold assemblies of any type of mate pair sequencing data.}},
+    author = {Dayarian, Adel and Michael, Todd P. and Sengupta, Anirvan M.},
+    citeulike-article-id = {7357529},
+    citeulike-linkout-0 = {http://dx.doi.org/10.1186/1471-2105-11-345},
+    citeulike-linkout-1 = {http://view.ncbi.nlm.nih.gov/pubmed/20576136},
+    citeulike-linkout-2 = {http://www.hubmed.org/display.cgi?uids=20576136},
+    doi = {10.1186/1471-2105-11-345},
+    issn = {1471-2105},
+    journal = {BMC bioinformatics},
+    keywords = {genome-assembly, genome-finishing, mdb-manuscript-2},
+    number = {1},
+    pages = {345+},
+    posted-at = {2011-02-04 20:10:45},
+    priority = {0},
+    title = {{SOPRA: Scaffolding algorithm for paired reads via statistical optimization.}},
+    volume = {11},
+    year = {2010}
 }
 
-
-%%%%%%%%
-% PHD Thesis
-%
-@phdthesis{koha,
-	author = {R Kohavi}, 
-	title  = {Wrappers for performance enhancement and
-		  obvious decision graphs},
-	school = {Stanford University, Computer Science Department},
-	year   = {1995}
+@article{pop2004,
+    abstract = {{The output of a genome assembler generally comprises a collection of contiguous DNA sequences (contigs) whose relative placement along the genome is not defined. A procedure called scaffolding is commonly used to order and orient these contigs using paired read information. This ordering of contigs is an essential step when finishing and analyzing the data from a whole-genome shotgun project. Most recent assemblers include a scaffolding module; however, users have little control over the scaffolding algorithm or the information produced. We thus developed a general-purpose scaffolder, called Bambus, which affords users significant flexibility in controlling the scaffolding parameters. Bambus was used recently to scaffold the low-coverage draft dog genome data. Most significantly, Bambus enables the use of linking data other than that inferred from mate-pair information. For example, the sequence of a completed genome can be used to guide the scaffolding of a related organism. We present several applications of Bambus: support for finishing, comparative genomics, analysis of the haplotype structure of genomes, and scaffolding of a mammalian genome at low coverage. Bambus is available as an open-source package from our Web site.}},
+    address = {The Institute for Genomic Research (TIGR), Rockville, Maryland 20850, USA. mpop@tigr.org},
+    author = {Pop, Mihai and Kosack, Daniel S. and Salzberg, Steven L.},
+    citeulike-article-id = {1145127},
+    citeulike-linkout-0 = {http://dx.doi.org/10.1101/gr.1536204},
+    citeulike-linkout-1 = {http://genome.cshlp.org/content/14/1/149.abstract},
+    citeulike-linkout-2 = {http://genome.cshlp.org/content/14/1/149.full.pdf},
+    citeulike-linkout-3 = {http://view.ncbi.nlm.nih.gov/pubmed/14707177},
+    citeulike-linkout-4 = {http://www.hubmed.org/display.cgi?uids=14707177},
+    doi = {10.1101/gr.1536204},
+    issn = {1088-9051},
+    journal = {Genome research},
+    keywords = {genome-assembly, genome-finishing, mdb-manuscript-2},
+    month = {January},
+    number = {1},
+    pages = {149--159},
+    posted-at = {2011-02-04 20:08:37},
+    priority = {0},
+    title = {{Hierarchical scaffolding with Bambus.}},
+    volume = {14},
+    year = {2004}
 }
 
-%%%%%%%%
-% Webpage Link / URL
-%
-@webpage{mouse,
-	title  = {The Mouse Tumor Biology Database},
-	url = {http://tumor.informatics.jax.org/cancer_links.html}
+@article{nagarajan2010,
+    abstract = {{While new sequencing technologies have ushered in an era where microbial genomes can be easily sequenced, the goal of routinely producing high-quality draft and finished genomes in a cost-effective fashion has still remained elusive. Due to shorter read lengths and limitations in library construction protocols, shotgun sequencing and assembly based on these technologies often results in fragmented assemblies. Correspondingly, while draft assemblies can be obtained in days, finishing can take many months and hence the time and effort can only be justified for high-priority genomes and in large sequencing centers. In this work, we revisit this issue in light of our own experience in producing finished and nearly-finished genomes for a range of microbial species in a small-lab setting. These genomes were finished with surprisingly little investments in terms of time, computational effort and lab work, suggesting that the increased access to sequencing might also eventually lead to a greater proportion of finished genomes from small labs and genomics cores.}},
+    author = {Nagarajan, Niranjan and Cook, Christopher and Di Bonaventura, Mariapia and Ge, Hong and Richards, Allen and Bishop-Lilly, Kimberly A. and DeSalle, Robert and Read, Timothy D. and Pop, Mihai},
+    citeulike-article-id = {7024422},
+    citeulike-linkout-0 = {http://dx.doi.org/10.1186/1471-2164-11-242},
+    citeulike-linkout-1 = {http://view.ncbi.nlm.nih.gov/pubmed/20398345},
+    citeulike-linkout-2 = {http://www.hubmed.org/display.cgi?uids=20398345},
+    doi = {10.1186/1471-2164-11-242},
+    issn = {1471-2164},
+    journal = {BMC genomics},
+    keywords = {genome-assembly, genome-finishing, mdb-manuscript-2},
+    number = {1},
+    pages = {242+},
+    posted-at = {2011-02-04 20:07:26},
+    priority = {0},
+    title = {{Finishing genomes with limited resources: lessons from an ensemble of microbial genomes.}},
+    volume = {11},
+    year = {2010}
 }
 
+@article{tsai2010,
+    abstract = {{Advances in sequencing technology allow genomes to be sequenced at vastly decreased costs. However, the assembled data frequently are highly fragmented with many gaps. We present a practical approach that uses Illumina sequences to improve draft genome assemblies by aligning sequences against contig ends and performing local assemblies to produce gap-spanning contigs. The continuity of a draft genome can thus be substantially improved, often without the need to generate new data.}},
+    author = {Tsai, Isheng J. and Otto, Thomas D. and Berriman, Matthew},
+    citeulike-article-id = {7014082},
+    citeulike-linkout-0 = {http://dx.doi.org/10.1186/gb-2010-11-4-r41},
+    citeulike-linkout-1 = {http://view.ncbi.nlm.nih.gov/pubmed/20388197},
+    citeulike-linkout-2 = {http://www.hubmed.org/display.cgi?uids=20388197},
+    doi = {10.1186/gb-2010-11-4-r41},
+    issn = {1465-6914},
+    journal = {Genome biology},
+    keywords = {genome-assembly, genome-finishing, mdb-manuscript-2},
+    number = {4},
+    pages = {R41+},
+    posted-at = {2011-02-04 19:59:12},
+    priority = {0},
+    title = {{Improving draft assemblies by iterative mapping and assembly of short reads to eliminate gaps.}},
+    volume = {11},
+    year = {2010}
+}
+
+@article{mulyukov2002,
+    abstract = {{Genomic sequencing typically generates a large collection of unordered contigs or scaffolds. Contig ordering (also known as gap closure) is a non-trivial algorithmic and experimental problem since even relatively simple-to-assemble bacterial genomes typically result in large set of contigs. Neighboring contigs maybe separated either by gaps in read coverage or by repeats. In the later case we say that the contigs are separated by pseudogaps, and we emphasize the important difference between gap closure and pseudogap closure. The existing gap closure approaches do not distinguish between gaps and pseudogaps and treat them in the same way. We describe a new fast strategy for closing pseudogaps (repeat resolution). Since in highly repetitive genomes, the number of pseudogaps may exceed the number of gaps by an order of magnitude, this approach provides a significant advantage over the existing gap closure methods.}},
+    author = {Mulyukov, Zufar and Pevzner, Pavel A.},
+    citeulike-article-id = {7853433},
+    citeulike-linkout-0 = {http://view.ncbi.nlm.nih.gov/pubmed/11928476},
+    citeulike-linkout-1 = {http://www.hubmed.org/display.cgi?uids=11928476},
+    issn = {1793-5091},
+    journal = {Pacific Symposium on Biocomputing. Pacific Symposium on Biocomputing},
+    keywords = {genome-assembly, genome-finishing, mdb-manuscript-2},
+    pages = {199--210},
+    posted-at = {2011-02-04 19:57:30},
+    priority = {2},
+    title = {{EULER-PCR: finishing experiments for repeat resolution.}},
+    year = {2002}
+}
+
+@article{richter2007,
+    abstract = {{Summary: The whole genome shotgun approach to genome sequencing results in a collection of contigs that must be ordered and oriented to facilitate efficient gap closure. We present a new tool OSLay that uses synteny between matching sequences in a target assembly and a reference assembly to layout the contigs (or scaffolds) in the target assembly. The underlying algorithm is based on maximum weight matching. The tool provides an interactive visualization of the computed layout and the result can be imported into the assembly editing tool Consed to support the design of primer pairs for gap closure.Motivation: To enhance efficiency in the gap closure phase of a genome project it is crucial to know which contigs are adjacent in the target genome. Related genome sequences can be used to layout contigs in an assembly.Availability: OSLay is freely available from: http://www-ab.informatik.unituebingen.de/software/oslayContact: drichter@informatik.uni-tuebingen.de}},
+    author = {Richter, Daniel C. and Schuster, Stephan C. and Huson, Daniel H.},
+    citeulike-article-id = {2349830},
+    citeulike-linkout-0 = {http://dx.doi.org/10.1093/bioinformatics/btm153},
+    citeulike-linkout-1 = {http://bioinformatics.oxfordjournals.org/content/23/13/1573.abstract},
+    citeulike-linkout-2 = {http://bioinformatics.oxfordjournals.org/content/23/13/1573.full.pdf},
+    citeulike-linkout-3 = {http://bioinformatics.oxfordjournals.org/cgi/content/abstract/23/13/1573},
+    citeulike-linkout-4 = {http://view.ncbi.nlm.nih.gov/pubmed/17463020},
+    citeulike-linkout-5 = {http://www.hubmed.org/display.cgi?uids=17463020},
+    doi = {10.1093/bioinformatics/btm153},
+    journal = {Bioinformatics},
+    keywords = {genome-assembly, genome-finishing, mdb-manuscript-2},
+    month = {July},
+    number = {13},
+    pages = {1573--1579},
+    posted-at = {2011-02-04 19:54:57},
+    priority = {2},
+    title = {{OSLay: optimal syntenic layout of unfinished assemblies}},
+    volume = {23},
+    year = {2007}
+}
+
+@article{zhao2008,
+    abstract = {{Gap closing is considered one of the most challenging and time-consuming tasks in bacterial genome sequencing projects, especially with the emergence of new sequencing technologies, such as pyrosequencing, which may result in large amounts of data without the benefit of large insert libraries for contig scaffolding. We propose a novel algorithm to align contigs with more than one reference genome at a time. This approach can successfully overcome the limitations of low degrees of conserved gene order for the reference and target genomes. A pheromone trail-based genetic algorithm (PGA) was used to search globally for the optimal placement for each contig. Extensive testing on simulated and real data sets shows that PGA significantly outperforms previous methods, especially when assembling genomes that are only moderately related. An extended version of PGA can predict additional candidate connections for each contig and can thus increase the likelihood of identifying the correct arrangement of each contig. The software and test data sets can be accessed at http://sourceforge.net/projects/pga4genomics/.}},
+    author = {Zhao, Fangqing and Zhao, Fanggeng and Li, Tao and Bryant, Donald A.},
+    citeulike-article-id = {2767287},
+    citeulike-linkout-0 = {http://dx.doi.org/10.1093/nar/gkn168},
+    citeulike-linkout-1 = {http://nar.oxfordjournals.org/content/36/10/3455.abstract},
+    citeulike-linkout-2 = {http://nar.oxfordjournals.org/content/36/10/3455.full.pdf},
+    citeulike-linkout-3 = {http://nar.oxfordjournals.org/cgi/content/abstract/36/10/3455},
+    citeulike-linkout-4 = {http://view.ncbi.nlm.nih.gov/pubmed/18445633},
+    citeulike-linkout-5 = {http://www.hubmed.org/display.cgi?uids=18445633},
+    doi = {10.1093/nar/gkn168},
+    issn = {1362-4962},
+    journal = {Nucleic acids research},
+    keywords = {genome-assembly, genome-finishing, mdb-manuscript-2},
+    month = {June},
+    number = {10},
+    pages = {3455--3462},
+    posted-at = {2011-02-04 19:52:14},
+    priority = {2},
+    title = {{A new pheromone trail-based genetic algorithm for comparative genome assembly.}},
+    volume = {36},
+    year = {2008}
+}
+
+@article{nagarajan2009,
+    abstract = {{In recent years, a flurry of new DNA sequencing technologies have altered the landscape of genomics, providing a vast amount of sequence information at a fraction of the costs that were previously feasible. The task of assembling these sequences into a genome has, however, still remained an algorithmic challenge that is in practice answered by heuristic solutions. In order to design better assembly algorithms and exploit the characteristics of sequence data from new technologies, we need an improved understanding of the parametric complexity of the assembly problem. In this article, we provide a first theoretical study in this direction, exploring the connections between repeat complexity, read lengths, overlap lengths and coverage in determining the "hard" instances of the assembly problem. Our work suggests at least two ways in which existing assemblers can be extended in a rigorous fashion, in addition to delineating directions for future theoretical investigations.}},
+    author = {Nagarajan, Niranjan and Pop, Mihai},
+    citeulike-article-id = {5771895},
+    citeulike-linkout-0 = {http://dx.doi.org/10.1089/cmb.2009.0005},
+    citeulike-linkout-1 = {http://view.ncbi.nlm.nih.gov/pubmed/19580519},
+    citeulike-linkout-2 = {http://www.hubmed.org/display.cgi?uids=19580519},
+    doi = {10.1089/cmb.2009.0005},
+    issn = {1557-8666},
+    journal = {Journal of computational biology : a journal of computational molecular cell biology},
+    keywords = {genome-finishing, genome-sequencing, mdb-manuscript-2},
+    month = {July},
+    number = {7},
+    pages = {897--908},
+    posted-at = {2011-02-04 19:42:58},
+    priority = {2},
+    title = {{Parametric complexity of sequence assembly: theory and applications to next generation sequencing.}},
+    volume = {16},
+    year = {2009}
+}
+
+@article{parkhill2002,
+    author = {Parkhill, Julian},
+    citeulike-article-id = {8768263},
+    citeulike-linkout-0 = {http://view.ncbi.nlm.nih.gov/pubmed/11973153},
+    citeulike-linkout-1 = {http://www.hubmed.org/display.cgi?uids=11973153},
+    issn = {0966-842X},
+    journal = {Trends in microbiology},
+    keywords = {genome-finishing, genome-sequencing, mdb-manuscript-2},
+    month = {May},
+    number = {5},
+    posted-at = {2011-02-04 19:38:46},
+    priority = {0},
+    title = {{The importance of complete genome sequences.}},
+    volume = {10},
+    year = {2002}
+}
+
+@article{parkhill2000,
+    author = {Parkhill, J.},
+    citeulike-article-id = {8768239},
+    citeulike-linkout-0 = {http://dx.doi.org/10.1038/75346},
+    citeulike-linkout-1 = {http://view.ncbi.nlm.nih.gov/pubmed/10802612},
+    citeulike-linkout-2 = {http://www.hubmed.org/display.cgi?uids=10802612},
+    doi = {10.1038/75346},
+    issn = {1087-0156},
+    journal = {Nature biotechnology},
+    keywords = {genome-finishing, genome-sequencing, mdb-manuscript-2},
+    month = {May},
+    number = {5},
+    pages = {493--494},
+    posted-at = {2011-02-04 19:32:17},
+    priority = {2},
+    title = {{In defense of complete genomes.}},
+    volume = {18},
+    year = {2000}
+}
+
+@article{branscomb2002,
+    abstract = {10.1128/JB.184.23.6406-6409.2002},
+    author = {Branscomb, Elbert and Predki, Paul},
+    citeulike-article-id = {1465689},
+    citeulike-linkout-0 = {http://dx.doi.org/10.1128/JB.184.23.6406-6409.2002},
+    citeulike-linkout-1 = {http://jb.asm.org/cgi/content/abstract/184/23/6406},
+    citeulike-linkout-2 = {http://view.ncbi.nlm.nih.gov/pubmed/12426325},
+    citeulike-linkout-3 = {http://www.hubmed.org/display.cgi?uids=12426325},
+    doi = {10.1128/JB.184.23.6406-6409.2002},
+    issn = {0021-9193},
+    journal = {Journal of bacteriology},
+    keywords = {genome-finishing, genome-sequencing, mdb-manuscript-2},
+    month = {December},
+    number = {23},
+    pages = {6406--6409},
+    posted-at = {2011-02-04 19:28:09},
+    priority = {0},
+    title = {{On the high value of low standards.}},
+    volume = {184},
+    year = {2002}
+}
+
+@article{simpson2009,
+    abstract = {{Widespread adoption of massively parallel deoxyribonucleic acid (DNA) sequencing instruments has prompted the recent development of de novo short read assembly algorithms. A common shortcoming of the available tools is their inability to efficiently assemble vast amounts of data generated from large-scale sequencing projects, such as the sequencing of individual human genomes to catalog natural genetic variation. To address this limitation, we developed ABySS (Assembly By Short Sequences), a parallelized sequence assembler. As a demonstration of the capability of our software, we assembled 3.5 billion paired-end reads from the genome of an African male publicly released by Illumina, Inc. Approximately 2.76 million contigs ≥100 base pairs (bp) in length were created with an N50 size of 1499 bp, representing 68\% of the reference human genome. Analysis of these contigs identified polymorphic and novel sequences not present in the human reference assembly, which were validated by alignment to alternate human assemblies and to other primate genomes.}},
+    author = {Simpson, Jared T. and Wong, Kim and Jackman, Shaun D. and Schein, Jacqueline E. and Jones, Steven J. M. and Birol, \.{I}nan\c{c}},
+    citeulike-article-id = {4117809},
+    citeulike-linkout-0 = {http://dx.doi.org/10.1101/gr.089532.108},
+    citeulike-linkout-1 = {http://genome.cshlp.org/content/gr.089532.108v1//.abstract},
+    citeulike-linkout-2 = {http://genome.cshlp.org/content/gr.089532.108v1//.full.pdf},
+    citeulike-linkout-3 = {http://genome.cshlp.org/cgi/content/abstract/19/6/1117},
+    citeulike-linkout-4 = {http://view.ncbi.nlm.nih.gov/pubmed/19251739},
+    citeulike-linkout-5 = {http://www.hubmed.org/display.cgi?uids=19251739},
+    doi = {10.1101/gr.089532.108},
+    issn = {1088-9051},
+    journal = {Genome Research},
+    keywords = {assembler, mdb-manuscript-2, software},
+    month = {June},
+    number = {6},
+    pages = {1117--1123},
+    posted-at = {2011-01-24 18:34:36},
+    priority = {2},
+    title = {{ABySS: A parallel assembler for short read sequence data}},
+    volume = {19},
+    year = {2009}
+}
+
+@article{bioruby,
+    abstract = {{katayama@bioruby.org}},
+    author = {Goto, Naohisa and Prins, Pjotr and Nakao, Mitsuteru and Bonnal, Raoul and Aerts, Jan and Katayama, Toshiaki},
+    citeulike-article-id = {7710468},
+    citeulike-linkout-0 = {http://dx.doi.org/10.1093/bioinformatics/btq475},
+    citeulike-linkout-1 = {http://bioinformatics.oxfordjournals.org/content/26/20/2617.abstract},
+    citeulike-linkout-2 = {http://bioinformatics.oxfordjournals.org/content/26/20/2617.full.pdf},
+    citeulike-linkout-3 = {http://view.ncbi.nlm.nih.gov/pubmed/20739307},
+    citeulike-linkout-4 = {http://www.hubmed.org/display.cgi?uids=20739307},
+    doi = {10.1093/bioinformatics/btq475},
+    issn = {1367-4811},
+    journal = {Bioinformatics (Oxford, England)},
+    keywords = {mdb-manuscript-2, ruby, software},
+    month = {October},
+    number = {20},
+    pages = {2617--2619},
+    posted-at = {2011-01-21 19:13:44},
+    priority = {0},
+    title = {{BioRuby: bioinformatics software for the Ruby programming language.}},
+    volume = {26},
+    year = {2010}
+}
+
+@electronic{kwalify,
+    author = {{Kuwata Lab}},
+    citeulike-article-id = {8669492},
+    citeulike-linkout-0 = {http://www.kuwata-lab.com/kwalify/},
+    keywords = {mdb-manuscript-2, ruby, software, yaml},
+    posted-at = {2011-01-21 19:05:32},
+    priority = {0},
+    title = {{Kwalify: schema validator and data binding for YAML/JSON}},
+}
+
+@inbook{class-annotations,
+    author = {Fields, Jay and Harvie, Shane and Fowler, Martin and Beck, Kent},
+    booktitle = {Refactoring: Ruby Edition},
+    chapter = {6},
+    citeulike-article-id = {8642776},
+    citeulike-linkout-0 = {http://www.amazon.ca/exec/obidos/redirect?tag=citeulike09-20\&amp;path=ASIN/0321603508},
+    citeulike-linkout-1 = {http://www.amazon.de/exec/obidos/redirect?tag=citeulike01-21\&amp;path=ASIN/0321603508},
+    citeulike-linkout-2 = {http://www.amazon.fr/exec/obidos/redirect?tag=citeulike06-21\&amp;path=ASIN/0321603508},
+    citeulike-linkout-3 = {http://www.amazon.jp/exec/obidos/ASIN/0321603508},
+    citeulike-linkout-4 = {http://www.amazon.co.uk/exec/obidos/ASIN/0321603508/citeulike00-21},
+    citeulike-linkout-5 = {http://www.amazon.com/exec/obidos/redirect?tag=citeulike07-20\&path=ASIN/0321603508},
+    citeulike-linkout-6 = {http://www.worldcat.org/isbn/0321603508},
+    citeulike-linkout-7 = {http://books.google.com/books?vid=ISBN0321603508},
+    citeulike-linkout-8 = {http://www.amazon.com/gp/search?keywords=0321603508\&index=books\&linkCode=qs},
+    citeulike-linkout-9 = {http://www.librarything.com/isbn/0321603508},
+    edition = {1},
+    howpublished = {Hardcover},
+    isbn = {0321603508},
+    keywords = {mdb-manuscript-2, refactoring, ruby},
+    month = {October},
+    pages = {139--142},
+    posted-at = {2011-01-18 19:11:43},
+    priority = {0},
+    publisher = {Addison-Wesley Professional},
+    title = {{Refactoring: Ruby Edition}},
+    year = {2009}
+}
+
+@electronic{yard,
+    author = {Segal, Loren},
+    citeulike-article-id = {8642434},
+    citeulike-linkout-0 = {http://yardoc.org/},
+    keywords = {mdb-manuscript-2, ruby, software},
+    posted-at = {2011-01-18 18:24:55},
+    priority = {0},
+    title = {{YARD - A Ruby Documentation Tool}},
+}
+
+@electronic{ronn,
+    author = {Tomayko, Ryan},
+    citeulike-article-id = {8642433},
+    citeulike-linkout-0 = {http://rtomayko.github.com/ronn/},
+    keywords = {mdb-manuscript-2, ruby, software},
+    posted-at = {2011-01-18 18:23:46},
+    priority = {0},
+    title = {{Ronn - manual page authoring tool}},
+}
+
+@book{rspec,
+    author = {{David Chelimsky and Dave Astels and Bryan Helmkamp and Dan North and Zach Dennis and Aslak Hellesoy}},
+    citeulike-article-id = {8642411},
+    isbn = {1934356379},
+    keywords = {mdb-manuscript-2, ruby, software},
+    posted-at = {2011-01-18 18:20:17},
+    priority = {0},
+    publisher = {Pragmatic Bookshelf},
+    title = {{The RSpec Book: Behaviour Driven Development with Rspec, Cucumber, and Friends.}},
+    year = {2010}
+}
+
+@electronic{yaml,
+    author = {Evans, Clark C.},
+    citeulike-article-id = {8641134},
+    citeulike-linkout-0 = {http://www.yaml.org/},
+    keywords = {mdb-manuscript-2},
+    posted-at = {2011-01-18 16:56:02},
+    priority = {0},
+    title = {{YAML: a human friendly data serialization standard for all programming languages}},
+}
+
+@electronic{ruby-lang,
+    author = {Matsumoto, Yukihiro},
+    citeulike-article-id = {8638829},
+    citeulike-linkout-0 = {http://www.ruby-lang.org/en/},
+    keywords = {mdb-manuscript-2},
+    posted-at = {2011-01-18 16:49:12},
+    priority = {0},
+    title = {{The Ruby Programming Language}},
+}
+
+@article{miller2010,
+    abstract = {{The emergence of next-generation sequencing platforms led to resurgence of research in whole-genome shotgun assembly algorithms and software. DNA sequencing data from the Roche 454, Illumina/Solexa, and ABI SOLiD platforms typically present shorter read lengths, higher coverage, and different error profiles compared with Sanger sequencing data. Since 2005, several assembly software packages have been created or revised specifically for de novo assembly of next-generation sequencing data. This review summarizes and compares the published descriptions of packages named SSAKE, SHARCGS, VCAKE, Newbler, Celera Assembler, Euler, Velvet, ABySS, AllPaths, and SOAPdenovo. More generally, it compares the two standard methods known as the de Bruijn graph approach and the overlap/layout/consensus approach to assembly.}},
+    author = {Miller, Jason R. and Koren, Sergey and Sutton, Granger},
+    citeulike-article-id = {6791223},
+    citeulike-linkout-0 = {http://dx.doi.org/10.1016/j.ygeno.2010.03.001},
+    citeulike-linkout-1 = {http://linkinghub.elsevier.com/retrieve/pii/S0888754310000492},
+    citeulike-linkout-2 = {http://view.ncbi.nlm.nih.gov/pubmed/20211242},
+    citeulike-linkout-3 = {http://www.hubmed.org/display.cgi?uids=20211242},
+    doi = {10.1016/j.ygeno.2010.03.001},
+    issn = {08887543},
+    journal = {Genomics},
+    keywords = {assembly, genomics, mdb-manuscript-2},
+    month = {June},
+    number = {6},
+    pages = {315--327},
+    posted-at = {2010-05-18 21:06:38},
+    priority = {0},
+    title = {{Assembly algorithms for next-generation sequencing data}},
+    volume = {95},
+    year = {2010}
+}
+
+@article{fraser2002,
+    address = {The Institute for Genomic Research, Rockville, Maryland 20850, USA. cmfraser@tigr.org},
+    author = {Fraser, Claire M. and Eisen, Jonathan A. and Nelson, Karen E. and Paulsen, Ian T. and Salzberg, Steven L.},
+    citeulike-article-id = {551856},
+    citeulike-linkout-0 = {http://view.ncbi.nlm.nih.gov/pubmed/12426324},
+    citeulike-linkout-1 = {http://www.hubmed.org/display.cgi?uids=12426324},
+    issn = {0021-9193},
+    journal = {Journal of bacteriology},
+    keywords = {genome-finishing, genome-sequencing, genomics, mdb-manuscript-2, srs},
+    month = {December},
+    number = {23},
+    posted-at = {2010-01-13 19:57:03},
+    priority = {0},
+    title = {{The value of complete microbial genome sequencing (you get what you pay for).}},
+    volume = {184},
+    year = {2002}
+}
 

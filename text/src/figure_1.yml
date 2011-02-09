@@ -1,0 +1,24 @@
+---
+-
+  sequence:
+    source: 'sequence1'
+-
+  unresolved:
+    length: 20
+-
+  sequence:
+    source: 'sequence2'
+    start: 3
+    stop: 100
+    reverse: true
+    inserts:
+    -
+      source: 'insert1'
+      start: 8
+      stop: 16
+      reverse: true
+      open: 5
+      close: 20
+    -
+      source: 'insert2'
+      open: 24
