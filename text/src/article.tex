@@ -161,7 +161,6 @@ University, Nunn Drive, Highland Heights, KY 41076 }%
 \ifthenelse{\boolean{publ}}{\begin{multicols}{2}}{}
 
 % }}}
-<<<<<<< HEAD
 \section*{Background} %{{{1
 %{{{2
 
@@ -348,27 +347,299 @@ scaffold file may have attributes that define whether a sub-sequence or the
 reverse complement of the sequence should be used. The types of attributes are
 outlined in the Results and Discussion section below.\pb
 
-% {{{ Results and Discussion
- 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Results and Discussion %%
-%%
-\section*{Results and Discussion}
-  \subsection*{Results sub-heading}
-    \subsubsection*{This is a sub-sub-heading}
-      Sub-sub-sub-headings are made with the \textsl{\\subsubsection} command. \pb
-      pb at end of lines ensures correct paragraph spacing.\pb
-	  Text for this sub-sub-section \ldots
-    \subsubsection*{Another sub-sub-sub-heading}
-      Text for this sub-sub-section \ldots
+\section*{Results and Discussion} %{{{1
 
-% {{{ Conclusions
-%%%%%%%%%%%%%%%%%%%%%%
-\section*{Conclusions}
-  Text for this section \ldots
-% }}}
-% {{{ Availability and Requirements
-\section*{Availability and Requirements}
+\subsection*{Scaffolder Simplifies Genome Finishing} %{{{2
+
+The Scaffolder software allows manual or computational joining of multiple
+discontiguous nucleotide sequences together into a contiguous super sequence.
+Simple plain-text configuration files are used to select the nucleotide
+sequences in the scaffold and how they should be joined together. This is
+called the ``scaffold file''. \pb
+
+The scaffold file is read by the scaffolder software to determine how the
+scaffold super sequence is generated. In addition to specifying which
+nucleotides should be used to generate the draft super sequence, the scaffold
+file allows the sequences to trimmed down to smaller sub-sequences and to
+reverse complement the sequence if necessary. \pb
+
+There may be unknown regions in the sequences used in the scaffold. Region of
+nucleotide sequence the assembler was unable to determine the nucleotide
+sequence. The process of genome finishing may involve determining the correct
+nucleotide sequence for these regions then filling the gaps with the additional
+correct sequence. The scaffold file specifically allows these inserts to be
+added to scaffold. These inserts can be treated the same way as a larger
+contig: trimmed and/or reversed to match the required gap region. \pb
+
+When scaffolding a genome there may be regions of sequence approximate size
+region may be estimated from mate-pair insert size or from mapping the contigs
+to reference genome. These unknown regions are useful to join non-contiguous
+sequences together by the estimated size of the region whilst still
+highlighting areas in the genome to be resolved. These unknown regions can be
+specified in the scaffold file for the above reasons. \pb
+
+The original raw nucleotide sequence for each assembled contig or insert
+sequence is maintained in a fasta file. The fasta file of contigs is a common
+output for assemblers and as such should be readily available after assembly
+without additional processing. The choice of the nucleotide sequence to use in
+the scaffold is specified using the first space-delimited word from the fasta
+header of the sequence. By maintaining the nucleotide sequences in a separate
+file this preserves the original raw sequence in the fasta file. Furthermore
+this separates the actual nucleotide sequence from the determination of how it
+is selected and edited in the final genome sequence. \pb
+
+\subsection*{Defining a scaffold in a text file} %{{{2
+
+The scaffold file is written using `YAML', a data format designed to be both
+machine readable and manually editable. An example of a scaffold file in YAML
+format is shown in Figure 1. This example scaffold file illustrates the
+available features in scaffolder. The basic layout of the scaffold file is as
+a list - a series of entries where each entry defines a region of sequence to
+be generated for the final super sequence. In the final super sequence each of
+the entries are joined together to generate a single continuous sequences. \pb
+
+\subsubsection*{Simple sequence region} %{{{3
+
+The first line of the scaffold file begins with three dashes. This is
+a requirement to indicate the start of a YAML formatted document. Line 2 begins
+with a dash character `-' denoting the first entry in the sequence scaffold.
+Line 3 is indented by two spaces. Whitespace is used to delimite attributes in
+the file. Lines with an incremented level of white space are considered linked
+to the first preceeding non-indented line. \pb
+
+The ``sequence'' tag used on line 3 indicates that this region is in the
+scaffold will contain nucleotide sequence from the fasta file. The following
+line indented by two spaces and indicating an attribute of the sequence entry
+defined on line 3. In this case the ``source'' keyword identifies the name of
+the sequence to be inserted into the scaffold. As described above the first
+space-delimited word of the fasta header should be used to identify the
+sequence. Taken together lines 2-4 describe the first entry in the scaffold is
+a simple sequence which the identifier `sequence'. \pb
+
+\subsubsection*{Unresolved sequence region} %{{{3
+
+Line 5 has no whitespace indentation and begins with a dash and therefore
+describes the next entry in the scaffold. This entry is identified by the
+``unresolved'' tag, and specifies a region of unknown nucleotides but known
+length. The following line specifies the size of this unknown region. Lines 5-6
+therefore insert a region of 20 `N' characters in the super sequence directly
+following the region defined by the first entry on lines 2-5. \pb
+
+\subsubsection*{Trimmed sequence region with multiple inserts} %{{{3
+
+The last entry adds the sequence 'sequence2' in the scaffold file. This entry
+demonstrates three further attributes for a sequence entry.The `start' and
+`stop' tags are used to trim the sequence used in the scaffold to these
+coordinates inclusively. The ``reverse'' tag is used to reverse complement this
+region in the final super sequence. \pb
+
+This region further includes the ``inserts'' tag to update the inserted
+sequence with additional regions of sequence. These inserts are also added as
+a YAML list with each insert listed with a dash on one line followed by the
+remainder of the insert errata. \pb
+
+Lines 16-19 illustrate an insert using similar attributes to that of a sequence
+entry. The reverse, start and stop tags trim the inserted sequence and the
+`source' tag identifies the corresponding fasta sequence. The ``open'' and
+``close'' tags on lines 20-21 determine where the insert is added to the
+enclosing sequence.  These coordinates inclusively replace the region within
+these coordinates with the specified fasta sequence. The open and close
+positions need not be the same size as the inserted sequence. \pb
+
+The next insert on lines 23-24 specifies only the open position. This
+illustrate that only the one of the `open' or `close' tags is required.  When
+only open or close tag is used then the opposing position is calculated from
+the length on the insert fasta sequence. This allows inserts to partially fill
+gap regions in sequences. \pb
+
+\subsubsection*{Scaffolder file attribute processing} %{{{3
+
+The sequence entry in the scaffold file allows multiple sequence-editting
+attributes which when applied in different combinations will result in
+different output sequence. An example is reverse complementing the sequence
+then follwing adding sequence inserts. Performing these actions in the reverse
+order will produce a difference output sequence. This section therefore
+outlines the scaffolder protocol for processing sequence entries. \pb
+
+\paragraph{Reverse sort inserts:} If the sequence entry contains a list of
+inserts these are reverse sorted by close position. The insert with the
+largest close position is first in the list and inserts with the smallest
+close position is last. This preserves the original indented coordinates for
+insert during the process of adding inserts to the sequence. \pb
+
+\paragraph{Update sequence with insert:} Each insert sequence is processed
+according to any specified attributes. The insert is added to the enclosing
+sequence in the region specified by the open and close coordinates. \pb
+
+If the insert added to the sequence is a different length than the region
+replaced the sequence start and stop co-ordinates are updated. For example if
+a 7bp insert replaced a 5bp region the stop coordinate of the enclosing
+sequence would be incremented by the 2bp difference. \pb
+
+\paragraph{Triming sequence:} If the sequence is has start or stop sequences
+specified these are used to trip the sequence to these co-ordinates
+inclusively. \pb 
+
+\paragraph{Reverse complement sequence:} If the ``reverse'' keyword is
+specified the sequence is reverse complemented. This is final step in
+processing the sequence with results in the sequence being returned. \pb
+
+\subsection*{Scaffolder usage} %{{{2
+
+Scaffolder provides a standardised set of Ruby classes and methods (the
+application programming interface or API) allowing the scaffold to be
+manipulated programmatically. This allows scaffolder to be integrated into
+existing genomics workflows or used with Ruby build tools such as using Rake.
+\pb
+
+Scaffolder also provides a command line interface (CLI) through a scaffolder
+binary. This the scaffold sequence to be produced and validated without
+requiring any Ruby knowledge. The scaffolder CLI behaves as a standard Unix
+tool - returning appropriate exit statuses and providing appropriate manual
+pages. The use of both these scaffolder interfaces is outlined in the following
+sections. \pb
+
+\subsubsection*{Installation} %{{{3
+
+Scaffolder relies on both the ruby programming language and the RubyGems
+package management system to work. These are either already present easily
+installed on recent distributions of Mac OSX or Linux. The presences of these
+tools can be tested by typing the following on the command line. \pb
+
+\begin{verbatim}
+  ruby -v
+  gem -v
+\end{verbatim}
+
+If both these commands return without error this indicates the necessary
+system requirements to install and run scaffolder. The scaffolder API and CLI
+can then be installed through RubyGems with the following command.
+
+\begin{verbatim}
+  gem install scaffolder scaffolder-tools
+\end{verbatim}
+
+To ensure that the scaffolder CLI is accessible the RubyGems `bin' directory
+should be in the command line path. Assuming that RubyGems are installed in
+~/.gem this can be done by adding the following to the ~/.bashrc file. This
+should be adjusted for other shells such as zsh etc..
+
+\begin{verbatim}
+  export PATH=~/.gem/bin:$PATH
+\end{verbatim}
+
+\subsubsection*{Command Line Interface} %{{{3
+
+The Scaffolder CLI provides functions to validate the scaffold file and build the draft scaffold sequence. Assuming scaffolder has been installed and the
+binary is available in the command line path the following command should run without error and list the available functions. \pb
+
+\begin{verbatim}
+  scaffolder
+\end{verbatim}
+
+Help on a specific command can be found by typing `help' followed by the name
+of the command. This will return the corresponding Unix manual page. The
+following example will return the manual page for the sequence command. \pb
+
+\begin{verbatim}
+  scaffolder help sequence
+\end{verbatim} 
+
+The ``sequence'' command builds the fasta sequence from the scaffold and fasta
+file. Running this command requires the locations of both the scaffold file and
+the fasta file of sequences. This will then return the complete scaffold
+sequence. \pb
+
+\begin{verbatim}
+  scaffolder sequence scaffold.yml sequences.fna
+\end{verbatim}
+
+Scaffolder provides a function to test the scaffold for overlapping insert
+coordinates. Overlapping inserts will result in unexpected behaviour as the
+coordinates for the first insert may change the insert location for subsequent
+inserts. The ``validate'' command will check the scaffold for any such inserts
+and return them as a YAML list. \pb
+
+\begin{verbatim}
+  scaffolder validate scaffold.yml sequences.fna
+\end{verbatim}
+
+\subsubsection*{Application programming interface} %{{{3
+
+Scaffolder provides an API allowing Ruby programs to manipulate the scaffold.
+This API is detailed in full on the scaffolder website. The following code
+snippet outlines how the API may be used to create a script to replicate the
+function of the `scaffolder sequence' command described above. \pb
+
+\begin{verbatim}
+  #!/usr/bin/env ruby
+
+  require 'rubygems'
+  require 'scaffolder'
+
+  scaffold_file = ARGV.shift
+  sequence_file = ARGV.shift
+
+  scaffold = Scaffolder.new(
+    YAML.load(File.read(scaffold_file)),
+    sequence_file)
+
+  sequence = scaffold.map{|entry| entry.sequence }.join
+
+  puts sequence
+\end{verbatim}
+
+This code snippet illustrates that the scaffold object is initialised with two
+arguments: the YAML loaded scaffold and the location of the fasta sequence
+file. The scaffold is an enumerable object as the next line illustrates the
+trivial code required to generate the scaffold sequence. Further details of
+the classes and method related to each scaffold entry can be found in the
+documentation for the Scaffolder::Region class. \pb
+
+\subsection*{Discussion of Scaffolder Approach} %{{{2
+
+The main aims of scaffolder are two foldfold. The first is produce easy to
+install and simplifies the task of genome finishing. The second aim is to
+allow to create a tool to facilitate reproducibility in the task of joining
+large nucleotide sequences together. \pb
+
+\subsubsection{Simple to use}
+
+Scaffolder is designed to be simple to use as possible. Assuming the existence
+of Ruby and RubyGems, scaffolder can be installed in a single command line
+step. Scaffolder uses a minimal and compact syntax to described the genome
+scaffold. This syntax is simple to construct and edit whilst being succinct
+and readable. This aims to allow creating a genome scaffold to relatively
+simple to do in a common text editor. Furthermore scaffolder provides
+extensive documentation both for the command line tools and for the Scaffolder
+Ruby API. Therefore should any part of the scaffolder tool be unclear the
+documentation should make an solution easy to find. \pb
+
+\subsubsection{Reproducible genome construction}
+
+Constructing a genome sequence using a plain text scaffold file means the same
+sequence is always output for the same file. Joining large nucleotide
+sequences manually cannot however be reliably reproduced. The layout of the
+scaffold file furthermore provides a human readable record of how the sequence
+was constructed. \pb
+
+Configuring the final sequence in the scaffold file means the build is easier
+to edit once already constructed compared with working on the sequence alone.
+The YAML text format is also much easier to compare differences using standard
+text comparison tools such as diff. This makes scaffold files easier to store
+in version control systems. This affords genome scaffolding the same benefits
+enjoyed by software developers. \pb
+
+\section*{Conclusions} %{{{1
+
+Scaffolder follows the Unix philosophy ``Do one thing and do it well''.
+Scaffolder focuses on creating a simple to use and install tool for generating
+a genome scaffold. The YAML data format for creating a scaffold file is
+standardised and easily manipulated programmatically. This thereby follows
+a second Unix tenet: ``If your data structures are good enough, the algorithm
+to manipulate them should be trivial.''
+
+\section*{Availability and Requirements} %{{{1
 
   \begin{description}
     \item[Project name:] Scaffolder
@@ -409,25 +680,21 @@ manuscript.
 \section*{Acknowledgements}
   \ifthenelse{\boolean{publ}}{\small}{}
   Text for this section \ldots
-%}}}
-% {{{ Bibliography
+%{{{1 Bibliography
 {\ifthenelse{\boolean{publ}}{\footnotesize}{\small}
  \bibliographystyle{bmc_article}  % Style BST file
   \bibliography{article} }     % Bibliography file (usually '*.bib' ) 
-%}}}
-% {{{ Figures
+
 \ifthenelse{\boolean{publ}}{\end{multicols}}{}
 
-\section*{Figures}
-  \subsection*{Figure 1 - Sample figure title}
-      A short description of the figure content
-      should go here.
+\section*{Figures} %{{{1
 
-  \subsection*{Figure 2 - Sample figure title}
-      Figure legend text.
-% }}}
-% {{{ Tables
-\section*{Tables}
+  \subsection*{Figure 1 - Sample figure title}
+
+  A short description of the figure content should go here.
+
+\section*{Tables} %{{{1
+
   \subsection*{Table 1 - Sample table title}
     Here is an example of a \emph{small} table in \LaTeX\ using  
     \verb|\tabular{...}|. This is where the description of the table 
@@ -444,9 +711,9 @@ manuscript.
   \subsection*{Table 2 - Sample table title}
     Large tables are attached as separate files but should
     still be described here.
-% }}}
-% {{{ Additional Files
-\section*{Additional Files}
+
+\section*{Additional Files} %{{{1
+
   \subsection*{Additional file 1 --- Sample additional file title}
     Additional file descriptions text (including details of how to
     view the file, if it is in a non-standard format or the file extension).  This might
@@ -457,5 +724,5 @@ manuscript.
 
 
 \end{bmcformat}
+
 \end{document}
-% }}}
