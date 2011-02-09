@@ -236,45 +236,54 @@ easier way and makes genome scaffolds reproducible. \pb
 \subsection*{Code and Dependencies} %{{{2
 
 Scaffolder is written in the Ruby programming language, version 1.8.7
-\cite{ruby-lang}. Unit tests were implemented during development to maintain
-functionality of individual elements of source code. Integration tests were
-also written to test the scaffold software interface as a whole. These unit and
-integration tests were written using the RSpec and Cucumber libraries
-respectively\cite{rspec}.\pb
+\cite{ruby-lang}. The scaffolder package is split into two libraries. The first
+called ``scaffolder'' contains the core scaffolder application programming
+interface (API). The second library ``scaffolder-tools'' contains the
+scaffolder command line interface (CLI). \pb
 
-The Scaffolder source code is documented using the Yard library\cite{yard}.
+Unit tests were implemented to develop and maintain individual elements of the
+source code.  Integration tests were written to test the scaffolder software
+interface as a whole. Unit tests were written using the Shoulda and RSpec
+\cite{rspec} libraries.  Integration tests were written using the Cucumber
+library \cite{rspec}. \pb
+
+The Scaffolder source code is documented using the Yard library \cite{yard}.
 Unix manual pages for the command line interface were generated using the Ronn
-library\cite{ronn}. The manipulation of biological sequences in Scaffolder is
-performed using the BioRuby library\cite{bioruby}. A full list of the software
-dependencies in scaffolder can be found in the Gemfile in the root of source
-code directory.\pb
+library \cite{ronn}. The manipulation of biological sequences in Scaffolder is
+performed using the BioRuby library \cite{goto2010}. A full list of the
+software dependencies in scaffolder can be found in the Gemfile in the root of
+each source code directory.\pb
 
 \subsection*{Scaffold file syntax} %{{{2
 
-The choice of nucleotide sequences comprising the genome scaffold is specified
-in YAML \cite{yaml}. YAML is a language format for data using white-space and
-indentation to produce a machine readable structure. As a standardised data
-format third-party developers have the option to generate a genome scaffold
-using any programming language for which a YAML parser exists. Furthermore YAML
-formatted scaffold files can be validated using third party tools such as
-Kwalify\cite{kwalify}.\pb
+The choice of nucleotide sequences making up the scaffold is specified using
+the YAML syntax \cite{yaml}. YAML is a language format using whitespace and
+indentation to produce a machine readable structure. As YAML is a standardised
+data format, third-party developers have the option to generate a genome
+scaffold using any programming language for which a YAML parser and generator
+exists. The YAML website lists parsers for languages including C/C++, Ruby,
+Python, Java, Perl, C\#/.NET, PHP, and JavaScript. In addition to being widely
+supported YAML formatted scaffold files can be validated for correct syntax
+using third party tools such as Kwalify \cite{kwalify}. \pb
 
-The initial assembly of sequencing reads may result in an incomplete genome
-build. Comparison of contigs to reference genomes and the generation of
-additional sequence from PCR translates to genome finishing as an ongoing
-process. Therefore the scaffold file should be simple to edit manually in
-addition to being computationally tractable. This requirement for the scaffold
-files to be modifiable in a simple simple text editor is the second reason YAML
-was selected as the format for scaffold files.\pb
+As described in the Background section, the initial sequencing data assembly
+may result in an incomplete genome build. The use of computational software and
+generation of additional sequence using PCR translates into genome scaffolding
+as an on-going process. Therefore the scaffold file should be simple to edit
+update with new sequence manually in addition to being computationally
+tractable. This requirement was therefore second reason YAML was selected,
+where YAML is human-readable and should be relatively easy to update in a
+standard text editor. \pb
 
-The form of the scaffold file is a list of entries. Each entry corresponds to
-a length of sequence in the the draft genome sequence. When generating the
-genome sequence from the scaffold file each entry is processed in order. Each
-of the nucleotide sequence specified by the scaffold file entries are
+The scaffold file takes the form of a list of entries. Each entry corresponds
+to a region of sequence, most likely a contig, in the genome scaffold. The
+scaffolder software processes this list of entries in order, converting each to
+the corresponding nucleotide sequence. These nucleotide sequences are then
 concatenated together to produce the draft genome sequence. Each entry in the
 scaffold file may have attributes that define whether a sub-sequence or the
-reverse complement of the sequence should be used. The types of attributes are
-outlined in the Results and Discussion section below.\pb
+reverse complement of the sequence should be used. The types of attributes
+available and an example scaffold file are outlined in the Results and
+Discussion section below.  \pb
 
 \clearpage
 
@@ -595,6 +604,8 @@ to manipulate them should be trivial.''
 \section*{List of Abbreviations Used} %{{{1
 
   \begin{description}
+    \item[API:] Application programming interface
+    \item[CLI:] Command line interface
     \item[YAML:] YAML Ain't Markup Language\cite{yaml}
   \end{description}
 
