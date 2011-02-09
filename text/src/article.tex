@@ -47,10 +47,12 @@
   \email{Hazel A Barton\correspondingauthor - bartonh@nku.edu}%
       }
 
-\address{\iid(1) Department of Biological Sciences, Northern Kentucky%
+\address{\iid(1) Department of Biological Sciences, Northern Kentucky %
 University, Nunn Drive, Highland Heights, KY 41076 }%
 
 \maketitle
+
+\clearpage
 
 \begin{abstract} %{{{1
 
@@ -83,6 +85,8 @@ University, Nunn Drive, Highland Heights, KY 41076 }%
 \end{abstract}
 
 \ifthenelse{\boolean{publ}}{\begin{multicols}{2}}{}
+
+\clearpage
 
 \section*{Background} %{{{1
 %{{{2
@@ -225,6 +229,8 @@ data syntax to define how contigs are joined, additional sequences inserted,
 and specify unknown regions. This syntax allows a scaffold to be edited in much
 easier way and makes genome scaffolds reproducible. \pb
 
+\clearpage
+
 \section*{Implementation} %{{{1
 
 \subsection*{Code and Dependencies} %{{{2
@@ -269,6 +275,8 @@ concatenated together to produce the draft genome sequence. Each entry in the
 scaffold file may have attributes that define whether a sub-sequence or the
 reverse complement of the sequence should be used. The types of attributes are
 outlined in the Results and Discussion section below.\pb
+
+\clearpage
 
 \section*{Results and Discussion} %{{{1
 
@@ -551,7 +559,9 @@ to edit once already constructed compared with working on the sequence alone.
 The YAML text format is also much easier to compare differences using standard
 text comparison tools such as diff. This makes scaffold files easier to store
 in version control systems. This affords genome scaffolding the same benefits
-enjoyed by software developers. \pb
+enjoyed by software developers. \pb 
+
+\clearpage
 
 \section*{Conclusions} %{{{1
 
@@ -561,6 +571,8 @@ a genome scaffold. The YAML data format for creating a scaffold file is
 standardised and easily manipulated programmatically. This thereby follows
 a second Unix tenet: ``If your data structures are good enough, the algorithm
 to manipulate them should be trivial.''
+
+\clearpage
 
 \section*{Availability and Requirements} %{{{1
 
@@ -575,7 +587,8 @@ to manipulate them should be trivial.''
     \item[Any restrictions to use by non-academics:] None
   \end{description}
 
-% }}}
+\clearpage
+
 \section*{Authors contributions} %{{{1
   The authors declare no competing interests.
 
@@ -594,12 +607,16 @@ manuscript.
   \ifthenelse{\boolean{publ}}{\small}{}
   Text for this section \ldots
 
+\clearpage
+
 % Bibliography {{{1
 {\ifthenelse{\boolean{publ}}{\footnotesize}{\small}
  \bibliographystyle{bmc_article}  % Style BST file
   \bibliography{article} }     % Bibliography file (usually '*.bib' ) 
 
 \ifthenelse{\boolean{publ}}{\end{multicols}}{}
+
+\clearpage
 
 \section*{Figures} %{{{1
 
