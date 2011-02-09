@@ -161,6 +161,7 @@ University, Nunn Drive, Highland Heights, KY 41076 }%
 \ifthenelse{\boolean{publ}}{\begin{multicols}{2}}{}
 
 % }}}
+<<<<<<< HEAD
 \section*{Background} %{{{1
 %{{{2
 
@@ -304,8 +305,49 @@ easier way and makes genome scaffolds reproducible. \pb
 
 \section*{Implementation} %{{{1
 
-  Text for this section \ldots
-% }}}
+\subsection*{Code and Dependencies} %{{{2
+
+Scaffolder is written in the Ruby programming language, version 1.8.7
+\cite{ruby-lang}. Unit tests were implemented during development to maintain
+functionality of individual elements of source code. Integration tests were
+also written to test the scaffold software interface as a whole. These unit and
+integration tests were written using the RSpec and Cucumber libraries
+respectively\cite{rspec}.\pb
+
+The Scaffolder source code is documented using the Yard library\cite{yard}.
+Unix manual pages for the command line interface were generated using the Ronn
+library\cite{ronn}. The manipulation of biological sequences in Scaffolder is
+performed using the BioRuby library\cite{bioruby}. A full list of the software
+dependencies in scaffolder can be found in the Gemfile in the root of source
+code directory.\pb
+
+\subsection*{Scaffold file syntax} %{{{2
+
+The choice of nucleotide sequences comprising the genome scaffold is specified
+in YAML \cite{yaml}. YAML is a language format for data using white-space and
+indentation to produce a machine readable structure. As a standardised data
+format third-party developers have the option to generate a genome scaffold
+using any programming language for which a YAML parser exists. Furthermore YAML
+formatted scaffold files can be validated using third party tools such as
+Kwalify\cite{kwalify}.\pb
+
+The initial assembly of sequencing reads may result in an incomplete genome
+build. Comparison of contigs to reference genomes and the generation of
+additional sequence from PCR translates to genome finishing as an ongoing
+process. Therefore the scaffold file should be simple to edit manually in
+addition to being computationally tractable. This requirement for the scaffold
+files to be modifiable in a simple simple text editor is the second reason YAML
+was selected as the format for scaffold files.\pb
+
+The form of the scaffold file is a list of entries. Each entry corresponds to
+a length of sequence in the the draft genome sequence. When generating the
+genome sequence from the scaffold file each entry is processed in order. Each
+of the nucleotide sequence specified by the scaffold file entries are
+concatenated together to produce the draft genome sequence. Each entry in the
+scaffold file may have attributes that define whether a sub-sequence or the
+reverse complement of the sequence should be used. The types of attributes are
+outlined in the Results and Discussion section below.\pb
+
 % {{{ Results and Discussion
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -320,12 +362,6 @@ easier way and makes genome scaffolds reproducible. \pb
     \subsubsection*{Another sub-sub-sub-heading}
       Text for this sub-sub-section \ldots
 
-  \subsection*{Another results sub-heading}
-    Text for this sub-section \ldots
-
-  \subsection*{Yet another results sub-heading}
-    Text for this sub-section.  More results \ldots
-% }}}
 % {{{ Conclusions
 %%%%%%%%%%%%%%%%%%%%%%
 \section*{Conclusions}
@@ -349,6 +385,14 @@ easier way and makes genome scaffolds reproducible. \pb
 % {{{ Competing Interests
 \section*{Authors contributions}
   The authors declare no competing interests.
+% }}}
+% {{{ Availability and Requirements
+\section*{List of Abbreviations Used}
+
+  \begin{description}
+    \item[YAML:] YAML Ain't Markup Language\cite{yaml}
+  \end{description}
+
 % }}}
 % {{{ Author Contributions
 \section*{Authors contributions}
