@@ -1,52 +1,7 @@
-% {{{ Preamble
-
-
-%% BioMed_Central_Tex_Template_v1.05
-%%                                      %
-%  bmc_article.tex            ver: 1.05 %
-%                                       %
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%                                     %%
-%%  LaTeX template for BioMed Central  %%
-%%     journal article submissions     %%
-%%                                     %%
-%%         <27 January 2006>           %%
-%%                                     %%
-%%                                     %%
-%% Uses:                               %%
-%% cite.sty, url.sty, bmc_article.cls  %%
-%% ifthen.sty. multicol.sty		       %%
-%%									   %%
-%%                                     %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%                                                                 %%	
-%% For instructions on how to fill out this Tex template           %%
-%% document please refer to Readme.pdf and the instructions for    %%
-%% authors page on the biomed central website                      %%
-%% http://www.biomedcentral.com/info/authors/                      %%
-%%                                                                 %%
-%% Please do not use \input{...} to include other tex files.       %%
-%% Submit your LaTeX manuscript as one .tex document.              %%
-%%                                                                 %%
-%% All additional figures and files should be attached             %%
-%% separately and not embedded in the \TeX\ document itself.       %%
-%%                                                                 %%
-%% BioMed Central currently use the MikTex distribution of         %%
-%% TeX for Windows) of TeX and LaTeX.  This is available from      %%
-%% http://www.miktex.org                                           %%
-%%                                                                 %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+% BioMed_Central_Tex_Template_v1.05 %{{{1
 
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \documentclass[10pt]{bmc_article}    
-
-
 
 % Load packages
 \usepackage{cite} % Make references as [1-4], not [1,2,3,4]
@@ -58,22 +13,6 @@
 %\usepackage[latin1]{inputenc} %UNIX support if unicode package fails
 \urlstyle{rm}
  
- 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
-%%                                             %%
-%%  If you wish to display your graphics for   %%
-%%  your own use using includegraphic or       %%
-%%  includegraphics, then comment out the      %%
-%%  following two lines of code.               %%   
-%%  NB: These line *must* be included when     %%
-%%  submitting to BMC.                         %% 
-%%  All figure files must be submitted as      %%
-%%  separate graphics through the BMC          %%
-%%  submission process, not included in the    %% 
-%%  submitted article.                         %% 
-%%                                             %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                     
-
 \def\includegraphic{}
 \def\includegraphics{}
 
@@ -84,17 +23,6 @@
 \setlength{\columnsep}{0.6cm}
 
 \newboolean{publ}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%                                              %%
-%% You may change the following style settings  %%
-%% Should you wish to format your article       %%
-%% in a publication style for printing out and  %%
-%% sharing with colleagues, but ensure that     %%
-%% before submitting to BMC that the style is   %%
-%% returned to the Review style setting.        %%
-%%                                              %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %Review style settings
 \newenvironment{bmcformat}{\begin{raggedright}\baselineskip20pt\sloppy\setboolean{publ}{false}}{\end{raggedright}\baselineskip20pt\sloppy}
@@ -108,10 +36,8 @@
 % Begin ...
 \begin{document}
 \begin{bmcformat}
-% }}}
-% {{{ Title
 
-\title{Scaffolder - Software for Microbial Genome Scaffolding.}
+\title{Scaffolder - Software for Microbial Genome Scaffolding.} %{{{1
 
 \author{
   Michael D Barton$^{1}$%
@@ -125,10 +51,8 @@
 University, Nunn Drive, Highland Heights, KY 41076 }%
 
 \maketitle
-%}}}
-% {{{ Abstract
 
-\begin{abstract}
+\begin{abstract} %{{{1
 
   \paragraph*{Background:} Assembly of short read sequencing data can result in
   a fragmented series of contigs. Therefore a common step in a genome project
@@ -160,7 +84,6 @@ University, Nunn Drive, Highland Heights, KY 41076 }%
 
 \ifthenelse{\boolean{publ}}{\begin{multicols}{2}}{}
 
-% }}}
 \section*{Background} %{{{1
 %{{{2
 
@@ -653,34 +576,25 @@ to manipulate them should be trivial.''
   \end{description}
 
 % }}}
-% {{{ Competing Interests
-\section*{Authors contributions}
+\section*{Authors contributions} %{{{1
   The authors declare no competing interests.
-% }}}
-% {{{ Availability and Requirements
-\section*{List of Abbreviations Used}
+
+\section*{List of Abbreviations Used} %{{{1
 
   \begin{description}
     \item[YAML:] YAML Ain't Markup Language\cite{yaml}
   \end{description}
 
-% }}}
-% {{{ Author Contributions
-\section*{Authors contributions}
+\section*{Authors contributions} %{{{1
 
 MDB developed and maintains the scaffolder tool. MDB and HAB wrote the
 manuscript.
 
-% }}}
-% {{{ Author's Information
-\section*{Authors contributions}
-    Text for this section \ldots
-% }}}
-% {{{ Acknowledgements
-\section*{Acknowledgements}
+\section*{Acknowledgements} %{{{1
   \ifthenelse{\boolean{publ}}{\small}{}
   Text for this section \ldots
-%{{{1 Bibliography
+
+% Bibliography {{{1
 {\ifthenelse{\boolean{publ}}{\footnotesize}{\small}
  \bibliographystyle{bmc_article}  % Style BST file
   \bibliography{article} }     % Bibliography file (usually '*.bib' ) 
