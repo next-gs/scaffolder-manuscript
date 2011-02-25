@@ -95,76 +95,76 @@ High throughput sequencing can produce hundreds of thousands to millions of
 sequence reads from a genome. Each sequence represents the machine-read
 nucleotides from a short region in the genome. At the time of writing, high
 throughput sequencing is limited to producing reads less than 1000 nucleotides
-in length. Therefore to determine a sequence longer than this, such as
-a complete genome, these numerous individual reads must be pieced together. The
-process of joining reads into longer sequences is the `assembly' stage in
-a genome project \cite{miller2010}. \pb
+in length. Therefore to resolve a sequence longer than this, such as a complete
+genome, these numerous smaller fragments must be pieced together. The process
+of joining reads into longer sequences is the `assembly' stage of a genome
+project \cite{miller2010}. \pb
 
 Assembly software takes the nucleotide reads produced by the sequencing
 hardware and, in the ideal case, outputs a complete genome sequence composed of
-these individual reads. An analogy for this process is a jigsaw puzzle. Each
-nucleotide read represents a single piece and the final genome sequence is the
-completed puzzle. Sequences of repetitive nucleotide `repeat' regions within
-the genome, or biased and incomplete sequencing data may however prevent the
-genome being assembled into a continuous sequence. This is analogous to missing
-jigsaw pieces or pieces that fit to multiple other pieces. \pb
+these individual fragments. An analogy for this process is a jigsaw puzzle.
+Each nucleotide read represents a single piece and the final genome sequence is
+the completed puzzle. Sequences of repetitive nucleotide `repeat' regions
+within the genome, or biased and incomplete sequencing data, may prevent the
+genome being assembled into a continuous sequence. This may be due to not
+enough or multiple overlaps between sequence reads and is analogous to missing
+pieces in the jigsaw or pieces that fit to multiple other pieces. \pb
 
 The recent advent of these current high throughput sequencing methods has lead
 to a renewed interest into algorithms for solving the problem of genome
-assembly \cite{pop2008,pop2009}. Genome assembly software may however be unable
+assembly \cite{pop2008,pop2009}; genome assembly software may however be unable
 to produce a complete sequence from these reads. In many cases assembly
 algorithms will generate several large contiguous regions of sequence
-(`contigs') composed of many individual reads. These contigs represent the
-assembly of reads into the longest possible sequences given the available data
-and assembly algorithm. These contigs represent a fragmented picture of the
-genome and require additional work to join together into larger sequence
-lengths. \pb
+(`contigs') composed of the many available individual reads, which represent the
+assembly of reads into the longest possible sequences given the data.
+Nonetheless, these contigs represent a fragmented picture of the genome and
+require additional work to join together into larger sequence lengths. \pb
 
 The process of ameliorating a draft sequence into a finished continuous
-sequence can be expensive in both time and laboratory effort. Therefore the
-genomic data present in a set of contigs may often be enough for many research
-questions \cite{branscomb2002}. A continuous high-quality `finished' genome
-sequence does however provide a greater depth of information, such as complete
-resolution of repeat regions and precise estimates of distances between genomic
-elements \cite{parkhill2002,fraser2002}. This process of joining contigs
-together to form a continuous sequence may be called the `scaffolding' or
-`finishing' stage. \pb
+sequence can be expensive in both time and laboratory effort, although the
+genomic data present in a set of contigs may often be sufficient for many
+research questions \cite{branscomb2002}. Nevertheless, a continuous
+high-quality `finished' genome sequence does provide a greater depth of
+information, such as complete resolution of repeat regions and precise
+estimates of distances between genomic elements \cite{parkhill2002,fraser2002}.
+This process of joining contigs together to form a continuous sequence is
+called the `scaffolding' or `finishing' stage. \pb
 
 \subsection*{Scaffolding} %{{{2
 
 Scaffolding is the process of joining a series disconnected contigs into
-complete continuous sequence. Due to genomic complexity and missing data,
-scaffolding may not ultimately produce a final completed sequence, but may
-still succeed in joining a subset of contigs together or filling gaps. An
-overview of the scaffolding process is outlined below.
+complete continuous genome sequence. Due to genomic complexity and missing
+data, scaffolding may not ultimately produce a final completed sequence, but
+may still succeed in joining a greater subset of contigs together or resolving
+gaps. An overview of required steps in the scaffolding process is outlined
+below.
 
 \subsubsection*{Contig Orientation} %{{{3
 
-The sequencing process generates reads from either strand of the DNA helix.
-Therefore the resulting contigs constructed from these reads may point in
-either direction of the DNA. The orientation of contigs to point in the same
-direction and represent the same strand requires reverse complementing
-sequences where necessary. In the case of microbes this orientation may be to
-the 5'-3' direction leading away from the origin of replication.
+The sequencing process generates reads from either strand of the DNA helix, the
+resulting contigs constructed from these reads may point in either direction of
+the DNA. Orientating contigs to point in the same direction and represent the
+same strand requires producing the reverse complement of sequences where
+necessary. In the case of microbial genomes this orientation may be to the
+5'-3' direction leading away from the origin of replication.
 
 \subsubsection*{Contig Ordering} %{{{3
 
 Contig ordering determines the placement of observed contigs to best represent
-their order in the true genome sequence. Correctly placing each contig also
-highlights any extra-genomic DNA, such as plasmids which should be scaffolded
-separately from the genomic sequence. Contig order is commonly started at the
-origin of replication where the first contig is split at the replication start
-point. All subsequent contigs are then ordered in the direction of DNA
-replication.
+their order in the true genome sequence. The Correct placement of each contig
+also highlights any extra-genomic DNA, such as plasmids which are scaffolded
+separately from the genomic sequence. The contig order is commonly started at
+the contig containing the origin of replication. All subsequent contigs are
+then ordered in the 5' - 3' direction of DNA replication.
 
 \subsubsection*{Contig Distancing} %{{{3
 
-Given the correct order and orientation, determining the distances between
-contigs results in an estimate of the complete genome size. The size of inter
-contig gaps represents the length of an unknown region in the genome. Filling
-these regions with unknown nucleotide characters (`N') allows a draft
-continuous sequence. This draft scaffold sequence is useful for representing
-both the sequenced and unknown regions in the genome.
+Given the correct order and orientation, determining the distance between
+contigs results in an estimate of the complete genome size. The size of
+inter-contig gaps represents the length of an unknown region in the genome.
+Filling these regions with unknown nucleotide characters (`N') allows a draft
+continuous sequence, which is useful for representing both the sequenced and
+still to be resolved area in the genome sequence.
 
 \subsubsection*{Gap Closing} %{{{3
 
@@ -174,7 +174,7 @@ returning to the laboratory to perform additional sequencing or using
 computational methods of estimating the unknown sequence. This additional
 sequence is used to replace the gap between two contigs joining them into
 a single sequence if they are not already scaffolded together. Once all contigs
-have been joined and gaps in a scaffold closed the genome may be considered
+have been joined and gaps in a scaffold closed, the genome may be considered
 finished.
 
 \subsection*{Computational Methods for Scaffolding} %{{{2
@@ -184,49 +184,46 @@ The process of resolving a genome sequence and building a scaffold uses
 example of a computational method might use paired-read data, where the
 sequencing reads are produced in pairs at a known distance apart in the genome.
 The occurrence of a pair of reads in separate contigs can be used to estimate
-the order and distance between the contigs. Alternatively laboratory methods
+the order and distance between the contigs. Alternatively, laboratory methods
 may use PCR to amplify the unknown DNA in a gap region, then use traditional
-Sanger sequencing to determine the sequence. Computational methods are more
+Sanger sequencing to determine the gap sequence. Computational methods are more
 preferable as they are less costly in laboratory time and materials compared to
-manual gap resolution \cite{nagarajan2010}. This need for computational
-scaffolding methods has resulted in a variety of algorithmic approaches. \pb
+manual gap resolution and uses the available data that exists following
+sequencing \cite{nagarajan2010}. \pb
 
 Synteny methods compare the assembled contigs to a more complete reference
 genome sequence searching for areas of sequence similarity between the two.
-Areas of corresponding sequence between the the two sets are can be used to
-infer contig placement and build the scaffold
-\cite{richter2007,zhao2008,assefa2009}. Recombination between the two genomes
-can however reduce the effectiveness of this analysis. \pb
+Areas of corresponding sequence between the two sets are can be used to infer
+contig placement and build the scaffold \cite{richter2007,zhao2008,assefa2009}.
+Recombination between the two genomes can however reduce the effectiveness of
+this analysis. Repeat regions may be responsible for many of the gaps in
+building a genome sequence. The existence of tandemly repeated nucleotide
+regions produces many similar reads in the sequence process. The assembly of
+reads generated from repeat regions can result in the assemble collapsing into
+a single repeat instance or ignored by conservative assembly algorithms. These
+regions may be resolved by using reassembly algorithms specifically for repeat
+resolution \cite{mulyukov2002,koren2010}. Similarly a related approach may use
+unassembled sequence reads matching the regions around a scaffold gap to
+construct a uniquely overlapping set of reads across the region
+\cite{tsai2010}. \pb
 
-Repeat regions may be responsible for many of the gaps in building a genome
-sequence. The existence of tandemly repeated nucleotide regions produces many
-similar reads in the sequence process. The assembly of reads generated from
-repeat regions can result in the assemble collapsing into a single repeat
-instance or ignored by conservative assembly algorithms. These regions may be
-resolved by using reassembly algorithms specifically for repeat resolution
-\cite{mulyukov2002,koren2010}. Similarly a related approach may use uniquely
-matching reads to try and bridge across gaps between contigs \cite{tsai2010}.
-\pb
+Paired-read data provides an extra level of information on how contigs may be
+scaffolded together. Heuristic algorithms may take advantage of this data to
+search for optimal configuration of contigs in the scaffold using paired-read
+distances \cite{dayarian2010,boetzer2011}. Additional data using a reference
+genome may also be combined when estimating the best contig configuration
+\cite{pop2004}. Finally when the scaffold cannot be completely resolved
+\emph{in silico} software packages exist to suggest the likely primers
+necessary for PCR amplifying the sequence in gap regions
+\cite{gordon2001,nagarajan2010}. \pb
 
-As mentioned above, the genome may be prepared prior to sequencing so that
-reads are produced in pairs at a known distance. This paired-read data
-provides an extra level of information on how contigs may be scaffolded
-together. Heuristic algorithms may take advantage of this data to search for
-optimal configuration of contigs in the scaffold using paired-read distances
-\cite{dayarian2010,boetzer2011}. Additional data using a reference genome may
-also be combined when estimating the best contig configuration \cite{pop2004}.
-Finally when the scaffold cannot be completely resolved \emph{in silico}
-software packages exist to suggest the likely primers necessary for PCR
-amplifying the sequence in gap regions \cite{gordon2001,nagarajan2010}. \pb
+These methods provide a wide variety of possible approaches for scaffolding
+a genome. The scaffold may still however require manual editing and addition of
+sequence if computational methods are not completely successful. This involves
+moving and joining larges blocks of nucleotide text together by hand which may
+be error-prone and precludes any reproducibility. \pb
 
-\subsection*{Summary} %{{{2
-
-Taken together these methods provide a wide variety of possible approaches for
-scaffolding a genome. The scaffold may still however require manual editing and
-addition of sequence if computational methods are not completely successful.
-This involves moving and joining larges blocks of nucleotide text together by
-hand which may be error-prone and precludes any reproducibility.
-\pb
+\subsection*{Overview} %{{{2
 
 The software outlined here ``Scaffolder'' is aimed at creating a syntax and
 software framework for producing and editing a genome scaffold. Scaffolder uses
