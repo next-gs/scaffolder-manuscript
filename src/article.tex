@@ -245,10 +245,10 @@ interface (API). The second library ``scaffolder-tools'' contains the
 Scaffolder command line interface (CLI). \pb
 
 Unit tests were implemented to maintain individual elements of the source code
-during development. Integration tests were written to test the Scaffolder
-software interface as a whole. Unit tests were written using the Shoulda and
-RSpec \cite{rspec} libraries.  Integration tests were written using the
-Cucumber library \cite{rspec}. \pb
+during development and were written using the Shoulda and RSpec \cite{rspec}
+libraries. Integration tests were written to test the Scaffolder software
+interface as a whole and were written using the Cucumber library \cite{rspec}.
+\pb
 
 The Scaffolder source code is documented using the Yard library \cite{yard}.
 Unix manual pages for the command line were generated using the Ronn library
@@ -266,26 +266,24 @@ data format, third-party developers have the option to generate a genome
 scaffold using any programming language for which a YAML library exists. The
 YAML website lists current parsers for languages including C/C++, Ruby, Python,
 Java, Perl, C\#/.NET, PHP, and JavaScript. In addition to being widely
-supported YAML formatted scaffold files can be validated for correct syntax
-using third party tools such as Kwalify \cite{kwalify}. \pb
+supported, YAML-formatted scaffold files can be validated for correct syntax
+using third-party tools such as Kwalify \cite{kwalify}. \pb
 
-As described in the Background section, the initial sequencing data assembly
-may result in an incomplete genome build. The use of computational software and
-generation of additional sequence using PCR means genome scaffolding may be an
-on-going process. Therefore the scaffold file should be simple to update
-manually in addition to being computationally tractable. This requirement was
-therefore the second reason YAML was selected, where YAML is human-readable and
-simple to edit in a standard text editor. \pb
+Initial sequencing data assembly may result in an incomplete genome build.
+Generation of additional sequences either through PCR or computational methods
+means that genome scaffolding may be an on-going process. The scaffold file
+should therefore be simple to update manually in addition to being
+computationally tractable. This requirement was also best suited to YAML which
+is human-readable and simple to edit in a standard text editor. \pb
 
 The scaffold file takes the form of a list of entries. Each entry corresponds
-to a region of sequence, most likely a contig or previously scaffolded set of
-contigs. The Scaffolder software processes this list in order, converting each
-to the corresponding nucleotide sequence. These nucleotide sequences are then
-concatenated to produce a draft super sequence. Each entry in the scaffold file
-may have attributes that define whether a sub-sequence or the reverse
-complement of the sequence should be used. The types of attributes available,
-and an example scaffold file are outlined in the Results and Discussion section
-below.  \pb
+to a region of sequence inserted from the corresponding fasta file. The
+Scaffolder software processes this list in order, converting each to the
+corresponding nucleotide sequences, which are then concatenated to produce
+a draft super sequence. Each entry in the scaffold file may have attributes
+that define whether a sub-sequence or the reverse complement of the sequence
+should be used. The types of attributes available, and an example scaffold file
+are outlined below. \pb
 
 \clearpage
 
