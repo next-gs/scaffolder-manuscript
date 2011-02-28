@@ -76,7 +76,7 @@ University, Nunn Drive, Highland Heights, KY 41076 }%
   and edit scaffold file syntax. This syntax further allows  unknown regions to
   be defined, and inserts to be added to the scaffold to fill gaps. Defining
   the genome construction in a file makes the scaffolding process reproducible
-  and easier to edit and compare than fasta sequence.
+  and easier to edit and compare than FASTA sequence.
 
   \paragraph*{Conclusions:} Scaffolder is easy-to-use genome scaffolding
   software. This tool promotes reproducibility and continuous development in a
@@ -277,7 +277,7 @@ computationally tractable. This requirement was also best suited to YAML which
 is human-readable and simple to edit in a standard text editor. \pb
 
 The scaffold file takes the form of a list of entries. Each entry corresponds
-to a region of sequence inserted from the corresponding fasta file. The
+to a region of sequence inserted from the corresponding FASTA file. The
 Scaffolder software processes this list in order, converting each to the
 corresponding nucleotide sequences, which are then concatenated to produce
 a draft super sequence. Each entry in the scaffold file may have attributes
@@ -291,68 +291,59 @@ are outlined below. \pb
 
 \subsection*{Scaffolder Simplifies Genome Finishing} %{{{2
 
-The Scaffolder software outlined here allows computational joining of
-nucleotide sequences together into a single contiguous super sequence.
-Plain-text scaffold files written in the YAML syntax specify how these
-sequences should be joined. This scaffold file is read by the scaffolder
-software and used to generate the scaffold sequence. In addition to specifying
-which contigs are required, the scaffold file allows the contigs to be edited
-to produce smaller sub-sequences or reverse complemented if necessary. \pb
+The Scaffolder software allows computational joining of nucleotide sequences
+together into a single contiguous scaffolded super-sequence. Plain-text
+scaffold files written in the YAML syntax specify how these sequences should be
+joined and the scaffold file as read by the scaffolder software is used to
+generate the scaffold sequence. In addition to specifying which contigs are
+required, the scaffold file allows the contigs to be edited to produce smaller
+sub-sequences or reverse complemented if necessary. The process of genome
+finishing may involve producing additional oligonucleotide sequences to fill
+unknown regions in the scaffold. The scaffold file format allows these
+additional insert sequences to bridge these gaps. These inserts can also be
+treated in a similar way to larger contig sequences: trimmed and/or reverse
+complemented to match the corresponding gap region. \pb
 
-The process of genome finishing may involve producing additional
-oligonucleotide sequence to fill unknown regions in the scaffold. The scaffold
-file format allows these additional insert sequences to be added to bridge
-these gaps. These inserts can also be treated in a similar way to larger contig
-sequences: trimmed and/or reverse complemented to match the corresponding gap
-region. \pb
-
-Distances between contigs may be estimated from paired read data or from
+The distances between contigs may be estimated from paired read data or from
 mapping the contigs to a reference genome. These inter-contig gap regions are
-useful to join regions of sequence together by an estimated size. The scaffold
-file allows for the specification of these unknown regions to join contigs
-together. The use of these regions in the scaffold highlights areas still to be
-resolved. \pb
+useful to join separate sequences together by an estimated size and the
+scaffold file allows for the specification of these unknown regions. The use of
+these regions in the scaffold which areas in the scaffold and thier approximate
+size are still to be resolved. \pb
 
-The scaffold file is used to specify how sequence regions are joined together
-but the sequences themselves are not stored in the scaffold file. The sequences
-are instead maintained as a separate fasta file. A fasta file of contigs and
-scaffolded contigs is a common output for assemblers and as such should be
-readily available. The nucleotide sequences in the fasta file are referenced in
-the scaffold using the first space-delimited word from each fasta header.
-Maintaining the nucleotide sequences in a separate file preserves the original
-sequence and furthermore decouples the sequence from the markup describing how
-it should be used to generate the genome sequence. \pb
+The scaffold file specifies how sequence regions are joined together; however
+the sequences themselves are not stored in the scaffold file and are instead
+maintained as a separate FASTA file. A FASTA file of contigs and scaffolded
+contigs is a common output for assemblers. The nucleotide sequences stored in
+the corresponding FASTA file are referenced in the scaffold using the first
+word in the FASTA header. Maintaining the nucleotide sequences in a separate
+file preserves the original sequence and decouples the original sequence data
+from the scaffold file describing how it should be used to in the genome
+sequence. \pb
 
 \subsection*{Defining a Scaffold as a Text File} %{{{2
 
-The scaffold file is written using the YAML syntax. YAML is a data format
-designed to be both machine readable and easy to edit manually. An example
-scaffold file is shown in Figure 1. This file illustrates the text attributes
-used to describe a scaffold and the joining of sequences in the genome build.
-The basic layout of the scaffold file is a list - a series of entries where
-each entry corresponds to a region of sequence in the generated scaffold
-super-sequence. The right hand side indicates how the entries are joined
-together. This figure is illustrates the putative scaffold and is not to scale.
-\pb
+The scaffold file is written using the YAML syntax. An example scaffold file is
+shown in Figure 1. This file illustrates the text attributes used to describe
+a scaffold and the joining of sequences in the genome build. The basic layout
+of the scaffold file is a list of entries, where each entry corresponds to
+a region of sequence in the generated scaffold super-sequence. \pb
 
 \subsubsection*{Simple sequence region} %{{{3
 
-The first line of the scaffold file begins with three dashes. This is
-a requirement to indicate the start of a YAML formatted document. The first
-entry, highlighted in green, in the scaffold begins on the second line. The
-first line of this entry begins with a dash character `-', dashes are used to
-denote entries in a YAML list. The first line of each entry in the scaffold
-therefore begins with a dash line. The next line is indented by two spaces
-- whitespace is required to group similar attributes together. \pb
-
-The ``sequence'' tag indicates this entry corresponds to a sequence in the
-fasta file. The following line indicates the name of the fasta sequence using
-the ``source'' tag. As described above the first space-delimited word of the
-fasta header is used to identify which sequence is selected from the fasta
-file. Together these three lines describe the first entry in the scaffold as
-a simple sequence using the fasta sequence named `sequence1'. On the right hand
-side of Figure 1 this produces the first region in the scaffold, also shown in
-green. \pb
+The first line of the scaffold file begins with three dashes to indicate the
+start of a YAML-formatted document. The first entry (highlighted in green)
+begins with a dash character `-' to denote an entry in the YAML list. The first
+line of each entry in the scaffold therefore begins with a dash line. The next
+line is indented by two spaces as whitespace is required to group similar
+attributes together. The ``sequence'' tag indicates that this entry corresponds
+to a sequence in the FASTA file and the following line indicates the name of
+this FASTA sequence using the ``source'' tag. As described the first
+space-delimited word of the FASTA header is used to identify which sequence is
+selected from the FASTA file. Together these three lines describe the first
+entry in the scaffold as a simple sequence using the FASTA sequence named
+`sequence1'. On the right hand side of Figure 1 this produces the first region
+in the scaffold, also shown in green. \pb
 
 \subsubsection*{Unresolved sequence region} %{{{3
 
@@ -363,67 +354,67 @@ inserts a region of 20 `N' characters in the scaffold. \pb
 
 \subsubsection*{Trimmed sequence region with multiple inserts} %{{{3
 
-The last entry in the scaffold, highlighted in blue, adds the fasta entry
-`sequence2' to the scaffold. This entry demonstrates how the nucleotide
-sequence may be manipulated prior to addition to the scaffold. The `start' and
-`stop' tags trim the sequence to these coordinates inclusively. The ``reverse''
-tag instructs scaffolder to also reverse complement the sequence. On the right
-hand side of the sequence of Figure 1 this completes the scaffold sequence. \pb
+The last entry in the scaffold, highlighted in blue, adds the FASTA entry
+`sequence2' to the scaffold. This entry demonstrates how this sequence may be
+manipulated prior to addition to the scaffold. The `start' and `stop' tags trim
+the sequence to these coordinates inclusively, while the ``reverse'' tag
+instructs scaffolder to also reverse complement the sequence. In the scaffolded
+genome shown in Figure 1 this completes the scaffold sequence. \pb
 
-This final entry also includes the ``inserts'' tag to add additional regions of
-sequence. These inserts are also added as a YAML list with each insert
-beginning with a dash line. The first insert, shown in purple, illustrates
-using similar attributes to that of a sequence entry. The reverse, start and
-stop tags, are used to trim and reverse complement the insert. Similarly the
-`source' tag identifies the corresponding fasta sequence. The ``open'' and
+The final entry in the scaffold also includes the ``inserts'' tag to add
+additional regions of sequence. These inserts are also added as a YAML list,
+with each insert beginning with a dash line. The first insert, shown in purple,
+similar attributes to that of a sequence entry; the reverse, start and stop
+tags are used to trim and reverse complement the insert. Similarly the `source'
+tag identifies the corresponding FASTA sequence as `insert'. The ``open'' and
 ``close'' tags are specific to inserts and determine where the insert is added
 in the enclosing sequence. The region of the sequence inside these coordinates
-is inclusively replaced by the specified insert fasta sequence. This is
-highlighted in the putative scaffold in Figure 1 by the black lines bisecting
-the blue sequence. \pb
+is inclusively replaced by the specified insert FASTA sequence. This is
+visualised in the putative gene Figure 1 by the black lines bisecting the blue
+sequence. \pb
 
-The next insert, shown in brown, is specified using only the open position tag.
-This illustrates that only one of either `open' or `close' tags is required.
-When only one of these tag is used the corresponding opposing coordinate
-position is calculated from the length of the insert fasta sequence. This
-allows inserts to bridge into, and partially fill gap regions without requiring
-an end coordinate position. \pb
+The next insert, shown in brown, is specified using only the `open' tag. This
+illustrates that only one of either `open' or `close' tags is required when
+adding an insert sequence. If only only one of the `open' or `close' tags is
+used the corresponding opposing position distance is calculated from the length
+of the insert FASTA sequence. This allows inserts to bridge into, and partially
+fill gap regions without requiring an end coordinate position. \pb
 
 \subsubsection*{Scaffolder file attribute processing} %{{{3
 
 The the scaffold file format allows multiple sequence-editing operations to be
-applied to a sequence or insert. If applied in different combinations, these
-operations will produce different output sequences. An example would be reverse
-complementing the sequence then trimming the start of the sequence by five
-nucleotides. Performing these actions in the reverse order would result in five
-nucleotides being removed from the opposite end. This section therefore
-outlines the Scaffolder protocol for processing sequence entries. \pb
+applied to a sequence or insert. If applied in different combinations, then
+these operations will produce different output sequences. An example would be
+reverse complementing the sequence then trimming the start of the sequence by
+five low base-call quality nucleotides. Performing these actions in the reverse
+order would result in five nucleotides being removed from the opposite end.
+This section therefore outlines the Scaffolder protocol for processing sequence
+entries. \pb
 
 \paragraph{Reverse sort inserts:} If the sequence entry contains a list of
-inserts, these inserts are reverse sorted by the insert close coordinate
-position. The insert with the largest close position is first in the list and
+inserts, these inserts are sorted by decesding value of the insert `close' tag
+value. The insert with the furthest `close' coordinate is first in the list and
 the insert with the smallest close position is last. This preserves the
-original intended coordinates as each insert is added to the sequence. \pb
+intended location for each insert if the size of the encoding sequence is
+changed by the addition of inserts. \pb
 
 \paragraph{Update sequence with inserts:} Each insert sequence is processed
-according to any specified attributes. The insert is then added to the
-enclosing sequence in the region specified by the open and close coordinates.
-\pb
-
-If the insert added to the sequence is a different size to that of the
-replaced region then the sequence start and stop co-ordinates are updated. For
-example if a 7bp insert replaced a 5bp region in the sequence the stop
-coordinate of the enclosing sequence would be incremented by the 2bp
-difference. As inserts are added by reverse close position the remaining
-inserts are unaffected by changes in the encoding sequence size. \pb
+according to any specified attributes, before being added to the enclosing
+sequence in the region specified by the open and close coordinates. If the
+insert added to the sequence is a different size to that of the replaced region
+then the sequence start and stop coordinates are updated. For example if a 7bp
+insert replaces a 5bp region in the encoding sequence, then the stop coordinate
+of the enclosing sequence would be incremented by the 2bp difference. As
+inserts are added by reverse close position the remaining inserts are
+unaffected by changes in the encoding sequence size. \pb
 
 \paragraph{Trimming sequence:} If the sequence has start or stop tags
-specified these are used as coordinates to trim the sequence to the specified
-length inclusively. \pb 
+specified, then these are used as coordinates to trim the sequence to the
+specified length inclusively of the `start' and `stop' coordinate tags. \pb 
 
-\paragraph{Reverse complement sequence:} If the reverse tag is specified the
-sequence is reverse complemented. This is final step in processing the
-sequence and the sequence is then returned for inclusion in the scaffold. \pb
+\paragraph{Reverse complement sequence:} If the reverse tag is specified, then
+the sequence is reverse complemented, which is the final is the final step in
+processing the sequence. \pb
 
 \subsection*{Scaffolder Usage} %{{{2
 
@@ -487,10 +478,10 @@ command. \pb
     scaffolder help sequence
   \end{verbatim} 
 
-The ``sequence'' command builds the fasta sequence from the scaffold and fasta
-file. Running this command requires the locations of both the scaffold file
-and the fasta file to be passed as arguments. This will then return the
-complete scaffold sequence in fasta format. \pb
+The ``sequence'' command builds the FASTA sequence from the scaffold and FASTA
+file. Running this command requires the locations of both the scaffold file and
+the FASTA file to be passed as arguments. This will then return the complete
+scaffold sequence in FASTA format. \pb
 
   \begin{verbatim}
     scaffolder sequence scaffold.yml sequences.fna
@@ -534,7 +525,7 @@ CLI section above. \pb
   \end{verbatim}
 
 This code snippet illustrates that the scaffold object is initialised with two
-arguments: the YAML loaded scaffold and the location of the fasta sequence
+arguments: the YAML loaded scaffold and the location of the FASTA sequence
 file. The scaffold is an enumerable array and the penultimate line illustrates
 the trivial code required to generate the super-sequence. Further details of
 the classes and methods related to each scaffold entry can be found in the
@@ -543,34 +534,24 @@ Scaffolder website. \pb
 
 \subsection*{Discussion of Scaffolder Approach} %{{{2
 
-The aims of Scaffolder are twofold. The first is providing software which is
+The aims of Scaffolder are twofold. The first is providing software that is
 easy to install and simplifies the task of genome finishing. The second aim is
 to facilitate reproducibility when joining large nucleotide sequences together
 to create a genome sequence. \pb
 
-\subsubsection*{Simple to use} %{{{3
-
-Scaffolder is designed to be as simple to use as possible. Assuming the Ruby
-and RubyGems software are present, Scaffolder can be installed in a single
+Scaffolder was designed to be as simple to use as possible and assuming the
+Ruby and RubyGems software are present, Scaffolder can be installed in a single
 command line step. This should negate any possible barriers to entry which
-require manual compilation of source code. \pb
+require manual compilation of source code. Scaffolder also uses a minimal and
+compact syntax to describe the genome scaffold. This syntax is simple to
+construct and edit whilst being succinct and readable. The goal of this syntax
+is to make genome scaffolds easy to construct in a common text editor. \pb
 
-Scaffolder uses a minimal and compact syntax to describe the genome scaffold.
-This syntax is simple to construct and edit whilst being succinct and readable.
-The goal of this syntax is to make genome scaffolds easy to construct in
-a common text editor. Furthermore Scaffolder provides extensive documentation
-both for the CLI and for the Ruby API. Therefore should any part of the
-scaffolding process be unclear the documentation should make an solution easy
-to find. \pb
-
-\subsubsection*{Reproducible genome construction} %{{{3
-
-Constructing a genome sequence using a text file makes generating a scaffold
-super sequence both reproducible and deterministic. In comparison joining large
-nucleotide sequences by hand cannot be reliably reproduced. The layout of the
-scaffold file furthermore provides a human readable record of how the scaffold
-was constructed and decouples the layout of contigs from their source sequence.
-\pb
+Constructing a genome using a text file makes generating a scaffold super
+sequence both reproducible and deterministic for the same scaffold and FASTA
+sequence file. In comparison, joining large nucleotide sequences by hand cannot
+be reliably reproduced. The scaffold file furthermore provides a human readable
+description of how the scaffold is constructed. \pb
 
 Configuring the final sequence in the scaffold file means the build is easier
 to edit once already constructed. The YAML text format also allows comparison
