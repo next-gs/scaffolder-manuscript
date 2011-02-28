@@ -380,42 +380,6 @@ used the corresponding opposing position distance is calculated from the length
 of the insert FASTA sequence. This allows inserts to bridge into, and partially
 fill gap regions without requiring an end coordinate position. \pb
 
-\subsubsection*{Scaffolder file attribute processing} %{{{3
-
-The the scaffold file format allows multiple sequence-editing operations to be
-applied to a sequence or insert. If applied in different combinations, then
-these operations will produce different output sequences. An example would be
-reverse complementing the sequence then trimming the start of the sequence by
-five low base-call quality nucleotides. Performing these actions in the reverse
-order would result in five nucleotides being removed from the opposite end.
-This section therefore outlines the Scaffolder protocol for processing sequence
-entries. \pb
-
-\paragraph{Reverse sort inserts:} If the sequence entry contains a list of
-inserts, these inserts are sorted by decesding value of the insert `close' tag
-value. The insert with the furthest `close' coordinate is first in the list and
-the insert with the smallest close position is last. This preserves the
-intended location for each insert if the size of the encoding sequence is
-changed by the addition of inserts. \pb
-
-\paragraph{Update sequence with inserts:} Each insert sequence is processed
-according to any specified attributes, before being added to the enclosing
-sequence in the region specified by the open and close coordinates. If the
-insert added to the sequence is a different size to that of the replaced region
-then the sequence start and stop coordinates are updated. For example if a 7bp
-insert replaces a 5bp region in the encoding sequence, then the stop coordinate
-of the enclosing sequence would be incremented by the 2bp difference. As
-inserts are added by reverse close position the remaining inserts are
-unaffected by changes in the encoding sequence size. \pb
-
-\paragraph{Trimming sequence:} If the sequence has start or stop tags
-specified, then these are used as coordinates to trim the sequence to the
-specified length inclusively of the `start' and `stop' coordinate tags. \pb 
-
-\paragraph{Reverse complement sequence:} If the reverse tag is specified, then
-the sequence is reverse complemented, which is the final is the final step in
-processing the sequence. \pb
-
 \subsection*{Discussion of Scaffolder Approach} %{{{2
 
 The aims of Scaffolder are twofold. The first is providing software that is
