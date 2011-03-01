@@ -217,20 +217,21 @@ genome may also be combined when estimating the best contig configuration
 necessary for PCR amplifying the sequence in gap regions
 \cite{gordon2001,nagarajan2010}. \pb
 
-These methods provide a wide variety of possible approaches for scaffolding
-a genome. The scaffold may still however require manual editing and addition of
-sequence if computational methods are not completely successful. This involves
-moving and joining larges blocks of nucleotide text together by hand which may
-be error-prone and precludes any reproducibility. \pb
+These methods provide a wide array of approaches for scaffolding contigs into
+a continious super-sequence. The scaffolding process may still however require
+joining and addition of sequence by hand in the case manually derived
+scaffolding data such as through PCR. This intermediate manual stage in the
+scaffolding process involves moving and joining larges blocks of nucleotide
+text together by hand which may be error-prone and precludes any
+reproducibility. \pb
 
-\subsection*{Overview} %{{{2
-
-The software outlined here, ``Scaffolder'', is aimed at creating a syntax and
-software framework for producing and editing a genome scaffold. Scaffolder uses
-a specific file format to define how contigs are joined, additional sequences
-inserted, and for the specification of unknown regions. This syntax allows
-a scaffold to be updated by simply editing the scaffold file and allows the
-scaffolding process to be both reproducible and deterministic. \pb
+The software outlined here, ``Scaffolder'', aims to solve this problem by
+creating at creating a syntax and software framework for producing and editing
+a genome scaffold. Scaffolder uses a specific file format to define how contigs
+are joined, additional sequences inserted, and for the specification of unknown
+regions. This syntax allows a scaffold to be updated by simply editing the
+scaffold file wich allows the scaffolding process to be both reproducible and
+provides a concise overview of how the scaffold was constructed. \pb
 
 \clearpage
 
