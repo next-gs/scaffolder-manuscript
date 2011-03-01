@@ -313,13 +313,15 @@ size are still to be resolved. \pb
 
 The scaffold file specifies how sequence regions are joined together; however
 the sequences themselves are not stored in the scaffold file and are instead
-maintained as a separate FASTA file. A FASTA file of contigs and scaffolded
-contigs is a common output for assemblers. The nucleotide sequences stored in
-the corresponding FASTA file are referenced in the scaffold using the first
-word in the FASTA header. Maintaining the nucleotide sequences in a separate
-file preserves the original sequence and decouples the original sequence data
-from the scaffold file describing how it should be used to in the genome
-sequence. \pb
+maintained as a separate FASTA file. Series of nucleotide sequences in
+a FASTA-formatted file is standard output for a genome assembler. These may be
+contigs, sets of contigs scaffolded into larger sequences, or both. These
+nucleotide sequences stored in the corresponding FASTA file are referenced in
+the scaffold using the first word form the FASTA header of the corresponding
+nucleotide sequence. Maintaining the nucleotide sequences in a separate file
+preserves the original sequence and decouples the original sequence data from
+the scaffold file describing how it should be used to in the genome sequence.
+\pb
 
 \subsection*{Defining a Scaffold as a Text File} %{{{2
 
@@ -338,12 +340,12 @@ line of each entry in the scaffold therefore begins with a dash line. The next
 line is indented by two spaces as whitespace is required to group similar
 attributes together. The ``sequence'' tag indicates that this entry corresponds
 to a sequence in the FASTA file and the following line indicates the name of
-this FASTA sequence using the ``source'' tag. As described the first
-space-delimited word of the FASTA header is used to identify which sequence is
-selected from the FASTA file. Together these three lines describe the first
-entry in the scaffold as a simple sequence using the FASTA sequence named
-`sequence1'. On the right hand side of Figure 1 this produces the first region
-in the scaffold, also shown in green. \pb
+this FASTA sequence using the ``source'' tag. As described the first word of
+the FASTA header is used to identify which sequence is selected from the file.
+Together these three lines describe the first entry in the scaffold as a simple
+sequence using the FASTA sequence named `sequence1'. On the right hand side of
+Figure 1 this produces the first region in the scaffold, also shown in green.
+\pb
 
 \subsubsection*{Unresolved sequence region} %{{{3
 
