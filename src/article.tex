@@ -382,6 +382,18 @@ used the corresponding opposing position distance is calculated from the length
 of the insert FASTA sequence. This allows inserts to bridge into, and partially
 fill gap regions without requiring an end coordinate position. \pb
 
+\subsection{Scaffolder Sofware Interface} %{{{2
+
+Scaffolder provides a standardised set of Ruby classes and methods (API) for
+interacting with the scaffold. This allows Scaffolder to be integrated into
+existing genomics workflows or used with Ruby build tools such as Rake. In
+addition Scaffolder provides a command line interface (CLI) providing functions
+to validate the scaffold file and build a draft super sequence. This allows the
+scaffold sequence to be generated and validated without any Ruby experience.
+The Scaffolder CLI behaves as a standard Unix tool and returns appropriate exit
+codes and manual pages. The use of both these Scaffolder interfaces is outlined
+in detail on the scaffolder website (\scaffolder). \pb
+
 \section*{Discussion} %{{{1
 
 Scaffolding is a intermediate stage in a genome project. Additional sequences
