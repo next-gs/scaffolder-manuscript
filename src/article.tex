@@ -279,9 +279,9 @@ computationally tractable. This requirement was also best suited to YAML which
 is human-readable and simple to edit in a standard text editor. \pb
 
 The scaffold file takes the form of a list of entries. Each entry corresponds
-to a region of sequence inserted from the corresponding FASTA file. The
-Scaffolder software processes this list in order, converting each to the
-corresponding nucleotide sequences, which are then concatenated to produce
+to a region of sequence used in the final scaffold sequence. The Scaffolder
+software processes this list in order, converting each entry to the
+corresponding nucleotide sequence, all entries are then concatenated to produce
 a draft super sequence. Each entry in the scaffold file may have attributes
 that define whether a sub-sequence or the reverse complement of the sequence
 should be used. The types of attributes available, and an example scaffold file
