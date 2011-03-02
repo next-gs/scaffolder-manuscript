@@ -217,21 +217,20 @@ genome may also be combined when estimating the best contig configuration
 necessary for PCR amplifying the sequence in gap regions
 \cite{gordon2001,nagarajan2010}. \pb
 
-These methods provide a wide array of approaches for scaffolding contigs into
-a continious super-sequence. The scaffolding process may still however require
-joining and addition of sequence by hand in the case manually derived
-scaffolding data such as through PCR. This intermediate manual stage in the
-scaffolding process involves moving and joining larges blocks of nucleotide
-text together by hand which may be error-prone and precludes any
-reproducibility. \pb
+These methods provide a wide array of approaches for merging contigs into
+larger a continuous scaffolds. The scaffolding process may still however
+require inserting additional sequence or joining contigs using PCR-derived
+information from the laboratory. This manual stage in the finishing process
+will moving and editing large blocks of nucleotide text by hand which is subject
+to human error-prone and precludes any reproducibility for the steps taken. \pb
 
-The software outlined here, ``Scaffolder'', aims to solve this problem by
-creating at creating a syntax and software framework for producing and editing
-a genome scaffold. Scaffolder uses a specific file format to define how contigs
-are joined, additional sequences inserted, and for the specification of unknown
+The software outlined here, ``Scaffolder'', aims to solve address these
+problems by creating a file syntax and software framework for editing a genome
+scaffold. Scaffolder uses a specific file format to define how contigs are
+joined, additional sequences inserted, and for the specification of unknown
 regions. This syntax allows a scaffold to be updated by simply editing the
-scaffold file wich allows the scaffolding process to be both reproducible and
-provides a concise overview of how the scaffold was constructed. \pb
+scaffold file facilitating a reproducible scaffolding process and providing
+a concise overview of how the scaffold was constructed. \pb
 
 \clearpage
 
@@ -383,31 +382,27 @@ used the corresponding opposing position distance is calculated from the length
 of the insert FASTA sequence. This allows inserts to bridge into, and partially
 fill gap regions without requiring an end coordinate position. \pb
 
-\subsection{Scaffolder Sofware Interface} %{{{2
+\subsection{Scaffolder Software Interface} %{{{2
 
 Scaffolder provides a standardised set of Ruby classes and methods (API) for
 interacting with the scaffold. This allows Scaffolder to be integrated into
 existing genomics workflows or used with Ruby build tools such as Rake. In
 addition Scaffolder provides a command line interface (CLI) providing functions
-to validate the scaffold file and build a draft super sequence. This allows the
-scaffold sequence to be generated and validated without any Ruby experience.
-The Scaffolder CLI behaves as a standard Unix tool and returns appropriate exit
-codes and manual pages. The use of both these Scaffolder interfaces is outlined
-in detail on the scaffolder website (\scaffolder). \pb
+to validate the scaffold file and build a draft super sequence. The Scaffolder
+CLI behaves as a standard Unix tool and returns appropriate exit codes and
+manual pages. The use of both these Scaffolder interfaces is outlined in detail
+on the scaffolder website (\scaffolder). \pb
 
 \section*{Discussion} %{{{1
 
-Scaffolding is a intermediate stage in a genome project. Additional sequences
-are produced using a combination of computational and laboratory methods. These
-new sequences are then added to existing sequencing data to produce
-a continuous sequence of the target organism genome. The scaffolding process
-however is a laborious manual process involving joining and adding large
-regions of nucleotide sequence together. Any manual process is inherently hard
-to reproduce and introduces the possibility of human error. The aims of
-Scaffolder are therefore twofold. The first is providing software that is easy
-to install and simplifies the task of genome finishing. The second aim is to
-facilitate reproducibility when joining large nucleotide sequences together to
-create a genome sequence. \pb
+Scaffolding requires joining assembled contigs and insert additional sequence
+data using a combination of computational and laboratory methods. The process
+of manually editing a scaffold is inherently hard to reproduce and introduces
+the possibility of human error. The aims of this Scaffolder software are
+therefore twofold. The first is providing software that is easy to install and
+simplifies the task of genome finishing. The second aim is to facilitate
+reproducibility when joining large nucleotide sequences together to create
+a genome sequence. \pb
 
 Scaffolder was designed to be as simple to use as possible and assuming the
 Ruby and RubyGems software are present, Scaffolder can be installed in a single
@@ -433,21 +428,18 @@ genome finishers methods similar to those in software development. \pb
 
 \section*{Conclusions} %{{{1
 
-Scaffolder is software aimed at bioinformaticians and biologists familar with
-the command line who wish to build scaffold a genome sequence in a concise
-readable way. The Scaffolder file format allows other biologists to see how the
-genome sequence was assembled and allows a broad overview of how the sequence
-was assembled not possible not possible from a megabase-sized string of
-nucleotide characters. Scaffolder also furthers the cause for reporducibility
-in genome sequence by allowing the scaffold super-sequence to be reliably
-reproduced from the scaffold file. \pb
-
-The design of the Scaffolder software follows the Unix philosophy of ``Do one
-thing and do it well.''. The focus of Scaffolder is a simple to use tool for
-creating a genome scaffold. The YAML data format for creating the scaffold file
-is standardised and easily manipulated programmatically. This thereby means the
-scaffolding process follows a second Unix tenet: ``If your data structures are
-good enough, the algorithm to manipulate them should be trivial.''.
+Scaffolder is software aimed at bioinformaticians and biologists familiar with
+the command line building genome sequence scaffold. The file format maintains
+the scaffold in a concise and readable way allowing third parties to see how
+the genome sequence was assembled. This file format allows a broad overview of
+of which sequences were included and how they are ordered possible not possible
+from a megabase-sized strings of nucleotide characters. Scaffolder also
+furthers the cause for reproducibility in genome projects by allowing the
+scaffold super-sequence to be reliably reproduced from the scaffold file. The
+YAML syntax for writing the scaffold file is also standardised and to
+manipulate programmatically. This thereby means the scaffolding process follows
+the Unix tenet of: ``If your data structures are good enough, the algorithm to
+manipulate them should be trivial.''.
 
 \clearpage
 
