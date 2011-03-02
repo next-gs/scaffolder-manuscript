@@ -56,27 +56,28 @@ University, Nunn Drive, Highland Heights, KY 41076 }%
 
 \begin{abstract} %{{{1
 
-  \paragraph*{Background:} Assembly of short read sequencing data can result in
-  a fragmented series of sequences. Therefore a common step in a genome project
-  is to join neighbouring sequence regions together and fill gaps in the
-  assembly using additional sequence. This scaffolding step, however, is
-  non-trivial and requires manually editing large blocks of nucleotide
-  sequence. Joining sequence contigs together also hides the source of each
-  region in the final genome sequence. Taken together, these considerations may
-  make reproducing or editing an existing genome build difficult.
+  \paragraph*{Background:} Assembly of short-read sequencing data can result in
+  a fragmented non-contiguous series of genomic sequences. Therefore a common
+  step in a genome project is to join neighbouring sequence regions together
+  and fill gaps in the assembly using additional sequence. This scaffolding
+  step, however, is non-trivial and requires manually editing large blocks of
+  nucleotide sequence. Joining sequence contigs together also hides the source
+  of each region in the final genome sequence. Taken together, these
+  considerations may make reproducing or editing an existing genome build
+  difficult.
 
   \paragraph*{Methods:} The software outlined here, ``Scaffolder'', is
   implemented in the Ruby programming language and can be installed via the
   RubyGems software management system. Genome scaffolds are defined using YAML
-  - a markup language, which is both human and machine-readable. Command line
+  - a data format, which is both human and machine-readable. Command line
   binaries and extensive documentation are available.
 
   \paragraph*{Results:} This software allows a genome build to be defined in
-  terms of the constituent contigs using a relatively simple format to write
+  terms of the constituent sequences using a relatively simple format to write
   and edit scaffold file syntax. This syntax further allows  unknown regions to
   be defined, and inserts to be added to the scaffold to fill gaps. Defining
   the genome construction in a file makes the scaffolding process reproducible
-  and easier to edit and compare than FASTA sequence.
+  and easier to edit and compare than FASTA nucleotide sequence.
 
   \paragraph*{Conclusions:} Scaffolder is easy-to-use genome scaffolding
   software. This tool promotes reproducibility and continuous development in a
