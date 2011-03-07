@@ -290,6 +290,21 @@ that define whether a sub-sequence or the reverse complement of the sequence
 should be used. The types of attributes available, and an example scaffold file
 are outlined below. \pb
 
+\subsection*{Input sequence data and scaffolding process} %{{{2
+
+The input data for Scaffolder is nucleotide sequence in FASTA format file.
+These nucleotide sequences can be of any length and for example may be
+individual sequences, assembled contigs or contigs which have been joined to
+into larger scaffolds. The case in which Scaffolder may be most useful is using
+the contigs and scaffolded contigs produced from assembling a set of sequencing
+reads. \pb
+
+The scaffolder algorithm reads through the scaffolder file parsing each entry
+in the file. Each entry is converted to corresponding sequence by fetching from
+the FASTA file and then performing any designated sequence processing
+operations. Each of the sequence entries are then joined as a s single super
+sequence and returned to the console output. \pb
+
 \clearpage
 
 \section*{Results} %{{{1
