@@ -183,7 +183,7 @@ laboratory methods, \emph{in silico} methods, or a combination of both. An
 example of a computational method might use the existing paired-read data from
 the sequencing stage where reads were produced in pairs at a known distance
 apart in the genome. The occurrence of paired reads in separate contigs can be
-used to probabalistically estimate the order and distance between these
+used to probabilistically estimate the order and distance between these
 contigs. Alternatively, laboratory methods may use PCR to amplify the unknown
 DNA in a gap region, then use traditional Sanger sequencing to determine the
 sequence of this gap. Computational methods are more preferable as they are
@@ -205,7 +205,7 @@ Repeat regions may also be responsible for multiple gaps when building a genome
 sequence; tandemly repeated nucleotide regions in the genome produces multiple
 reads with similar sequence. As many assembly algorithms rely on sequence
 overlaps between reads to build a contig the similarity between repeat-region
-reads can result in the assembly collapsing into an artifically short sequence
+reads can result in the assembly collapsing into an artificially short sequence
 at this region or being ignored by more conservative assembly algorithms. Such
 regions can be resolved by using algorithms to specifically reassemble the
 collapsed repeat region correctly \cite{mulyukov2002,koren2010}, while
@@ -224,7 +224,7 @@ These described methods provide a wide array of approaches for merging contigs
 into a larger, continuous scaffold sequence. Nevertheless the scaffolding
 process may still require inserting additional sequences or further joining
 contigs using PCR-derived sequence. This manual stage in the finishing
-processmay require moving and editing large blocks of nucleotide text by hand
+process may require moving and editing large blocks of nucleotide text by hand
 which is subject to human error and precludes any reproducibility of the steps
 in this process. \pb
 
@@ -402,7 +402,7 @@ website (\scaffolder). \pb
 Scaffolding requires joining assembled contigs and insert additional sequence
 data using a combination of computational and laboratory methods. The process
 of manually editing a scaffold is inherently hard to reproduce and introduces
-the possibility of irreporducible techniques and/or human error. The aims of
+the possibility of irreducible techniques and/or human error. The aims of
 the Scaffolder software are twofold: 1) to provide software that is easy to
 install and simplifies the task of genome finishing; and 2) to facilitate
 reproducibility when joining large nucleotide sequences together to create
