@@ -303,21 +303,23 @@ joined and the scaffolder software is used to generate the scaffold sequence.
 In addition to specifying which contigs are required, the scaffold file allows
 the contigs to be edited into smaller sub-sequences or reverse complemented if
 necessary. The process of genome finishing may involve producing additional
-oligonucleotide sequences to fill unknown regions in the scaffold. The scaffold
-file format allows these additional insert sequences to bridge gaps. These
-inserts can also be treated in a similar way to larger contig sequences:
-trimmed and/or reverse complemented to match the corresponding gap region. \pb
+oligonucleotide sequences to fill unknown regions in the scaffold and The
+scaffold file format allows these additional insert sequences to bridge gaps.
+These inserts can also be treated in the same manner as larger contig
+sequences: trimmed and/or reverse complemented to match the corresponding gap
+region. \pb
 
 The distances between contigs may be estimated from paired-read data or from
 mapping the contigs to a reference genome. These inter-contig gap regions are
 useful to join separate sequences together by an estimated size and the
-scaffold file allows for the specification of such unresolved regions. The use
-of these regions in the scaffold indicates the unresolved regions in the build
-and their approximate size. \pb
+scaffold file allows for the specification of such unresolved regions by
+inserting regions of `N' nucleotides into the scaffold. The use of these
+regions in the scaffold indicates the unresolved regions in the build and their
+approximate size. \pb
 
 The scaffold file specifies how sequence regions are joined together; however
 the sequences themselves are not stored in the scaffold file and are instead
-maintained as a separate FASTA file. Nucleotide sequences in a FASTA-formatted
+maintained as a separate FASTA file. Nucleotide sequences in a FASTA-format
 file are the standard output for a genome assembler, and these may be contigs,
 sets of contigs scaffolded into larger sequences, or both. These nucleotide
 sequences stored in the FASTA file are referenced in the scaffold using the
@@ -374,14 +376,15 @@ tag identifies the corresponding FASTA sequence as `insert1'. The ``open'' and
 ``close'' tags are specific to inserts and determine where the insert is added
 in the enclosing sequence. The region of the sequence inside these coordinates
 is inclusively replaced by the specified insert sequence. This is visualised in
-the putative gene Figure 1 by the black lines bisecting the blue sequence. \pb
+the putative genome in Figure 1 by the black lines bisecting the blue sequence.
+\pb
 
 The next insert, shown in brown, is specified using only the `open' tag. This
 illustrates that only one of either `open' or `close' tags is required when
 adding an insert sequence. If only one of the `open' or `close' tags is used
-the corresponding opposing position distance is calculated from the length of
-the insert FASTA sequence. This allows inserts to bridge into, and partially
-fill gap regions without requiring an end coordinate position. \pb
+the corresponding opposing `open'/`close' coordinate is calculated from the
+length of the insert FASTA sequence. This allows inserts to bridge into, and
+partially fill gap regions, without requiring an end coordinate position. \pb
 
 \subsection*{Scaffolder Software Interface} %{{{2
 
