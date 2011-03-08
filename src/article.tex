@@ -244,11 +244,11 @@ constructed. \pb
 
 \subsection*{Code and Dependencies} %{{{2
 
-Scaffolder is written in the Ruby programming language, version 1.8.7
-\cite{ruby-lang}. The scaffolder package is split into two libraries. The first
-called ``scaffolder'' contains the core Scaffolder application programming
-interface (API). The second library ``scaffolder-tools'' contains the
-Scaffolder command line interface (CLI). \pb
+Scaffolder is written in the Ruby programming language using version 1.8.7
+\cite{ruby-lang}. The scaffolder package is split into two libraries. The
+first called ``scaffolder'' provides the core Scaffolder application
+programming interface (API). The second library ``scaffolder-tools'' provides
+the Scaffolder command line interface (CLI). \pb
 
 Unit tests were implemented to maintain individual elements of the source code
 during development and were written using the Shoulda and RSpec \cite{rspec}
@@ -279,32 +279,33 @@ Initial sequencing data assembly may result in an incomplete genome build.
 Generation of additional sequences either through PCR or computational methods
 means that genome scaffolding may be an on-going process. The scaffold file
 should therefore be simple to update manually in addition to being
-computationally tractable. This requirement was also best suited to YAML which
-is human-readable and simple to edit in a standard text editor. \pb
+computationally tractable. This requirement was also best suited to YAML
+syntax which is human-readable and simple to edit in a standard text editor.
+\pb
 
 The scaffold file takes the form of a list of entries. Each entry corresponds
-to a region of sequence used in the final scaffold sequence. The Scaffolder
-software processes this list in order, converting each entry to the
-corresponding nucleotide sequence, all entries are then concatenated to produce
-a draft super sequence. Each entry in the scaffold file may have attributes
-that define whether a sub-sequence or the reverse complement of the sequence
-should be used. The types of attributes available, and an example scaffold file
-are outlined below. \pb
+to a region of sequence used in the final scaffold sequence. Each entry in the
+scaffold file may have attributes that define whether a sub-sequence or the
+reverse complement of the sequence should be used. The types of attributes
+available, and an example scaffold file are outlined in the Results section.
+\pb
 
 \subsection*{Input sequence data and scaffolding process} %{{{2
 
 The input data for Scaffolder is nucleotide sequence in FASTA format file.
 These nucleotide sequences can be of any length and for example may be
 individual sequences, assembled contigs or contigs which have been joined to
-into larger scaffolds. The case in which Scaffolder may be most useful is using
-the contigs and scaffolded contigs produced from assembling a set of sequencing
-reads. \pb
+into larger scaffolds. The case in which Scaffolder may be most useful is
+using the contigs and scaffolded contigs produced from the previously
+assembled set of sequencing reads, combined with additional gap filling
+sequences produced by PCR or \emph{in silico} methods as outlined in the
+Background. \pb
 
-The scaffolder algorithm reads through the scaffolder file parsing each entry
-in the file. Each entry is converted to corresponding sequence by fetching from
-the FASTA file and then performing any designated sequence processing
-operations. Each of the sequence entries are then joined as a s single super
-sequence and returned to the console output. \pb
+The scaffolder algorithm reads through the scaffolder file parsing. Each entry
+is then converted to corresponding nucleotide sequence by fetching from the
+FASTA file and then performing any designated sequence trimming or reverse
+complenting. Each of the sequence entries are then joined into a continuous
+single super-sequence and returned to the console output. \pb
 
 \clearpage
 
