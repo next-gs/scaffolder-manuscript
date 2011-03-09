@@ -66,18 +66,18 @@ University, Nunn Drive, Highland Heights, KY 41076 }%
   considerations may make reproducing or editing an existing genome build
   difficult.
 
-  \paragraph*{Methods:} The software outlined here, ``Scaffolder'', is
+  \paragraph*{Methods:} The software outlined here, ``Scaffolder,'' is
   implemented in the Ruby programming language and can be installed via the
-  RubyGems software management system. Genome scaffolds are defined using YAML
-  - a data format, which is both human and machine-readable. Command line
+  RubyGems software management system. Genome scaffolds are defined using
+  YAML - a data format, which is both human and machine-readable. Command line
   binaries and extensive documentation are available.
 
   \paragraph*{Results:} This software allows a genome build to be defined in
   terms of the constituent sequences using a relatively simple syntax to
   define the scaffold. This syntax further allows  unknown regions to be
-  defined, and add inserts to fill gaps in the scaffold. Defining the genome
-  construction in a file makes the scaffolding process reproducible and easier
-  to edit compared with FASTA nucleotide sequence.
+  defined, and add additional sequences to fill gaps in the scaffold. Defining
+  the genome construction in a file makes the scaffolding process reproducible
+  and easier to edit compared with FASTA nucleotide sequence.
 
   \paragraph*{Conclusions:} Scaffolder is easy-to-use genome scaffolding
   software. This tool promotes reproducibility and continuous development in a
@@ -114,11 +114,11 @@ The advent of high throughput sequencing methods has led to a renewed interest
 in algorithms to solve the problem of genome assembly \cite{pop2008,pop2009}.
 Nonetheless, due to the complexity of merging large numbers of overlapping
 reads genome assembly software may be unable to produce a complete sequence.
-Instead the algorithm may generate several large assembled regions of sequence
-(`contigs') composed of the many individual reads that represent assembly into
-the longest possible sequences, given the data. Nonetheless, these contigs
-represent a fragmented picture of the genome and require additional work to
-join together into a complete sequence. \pb
+Instead, the algorithm may generate several large assembled regions of
+sequence (`contigs') composed of the many individual reads that represent
+assembly into the longest possible sequences, given the data. Nonetheless,
+these contigs represent a fragmented picture of the genome and require
+additional work to join together into a complete sequence. \pb
 
 The process of ameliorating a draft sequence into a finished continuous
 sequence can be expensive in terms of time and laboratory effort, although the
@@ -229,14 +229,14 @@ sequences or further joining contigs using PCR-derived sequence. Moving and
 editing large blocks of nucleotide text by hand however possibly introduces
 human error and precludes any reproducibility of the steps in this process. \pb
 
-The software outlined here, ``Scaffolder'', aims to address these problems of
+The software outlined here, ``Scaffolder,'' aims to address these problems of
 reproducibility by creating a file syntax and software framework for editing
-a genome scaffold. Scaffolder uses a specific file format to define how contigs
-are joined, additional sequences are inserted, and for the specification of
-unknown regions. This syntax allows a scaffold to be updated by simply editing
-the scaffold file. As such scaffolder facilitates a reproducible scaffolding
-process and provides a concise overview of how the final genomic scaffold was
-constructed. \pb
+a genome scaffold. Scaffolder uses a specific file format to define how
+contigs are joined, additional sequences are inserted, and for the
+specification of unknown regions. This syntax allows a scaffold to be updated
+by simply editing the scaffold file. As such, scaffolder facilitates
+a reproducible scaffolding process and provides a concise overview of how the
+final genomic scaffold was constructed. \pb
 
 \clearpage
 
@@ -334,7 +334,7 @@ inserting regions of `N' nucleotides into the scaffold. The use of these
 regions in the scaffold indicates the unresolved regions in the build and their
 approximate size. \pb
 
-The scaffold file specifies how sequence regions are joined together; however
+The scaffold file specifies how sequence regions are joined together; however,
 the sequences themselves are not stored in the scaffold file and are instead
 maintained as a separate FASTA file. Nucleotide sequences in a FASTA-format
 file are the standard output for a genome assembler, and these may be contigs,
@@ -466,8 +466,8 @@ reproducibility in genome projects by allowing the scaffold super-sequence to
 be reliably reproduced from the same scaffold file. The YAML syntax for
 writing the scaffold file is also standardised and simple to manipulate
 programmatically. This thereby means the scaffolding process follows the Unix
-tenet of: ``If your data structures are good enough, the algorithm to
-manipulate them should be trivial.''.
+tenet of ``If your data structures are good enough, the algorithm to
+manipulate them should be trivial.''
 
 \clearpage
 
