@@ -109,30 +109,31 @@ these individual fragments. An analogy for this process is a jigsaw puzzle:
 each nucleotide read represents a single piece, and the final genome sequence
 is the completed puzzle. Sequences of repetitive nucleotide `repeat' regions
 within the genome, or biased and incomplete sequencing data, may prevent the
-genome being assembled into a continuous sequence. This may be due to not
-enough, or multiple different overlaps between reads and is analogous to
-missing pieces in the jigsaw or pieces that fit to multiple other pieces. \pb
+genome being assembled into a continuous sequence. This may be due to
+\change{not enough}{insufficient}, or multiple different overlaps between reads
+and is analogous to missing pieces in the jigsaw or pieces that fit to multiple
+other pieces. \pb
 
-The advent of high throughput sequencing methods has led to a renewed interest
-in algorithms to solve the problem of genome assembly \cite{pop2008,pop2009}.
-Nonetheless, due to the complexity of merging large numbers of overlapping
-reads genome assembly software may be unable to produce a complete sequence.
-Instead, the algorithm may generate several large assembled regions of
-sequence (`contigs') composed of the many individual reads that represent
-assembly into the longest possible sequences, given the data. Nonetheless,
-these contigs represent a fragmented picture of the genome and require
-additional work to join together into a complete sequence. \pb
+The advent of high\add{-}throughput sequencing methods has led to a renewed
+interest in algorithms to solve the problem of genome assembly
+\cite{pop2008,pop2009}. Nonetheless, due to the complexity of merging large
+numbers of overlapping reads genome assembly software may be unable to produce
+a complete sequence. Instead, the algorithm may generate several large
+assembled regions of sequence (`contigs') composed of the many individual reads
+that represent assembly into the longest possible sequences, given the data.
+Nonetheless, these contigs represent a fragmented picture of the genome and
+require additional work to join together into a complete sequence. \pb
 
-The process of ameliorating a draft sequence into a finished continuous
-sequence can be expensive in terms of time and laboratory effort, although the
-genomic data present in a set of generated contigs may be sufficient for many
-research questions \cite{branscomb2002}. Nevertheless, a continuous
-high-quality `finished' genome sequence does provide a greater depth of
-information, such as complete resolution of repeat regions and precise
-estimates of distances between genomic elements \cite{parkhill2002,fraser2002}.
-The process of joining these contigs together to form a continuous genome
-sequence is called the `scaffolding' or `finishing' stage and is the focus of
-the software described in this article. \pb
+The process of \change{ameliorating a draft sequence into a finished continuous
+sequence}{finishing a genome sequence} can be expensive in terms of time and
+laboratory effort, although the genomic data present in a set of generated
+contigs may be sufficient for many research questions \cite{branscomb2002}.
+Nevertheless, a continuous high-quality `finished' genome sequence does provide
+a greater depth of information, such as complete resolution of repeat regions
+and precise estimates of distances between genomic elements
+\cite{parkhill2002,fraser2002}. The process of joining these contigs together
+to form a continuous genome sequence is called the `scaffolding' or `finishing'
+stage and is the focus of the software described in this article. \pb
 
 \subsection*{Scaffolding} %{{{2
 
@@ -150,8 +151,9 @@ the resulting contigs constructed from these reads may represent either the
 5'~$\rightarrow$~3' or 3'~$\rightarrow$~5' DNA strands with respect to the
 origin of replication. Orientating all contigs to point in the same direction
 requires reverse complementing sequences where necessary. In the case of
-microbial genomes this orientation will be to the 5'~$\rightarrow$~3'
-direction following the direction of genome replication.
+\change{microbial}{archaeal and bacterial} genomes this orientation will be to
+the 5'~$\rightarrow$~3' direction following the direction of genome
+replication.
 
 \subsubsection*{Contig Ordering} %{{{3
 
@@ -188,15 +190,16 @@ laboratory methods, \emph{in silico} methods, or a combination of both. An
 example of a computational method might use the existing paired-read data from
 the sequencing stage where reads were produced in pairs at a known distance
 apart in the genome. The occurrence of paired reads in separate contigs can be
-used to probabilistically estimate the order and distance between these
-contigs. Alternatively, laboratory methods may use PCR to amplify the unknown
-DNA in a gap region, then use traditional Sanger sequencing to determine the
-sequence of this gap. Computational methods are more preferable as they are
-less costly in laboratory time and materials compared to manual gap resolution,
-and use the available data that exists following sequencing
-\cite{nagarajan2010}. Finally when the scaffold cannot be completely resolved,
-\emph{in silico} software packages exist to suggest the likely primers
-necessary for PCR amplifying the sequence in gap regions \cite{gordon2001}. \pb
+used to \change{probabilistically estimate}{estimate probabilistically} the
+order and distance between these contigs. Alternatively, laboratory methods may
+use PCR to amplify the unknown DNA in a gap region, then use traditional Sanger
+sequencing to determine the sequence of this gap. Computational methods are
+\remove{more} preferable as they are less costly in laboratory time and
+materials compared to manual gap resolution, and use the available data that
+exists following sequencing \cite{nagarajan2010}. Finally when the scaffold
+cannot be completely resolved, \emph{in silico} software packages exist to
+suggest the likely primers necessary for PCR amplifying the sequence in gap
+regions \cite{gordon2001}. \pb
 
 Examples of \emph{in silico} methods include using synteny to compare the
 assembled contigs to a complete reference genome sequence by searching for
@@ -212,8 +215,8 @@ multiple reads with similar sequence. As many assembly algorithms rely on
 sequence overlaps between reads to build a contig, the similarity between
 repeat-region reads can result in the assembly collapsing into an artificially
 short sequence or being ignored by more conservative assembly algorithms. Such
-regions can be resolved by using algorithms specifically reassemble the
-collapsed repeat region correctly \cite{mulyukov2002,koren2010}, while
+regions can be resolved by using algorithms \add{which} specifically reassemble
+the collapsed repeat region correctly \cite{mulyukov2002,koren2010}, while
 a related approach uses unassembled sequence reads matching the regions around
 a scaffold gap to construct a uniquely overlapping set of reads across it
 \cite{tsai2010}. \pb
