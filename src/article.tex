@@ -255,11 +255,12 @@ overview of how the final genomic scaffold was constructed. \pb
 
 \subsection*{Code and Dependencies} %{{{2
 
-Scaffolder is written in the Ruby programming language using version 1.8.7
-\cite{ruby-lang}. The scaffolder package is split into two libraries. The
-first called ``scaffolder'' provides the core Scaffolder application
-programming interface (API). The second library ``scaffolder-tools'' provides
-the Scaffolder command line interface (CLI). \pb
+Scaffolder is written in the Ruby programming language \change{using version
+1.8.7}{and tested against versions 1.8.7 and 1.9.2} \cite{ruby-lang}. The
+scaffolder package is split into two libraries. The first called ``scaffolder''
+which provides the core Scaffolder application programming interface (API). The
+second library ``scaffolder-tools'' provides the Scaffolder command line
+interface (CLI). \pb
 
 Unit tests were implemented to maintain individual elements of the source code
 during development and were written using the Shoulda and RSpec \cite{rspec}
@@ -312,11 +313,11 @@ assembled set of sequencing reads, combined with additional gap filling
 sequences produced by PCR or \emph{in silico} methods as outlined in the
 Background. \pb
 
-The scaffolder algorithm reads through the scaffolder file parsing. Each entry
-is then converted to corresponding nucleotide sequence by fetching from the
-FASTA file and then performing any designated sequence trimming or reverse
-complementing. Each of the sequence entries are then joined into a continuous
-single super-sequence and returned to the console output. \pb
+\remove{The scaffolder algorithm reads through the scaffolder file parsing.
+Each entry is then converted to corresponding nucleotide sequence by fetching
+from the FASTA file and then performing any designated sequence trimming or
+reverse complementing. Each of the sequence entries are then joined into
+a continuous single super-sequence and returned to the console output.}
 
 \clearpage
 
