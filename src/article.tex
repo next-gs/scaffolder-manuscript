@@ -120,12 +120,12 @@ The advent of high\add{-}throughput sequencing methods has led to a renewed
 interest in algorithms to solve the problem of genome assembly
 \cite{pop2008,pop2009}. \remove{Nonetheless, due to }The complexity of merging
 large numbers of overlapping reads \add{can lead to} genome assembly software
-may be unable to produce a complete sequence. Instead, the algorithm may
-generate several large assembled regions of sequence (`contigs') composed of
-the many individual reads\remove{ that represent assembly into the longest
-possible sequences, given the data. Nonetheless, }These contigs represent
-a fragmented picture of the genome and \add{therefore} require additional work
-to join together into a complete sequence. \pb
+\remove{may} being unable to produce a complete sequence. Instead, the
+algorithm may generate several large assembled regions of sequence (`contigs')
+composed of the many individual reads\remove{ that represent assembly into the
+longest possible sequences, given the data. Nonetheless, }These contigs
+represent a fragmented picture of the genome and \add{therefore} require
+additional work to join together into a complete sequence. \pb
 
 The process of \change{ameliorating a draft sequence into a finished continuous
 sequence}{finishing a genome sequence} can be expensive in terms of time and
@@ -190,14 +190,14 @@ closed, the genome may be considered finished.
 \subsection*{Computational Methods for Scaffolding} %{{{2
 
 The process of \change{resolving a genome sequence and building a}{finishing
-a genome} scaffold \change{may} use wet laboratory methods, \emph{in silico}
+a genome} scaffold \remove{may} uses wet laboratory methods, \emph{in silico}
 methods, or a combination of both. An example of a computational method might
 use the \remove{existing} paired-read data from the sequencing stage.
 \remove{where reads were produced in pairs at a known distance apart in the
 genome.} The occurrence of paired reads in separate contigs can be used to
 \change{probabilistically estimate}{estimate probabilistically} the order and
 distance between these contigs. Alternatively, laboratory methods may use PCR
-to amplify the unknown DNA in a gap region, then use \remove{traditional}
+to amplify the unknown DNA in a gap region then use \remove{traditional}
 Sanger sequencing to determine the sequence of this gap. Computational methods
 are \remove{more} preferable as they are less costly in laboratory time and
 materials compared to manual gap resolution, and use the available data that
@@ -211,8 +211,9 @@ comparing the assembled contigs to a complete reference genome sequence
 \change{by}{to} search\remove{ing} for areas of sequence similarity between the
 two. Any areas of corresponding sequence with the reference genome can be used
 to infer contig placement and build the contigs into a scaffold
-\cite{richter2007,zhao2008,assefa2009}. Recombination within each of the two
-compared genomes can, however, reduce the efficacy of this. \pb
+\cite{richter2007,zhao2008,assefa2009}. \add{Genomic} recombination
+\remove{within each of the two compared genomes} can however reduce the
+\change{efficiency}{efficacy} of this. \pb
 
 Repeat regions may also be responsible for multiple gaps when building
 a genome sequence; tandemly repeated nucleotide regions in the genome produce
@@ -220,8 +221,8 @@ multiple reads with similar sequence. As many assembly algorithms rely on
 sequence overlaps between reads to build a contig, the similarity between
 repeat-region reads can result in the assembly collapsing into an artificially
 short sequence or being ignored by more conservative assembly algorithms. Such
-regions can be resolved by using algorithms \add{which} specifically reassemble
-the collapsed repeat region correctly \cite{mulyukov2002,koren2010}.
+regions can be resolved by using algorithms \add{that} specifically reassemble
+the collapsed repeat region \remove{correctly} \cite{mulyukov2002,koren2010}.
 \change{while a}{A} related approach uses unassembled sequence reads matching
 the regions around a scaffold gap to construct a uniquely overlapping set of
 reads across \change{it}{the gap}. \cite{tsai2010}. \pb
