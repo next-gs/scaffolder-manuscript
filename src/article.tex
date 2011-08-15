@@ -59,14 +59,15 @@ University, Nunn Drive, Highland Heights, KY 41076 }%
 
 \begin{abstract} %{{{1
 
-  \paragraph*{Background:} Assembly of short-read sequencing data can result in
-  a fragmented non-contiguous series of genomic sequences. Therefore a common
-  step in a genome project is to join neighbouring sequence regions together
-  and fill gaps \remove{in the assembly using additional sequences}. This
-  scaffolding step, however, is non-trivial and requires manually editing large
-  blocks of nucleotide sequence. Joining these sequences together also hides
-  the source of each region in the final genome sequence. Taken together, these
-  considerations may make reproducing or editing an existing genome build
+  \paragraph*{Background:} \add{The} assembly of \add{next-generation}
+  short-read sequencing data can result in a fragmented non-contiguous series
+  of genomic sequences. Therefore a common step in a genome project is to join
+  neighbouring sequence regions together and fill gaps \remove{in the assembly
+  using additional sequences}. This scaffolding step\remove{, however,} is
+  non-trivial and requires manually editing large blocks of nucleotide
+  sequence. Joining these sequences together also hides the source of each
+  region in the final genome sequence. Taken together, these considerations
+  may make reproducing or editing an existing genome \change{build}{scaffold}
   difficult.
 
   \paragraph*{Methods:} The software outlined here, ``Scaffolder,'' is
@@ -79,13 +80,13 @@ University, Nunn Drive, Highland Heights, KY 41076 }%
   to be defined in terms of the constituent sequences using a relatively simple
   syntax\remove{to define the scaffold}. This syntax further allows unknown
   regions to be \change{defined}{specified} and add additional sequences to
-  fill gaps in the scaffold. Defining the genome construction in a file makes
-  the scaffolding process reproducible and easier to edit compared with
-  \add{large} FASTA nucleotide sequences.
+  fill \add{known} gaps in the scaffold. Defining the genome construction in
+  a file makes the scaffolding process reproducible and easier to edit
+  compared with \add{large} FASTA nucleotide sequences.
 
   \paragraph*{Conclusions:} Scaffolder is easy-to-use genome scaffolding
-  software. This tool promotes reproducibility and continuous development in a
-  genome project. Scaffolder can be found at \scaffolder.
+  software\change{. This tool}{ which} promotes reproducibility and continuous
+  development in a genome project. Scaffolder can be found at \scaffolder.
 
 \end{abstract}
 
