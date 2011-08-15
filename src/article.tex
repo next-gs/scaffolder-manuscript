@@ -247,7 +247,7 @@ reproducibility by creating a file syntax and software framework for editing
 a genome scaffold. Scaffolder uses a specific file format to define how
 contigs are joined, additional sequences are inserted, and for the
 specification of unknown regions. This syntax allows a scaffold to be updated
-by simply editing the scaffold file. As such, scaffolder facilitates
+by simply editing the scaffold file. As such, Scaffolder facilitates
 a reproducible \change{scaffolding}{finishing} process and provides a concise
 overview of how the final genomic scaffold was constructed. \pb
 
@@ -259,7 +259,7 @@ overview of how the final genomic scaffold was constructed. \pb
 
 Scaffolder is written in the Ruby programming language \change{using version
 1.8.7}{and tested against versions 1.8.7 and 1.9.2} \cite{ruby-lang}. The
-scaffolder package is split into two libraries. The first called ``scaffolder''
+Scaffolder package is split into two libraries. The first called ``scaffolder''
 which provides the core Scaffolder application programming interface (API). The
 second library ``scaffolder-tools'' provides the Scaffolder command line
 interface (CLI). \pb
@@ -328,7 +328,7 @@ a continuous single super-sequence and returned to the console output.}
 The Scaffolder software facilitates reproducibly joining nucleotide sequences
 together into a single contiguous scaffolded super-sequence. Plain-text
 scaffold files written in \remove{the} YAML \remove{syntax} specify how these
-sequences should be joined\change{. and the}{The} scaffolder software is used
+sequences should be joined\change{. and the}{The} Scaffolder software is used
 to generate the scaffold sequence from these instructions. In addition to
 specifying which contigs are required, the scaffold file allows the contigs to
 be edited into smaller sub-sequences or reverse complemented if necessary.
@@ -402,7 +402,7 @@ The last entry in the scaffold, highlighted in blue, adds the sequence named
 `sequence2' to the scaffold. This entry demonstrates how this sequence may be
 manipulated prior to addition to the scaffold. The `start' and `stop' tags
 trim the sequence to these coordinates inclusively.\remove{while} The
-``reverse'' tag \add{also} instructs scaffolder to \remove{also} reverse
+``reverse'' tag \add{also} instructs Scaffolder to \remove{also} reverse
 complement the sequence. In the putative scaffold shown in Figure 1 this
 completes the \remove{scaffold } sequence. \pb
 
@@ -434,7 +434,7 @@ addition Scaffolder provides a command line interface (CLI) to validate the
 scaffold file and build the draft super sequence. The Scaffolder CLI behaves
 as a standard Unix tool and returns appropriate exit codes and manual pages.
 The use of both these Scaffolder interfaces is outlined in detail on the
-scaffolder website (\scaffolder). \add{This website provides a ``getting
+Scaffolder website (\scaffolder). \add{This website provides a ``getting
 started'' guide as an introduction to using Scaffolder to build a genome
 scaffold.} \pb
 
@@ -465,9 +465,9 @@ genome scaffolds easy to write in a common text editor.}
 to describe contig order and N-filled gap regions in a scaffold. The
 advantages of the AGP format is that each contig entry is defined on a single
 line which allows searching the scaffold using UNIX line-based tools. The
-scaffolder format in comparison in contrast is written in the standardised
+Scaffolder format in comparison in contrast is written in the standardised
 YAML format and therefore accessible to the many languages which provide
-parsers to this format. The scaffolder format is provided with a tool
+parsers to this format. The Scaffolder format is provided with a tool
 explicitly to produce the fasta sequence of scaffold specified by in the file.
 The scaffold format further provides functions for trimming and replacing
 regions of sequence using inserts.} \pb
@@ -480,9 +480,9 @@ scaffold file furthermore provides a human readable description of how the
 scaffold is constructed. Configuring the final sequence in the scaffold file
 means the build is easier to edit once already constructed. \pb
 
-\add{An example use case for scaffolder is a combination of computational and
-manual editing of a genome scaffold. We have used scaffolder in our own genome
-projects to create an initial scaffold from computationally parsing the output
+\add{An example use case for Scaffolder is a combination of computational and
+manual editing of a genome scaffold. We have used Scaffolder in our own genome
+projects to create an initial scaffold from compuationally parsing the output
 of \emph{in silico} scaffolding tools into YAML. This scaffold was then
 manually updated as the scaffold was finished with additional gap-filling
 sequences generated in the laboratory.} \pb
