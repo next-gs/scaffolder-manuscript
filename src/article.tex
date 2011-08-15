@@ -328,31 +328,36 @@ a continuous single super-sequence and returned to the console output.}
 
 The Scaffolder software facilitates reproducibly joining nucleotide sequences
 together into a single contiguous scaffolded super-sequence. Plain-text
-scaffold files written in the YAML syntax specify how these sequences should
-be joined and the scaffolder software is used to generate the scaffold
-sequence from these instructions. In addition to specifying which contigs are
-required, the scaffold file allows the contigs to be edited into smaller
-sub-sequences or reverse complemented if necessary. The process of genome
-finishing may involve producing additional oligonucleotide sequences to fill
-unknown regions in the scaffold and the Scaffolder allows these additional
-insert sequences to be used to fill these gaps. These inserts can also be
-treated in the same manner as larger contig sequences: trimmed and/or reverse
-complemented to match the corresponding gap region size and orientation. \pb
+scaffold files written in \remove{the} YAML \remove{syntax} specify how these
+sequences should be joined\change{. and the}{The} scaffolder software is used
+to generate the scaffold sequence from these instructions. In addition to
+specifying which contigs are required, the scaffold file allows the contigs to
+be edited into smaller sub-sequences or reverse complemented if necessary.\pb
+
+The process of genome finishing may involve producing additional
+oligonucleotide sequences to fill unknown regions in \change{the}{a} scaffold.
+\remove{and} The Scaffolder \change{allows}{format provides for using} these
+additional insert sequences to \remove{be used} to fill \remove{these} gaps.
+These inserts can also be treated in the same manner as larger contig
+sequences: trimmed and/or reverse complemented to match the corresponding gap
+region size and orientation. \pb
 
 The distances between contigs may be estimated from paired-read data or from
 mapping the contigs to a reference genome. These inter-contig gap regions are
-useful to join separate sequences together by an estimated size and the
-scaffold file allows for the specification of such unresolved regions by
-inserting regions of `N' nucleotides into the scaffold. The use of these
-regions in the scaffold indicates the unresolved regions in the build and their
-approximate size. \pb
+useful to join separate sequences together by \change{an}{the} estimated
+\change{size and }{distance.} The scaffold file allows for the specification
+of such unresolved regions by inserting regions of `N' nucleotides into the
+scaffold. The use of these regions in the scaffold indicates the unresolved
+regions in the build and their approximate size. \pb
 
-The scaffold file specifies how sequence regions are joined together; however,
-the sequences themselves are not stored in the scaffold file and are instead
-maintained as a separate FASTA file. Nucleotide sequences in a FASTA-format
-file are the standard output for a genome assembler, and these may be contigs,
-sets of contigs scaffolded into larger sequences, or both. These nucleotide
-sequences stored in the FASTA file are referenced in the scaffold using the
+
+\change{The scaffold file specifies how sequence regions are joined together;
+however, the sequences themselves are no  stored in the scaffold file and are
+instead}{The nucleotide sequences used in the scaffold are} maintained as
+a separate FASTA file. \remove{Nucleotide sequences in a FASTA-format file are
+the standard output for a genome assembler, and these may be contigs, sets of
+contigs scaffolded into larger sequences, or both. }The nucleotide sequences
+\remove{stored in the FASTA file} are referenced in the scaffold using the
 first word from in the FASTA header of the corresponding sequence. Maintaining
 the nucleotide sequences in a separate file preserves the unedited sequence
 and decouples the data from the specification of how it should be used to
@@ -366,7 +371,7 @@ a scaffold and how the sequences are correspondingly joined together in the
 genome build. The basic layout of the scaffold file is a list of entries,
 where each entry corresponds to a region of sequence in the generated scaffold
 super-sequence. \add{Each scaffold file represents one scaffolded nucleotide
-sequence and separate scaffolds are defined in separate files.} \pb
+sequence and separate scaffolds should be defined in separate files.} \pb
 
 \subsubsection*{Simple sequence region} %{{{3
 
@@ -381,8 +386,7 @@ line indicates the name of this sequence using the ``source'' tag. The first
 word of the FASTA header is used to identify which sequence is selected from
 the file. Together these three lines describe the first entry in the scaffold
 as a simple sequence using the sequence named `sequence1'. On the right hand
-side of Figure
-1 this produces the first region in the scaffold, also shown in green. \pb
+side of Figure 1 this produces the first region in the scaffold, also shown in green. \pb
 
 \subsubsection*{Unresolved sequence region} %{{{3
 
@@ -395,22 +399,23 @@ a region of 20 `N' characters in the scaffold. \pb
 
 The last entry in the scaffold, highlighted in blue, adds the sequence named
 `sequence2' to the scaffold. This entry demonstrates how this sequence may be
-manipulated prior to addition to the scaffold. The `start' and `stop' tags trim
-the sequence to these coordinates inclusively, while the ``reverse'' tag
-instructs scaffolder to also reverse complement the sequence. In the putative
-scaffold shown in Figure 1 this completes the scaffold sequence. \pb
+manipulated prior to addition to the scaffold. The `start' and `stop' tags
+trim the sequence to these coordinates inclusively.\remove{while} The
+``reverse'' tag instructs scaffolder to also reverse complement the sequence.
+In the putative scaffold shown in Figure 1 this completes the \remove{scaffold
+} sequence. \pb
 
-The final entry in the scaffold also includes the ``inserts'' tag to add
-additional regions of sequence. These inserts are also added as a YAML list,
-with each insert beginning with a dash. The first insert, shown in purple,
-uses similar attributes to that of a sequence entry; the reverse, start and
-stop tags are used to trim and reverse complement the insert. Similarly the
-`source' tag identifies the corresponding FASTA sequence as `insert1'. The
-``open'' and ``close'' tags are specific to inserts and determine where the
-insert is added in the enclosing sequence. The region of the sequence inside
-these coordinates is inclusively replaced by the specified insert sequence.
-This is visualised in the putative scaffold in Figure 1 by the black lines
-bisecting the blue sequence. \pb
+The final entry in the scaffold \remove{also} includes the ``inserts'' tag to
+add additional regions of sequence. These inserts are also added as a YAML
+list, with each insert beginning with a dash. The first insert, shown in
+purple, uses similar attributes to that of a sequence entry; the reverse,
+start and stop tags are used to trim and reverse complement the insert.
+Similarly the `source' tag identifies the corresponding FASTA sequence as
+`insert1'. The ``open'' and ``close'' tags are specific to inserts and
+determine where the insert is added in the enclosing sequence. The region of
+the sequence inside these coordinates is inclusively replaced by the specified
+insert sequence. This is visualised in the putative scaffold in Figure 1 by
+the black lines bisecting the blue sequence. \pb
 
 The next insert, shown in brown, is specified using only the `open' tag. This
 illustrates that only one of either `open' or `close' tags is required when
@@ -428,8 +433,9 @@ addition Scaffolder provides a command line interface (CLI) to validate the
 scaffold file and build the draft super sequence. The Scaffolder CLI behaves
 as a standard Unix tool and returns appropriate exit codes and manual pages.
 The use of both these Scaffolder interfaces is outlined in detail on the
-scaffolder website (\scaffolder). \add{This website also contains a ``getting
-started'' guide which introduces using Scaffolder.} \pb
+scaffolder website (\scaffolder). \add{This website provides a ``getting
+started'' guide as an introduction to using Scaffolder to build a genome
+scaffold.} \pb
 
 \clearpage
 
