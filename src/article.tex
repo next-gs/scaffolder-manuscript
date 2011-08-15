@@ -331,13 +331,15 @@ scaffold files written in \remove{the} YAML \remove{syntax} specify how these
 sequences should be joined\change{. and the}{The} scaffolder software is used
 to generate the scaffold sequence from these instructions. In addition to
 specifying which contigs are required, the scaffold file allows the contigs to
-be edited into smaller sub-sequences or reverse complemented if necessary.\pb
+be edited into smaller sub-sequences or reverse complemented if necessary.
+\add{Each scaffold file represents one scaffolded nucleotide sequence and
+separate scaffolds should be defined in separate files.} \pb
 
 The process of genome finishing may involve producing additional
 oligonucleotide sequences to fill unknown regions in \change{the}{a} scaffold.
-\remove{and} The Scaffolder \change{allows}{format provides for using} these
-additional insert sequences to \remove{be used} to fill \remove{these} gaps.
-These inserts can also be treated in the same manner as larger contig
+\remove{and} The Scaffolder \change{allows}{format provides functionality to
+use} these additional insert sequences \remove{be used} to fill \remove{these}
+gaps. These inserts can also be treated in the same manner as larger contig
 sequences: trimmed and/or reverse complemented to match the corresponding gap
 region size and orientation. \pb
 
@@ -357,10 +359,10 @@ a separate FASTA file. \remove{Nucleotide sequences in a FASTA-format file are
 the standard output for a genome assembler, and these may be contigs, sets of
 contigs scaffolded into larger sequences, or both. }The nucleotide sequences
 \remove{stored in the FASTA file} are referenced in the scaffold using the
-first word from in the FASTA header of the corresponding sequence. Maintaining
-the nucleotide sequences in a separate file preserves the unedited sequence
-and decouples the data from the specification of how it should be used to
-produce the genome sequence. \pb
+first word from \remove{in} the FASTA header of the corresponding sequence.
+Maintaining the nucleotide sequences in a separate file preserves the unedited
+sequence and decouples the data from the specification of how it should be
+used to produce the genome sequence. \pb
 
 \subsection*{Defining a Scaffold as a Text File} %{{{2
 
@@ -369,23 +371,23 @@ Figure 1. This file illustrates the text attributes used to describe
 a scaffold and how the sequences are correspondingly joined together in the
 genome build. The basic layout of the scaffold file is a list of entries,
 where each entry corresponds to a region of sequence in the generated scaffold
-super-sequence. \add{Each scaffold file represents one scaffolded nucleotide
-sequence and separate scaffolds should be defined in separate files.} \pb
+super-sequence. \pb
 
 \subsubsection*{Simple sequence region} %{{{3
 
 The first line of the scaffold file in Figure 1 begins with three dashes to
 indicate the start of a YAML-formatted document. The first entry (highlighted
 in green) begins with a dash character `-' to denote an entry in the YAML
-list. This is a requirement of the YAML format: that each entry begins with
-a dash line. The next line is indented by two spaces where whitespace is
-required to group similar attributes together. The ``sequence'' tag indicates
-that this entry corresponds to a sequence in the FASTA file and the following
-line indicates the name of this sequence using the ``source'' tag. The first
-word of the FASTA header is used to identify which sequence is selected from
-the file. Together these three lines describe the first entry in the scaffold
-as a simple sequence using the sequence named `sequence1'. On the right hand
-side of Figure 1 this produces the first region in the scaffold, also shown in green. \pb
+list. This is a requirement of the YAML format: \remove{that} each entry
+begins with a dash line. The next line is indented by two spaces where
+whitespace is \change{required}{used} to group similar attributes together.
+The ``sequence'' tag indicates that this entry corresponds to a sequence in
+the FASTA file and the following line indicates the name of this sequence
+using the ``source'' tag. The first word of the FASTA header is used to
+identify which sequence is selected from the file. Together these three lines
+describe the first entry in the scaffold as a simple sequence using the
+sequence named `sequence1'. On the right hand side of Figure 1 this produces
+the first region in the scaffold, also shown in green. \pb
 
 \subsubsection*{Unresolved sequence region} %{{{3
 
@@ -400,14 +402,14 @@ The last entry in the scaffold, highlighted in blue, adds the sequence named
 `sequence2' to the scaffold. This entry demonstrates how this sequence may be
 manipulated prior to addition to the scaffold. The `start' and `stop' tags
 trim the sequence to these coordinates inclusively.\remove{while} The
-``reverse'' tag instructs scaffolder to also reverse complement the sequence.
-In the putative scaffold shown in Figure 1 this completes the \remove{scaffold
-} sequence. \pb
+``reverse'' tag \add{also} instructs scaffolder to \remove{also} reverse
+complement the sequence. In the putative scaffold shown in Figure 1 this
+completes the \remove{scaffold } sequence. \pb
 
-The final entry in the scaffold \remove{also} includes the ``inserts'' tag to
-add additional regions of sequence. These inserts are also added as a YAML
-list, with each insert beginning with a dash. The first insert, shown in
-purple, uses similar attributes to that of a sequence entry; the reverse,
+The final entry in the scaffold \change{also includes}{uses} the ``inserts''
+tag to add additional regions of sequence. These inserts are also added as
+a YAML list, with each insert beginning with a dash. The first insert, shown
+in purple, uses similar attributes to that of a sequence entry; the reverse,
 start and stop tags are used to trim and reverse complement the insert.
 Similarly the `source' tag identifies the corresponding FASTA sequence as
 `insert1'. The ``open'' and ``close'' tags are specific to inserts and
