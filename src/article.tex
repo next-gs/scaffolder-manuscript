@@ -148,12 +148,11 @@ is outlined below:
 \subsubsection*{Contig Orientation} %{{{3
 
 The sequencing process generates reads from either strand of the DNA helix and
-the resulting contigs constructed from these reads may represent either the
-5'~$\rightarrow$~3' or 3'~$\rightarrow$~5' DNA strands with respect to the
-origin of replication. Orientating all contigs to point in the same direction
-requires reverse complementing sequences where necessary. In the case of
-archaeal and bacterial genomes this orientation will be to the
-5'~$\rightarrow$~3' direction following the direction of genome replication.
+the resulting contigs constructed from these reads may represent either DNA
+strand. Orientating all contigs to point in the same direction requires reverse
+complementing sequences where necessary. In the case of archaeal and bacterial
+genomes this orientation will be to the 5'~$\rightarrow$~3' direction following
+the direction of genome replication.
 
 \subsubsection*{Contig Ordering} %{{{3
 
@@ -178,10 +177,10 @@ and to-be-resolved areas in the genome sequence.
 During the scaffolding process, closing and filling gaps between contigs
 completes and improves the genome scaffold. Closing gaps may require returning
 to the laboratory to perform additional sequencing or using computational
-methods of estimating the unknown sequence. This additional sequence is used
-to replace the gap between two contigs, joining them into a single sequence.
-Once all contigs have been joined and gaps in a scaffold closed, the genome
-may be considered finished.
+methods to estimate the unknown sequence. This additional sequence is used to
+replace the gap between two contigs, joining them into a single sequence. Once
+all contigs have been joined and gaps in a scaffold closed, the genome may be
+considered finished.
 
 \subsection*{Computational Methods for Scaffolding} %{{{2
 
@@ -192,7 +191,7 @@ The occurrence of paired reads in separate contigs can be used to estimate
 probabilistically the order and distance between these contigs. Alternatively,
 laboratory methods may use PCR to amplify the unknown DNA in a gap region then
 use Sanger sequencing to determine the sequence of this gap. Computational
-methods using the available sequencing data are preferable as they are less
+methods, using available sequencing data, are preferable as they are less
 costly in laboratory time and materials compared to manual gap resolution
 \cite{nagarajan2010}. Finally when the scaffold cannot be completely resolved,
 \emph{in silico} software packages exist to suggest the likely primers
@@ -278,11 +277,11 @@ supported, YAML-formatted scaffold files can be validated for correct syntax
 using third-party tools such as Kwalify \cite{kwalify}. \pb
 
 Initial sequencing data assembly may result in an incomplete genome build.
-Generation of additional sequences either through PCR or computational methods
-means that genome scaffolding may be an on-going process. The scaffold file
-should therefore be simple to update manually in addition to being
-computationally tractable. This requirement was also best suited to YAML syntax
-which is human-readable and simple to edit in a standard text editor. \pb
+Adding further sequences from either PCR or computational methods also means
+that genome scaffolding may be an on-going process. The scaffold file should
+therefore be simple to update manually in addition to being computationally
+tractable. This requirement was also best suited to YAML syntax which is
+human-readable and simple to edit in a standard text editor. \pb
 
 The scaffold file takes the form of a list of entries. Each entry corresponds
 to a region of sequence used in the final scaffold sequence. Each entry in the
@@ -293,7 +292,7 @@ available, and an example scaffold file are outlined in the Results section.
 
 The input data for Scaffolder is nucleotide sequence in FASTA format file.
 These nucleotide sequences can be of any length and for example may be
-individual reads, assembled contigs or contigs which have been joined to into
+individual reads, assembled contigs or contigs which have been joined into
 larger scaffolds. The case in which Scaffolder may be most useful is using the
 contigs and scaffolded contigs, combined with additional gap filling sequences
 produced by PCR or \emph{in silico} methods as outlined in the Background. \pb
@@ -357,7 +356,7 @@ corresponds to a sequence in the FASTA file and the following line indicates
 the name of this sequence using the ``source'' tag. The first word of the FASTA
 header is used to identify which sequence is selected from the file. Together
 these three lines describe the first entry in the scaffold as a simple sequence
-using the sequence named `sequence1'. On the right hand side of Figure 1 this
+using a FASTA entry named `sequence1'. On the right hand side of Figure 1 this
 produces the first region in the scaffold, also shown in green. \pb
 
 \subsubsection*{Unresolved sequence region} %{{{3
@@ -369,14 +368,14 @@ a region of 20 `N' characters in the scaffold. \pb
 
 \subsubsection*{Trimmed sequence region with multiple inserts} %{{{3
 
-The last entry in the scaffold, highlighted in blue, adds the sequence named
+The last entry in the scaffold, highlighted in blue, adds a FASTA entry named
 `sequence2' to the scaffold. This entry demonstrates how this sequence may be
 manipulated prior to addition to the scaffold. The `start' and `stop' tags trim
 the sequence to these coordinates inclusively. The ``reverse'' tag also
 instructs Scaffolder to reverse complement the sequence. In the putative
 scaffold shown in Figure 1 this completes the sequence. \pb
 
-The final entry in the scaffold uses the ``inserts'' tag to add additional
+This final entry in the scaffold uses the ``inserts'' tag to add additional
 regions of sequence. These inserts are also added as a YAML list, with each
 insert beginning with a dash. The first insert, shown in purple, uses similar
 attributes to that of a sequence entry; the reverse, start and stop tags are
@@ -389,7 +388,7 @@ the putative scaffold in Figure 1 by the black lines bisecting the blue
 sequence. \pb
 
 The next insert, shown in brown, is specified using only the `open' tag. This
-illustrates that only one of either `open' or `close' tags is required when
+illustrates that only one of either the `open' or `close' tags is required when
 adding an insert sequence. If only one of the `open' or `close' tags is used
 the corresponding opposing `open'/`close' coordinate is calculated from the
 length of the insert FASTA sequence. This allows inserts to bridge into, and
@@ -418,30 +417,28 @@ hard to reproduce and introduces irreproducible edits and/or human error. In
 respect to this the aims of the Scaffolder software are twofold: 1) to provide
 software that is easy to install and simplifies the task of genome finishing;
 and 2) to facilitate reproducibility in the scaffolding and finishing stage of
-a genome project. \pb
-
-Scaffolder uses a minimal and compact syntax to describe how a genome scaffold
-sequence should be generated. This syntax is simple to write and edit whilst
-being succinct and readable. \pb
+a genome project. Scaffolder uses a minimal and compact syntax to describe how
+a genome scaffold sequence should be generated. This syntax is simple to write
+and edit whilst being succinct and readable. \pb
 
 AGP is a similar format for describing scaffolds. This format can be used to
-describe contig order and N-filled gap regions in a scaffold. The advantages of
+describe contig order and N-filled gap regions in a scaffold. The advantage of
 the AGP format is that each contig entry is defined on a single line which
 allows searching the scaffold using UNIX line-based tools. The Scaffolder
-format in comparison in contrast is written in the standardised YAML format and
-therefore accessible to the many languages which provide parsers to this
-format. The Scaffolder format is provided with a tool explicitly to produce the
-FASTA sequence of scaffold specified by in the file. The Scaffolder format
-further provides functions for trimming and replacing regions of sequence using
+format in contrast is written in the standardised YAML format and therefore
+accessible to the many languages which provide parsers to this format. The
+Scaffolder format is provided with a tool explicitly to produce the FASTA
+sequence of scaffold specified by the file. The Scaffolder format further
+provides functions for trimming and replacing regions of sequence using
 inserts. \pb
 
-Constructing a genome using by specifying the scaffold organisation in text
-file makes generating a scaffold super sequence both reproducible and
-deterministic for the same file and set of FASTA sequences. In comparison,
-joining large nucleotide sequences by hand cannot be reliably reproduced. The
-scaffold file furthermore provides a human readable description of how the
-scaffold is constructed. Configuring the final sequence in the scaffold file
-means the build is easier to edit once already constructed. \pb
+Constructing a genome by specifying the scaffold organisation in text file
+makes generating a scaffold super sequence both reproducible and deterministic
+for the same file and set of FASTA sequences. In comparison, joining large
+nucleotide sequences by hand cannot be reliably reproduced. The scaffold file
+furthermore provides a human readable description of how the scaffold is
+constructed. Configuring the final sequence in the scaffold file means the
+build is easier to edit once already constructed. \pb
 
 A use case for Scaffolder is a combination of computational and manual editing
 of a genome scaffold. We have used Scaffolder in our own genome projects to
