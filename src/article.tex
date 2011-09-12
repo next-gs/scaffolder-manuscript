@@ -69,7 +69,7 @@ University, Nunn Drive, Highland Heights, KY 41076, USA}
   neighbouring sequence regions together and fill gaps . This scaffolding step
   is non-trivial and requires manually editing large blocks of nucleotide
   sequence. Joining these sequences together also hides the source of each
-  region in the final genome sequence. Taken together, these considerations
+  region in the final genome sequence. Taken together these considerations
   may make reproducing or editing an existing genome scaffold difficult.
 
   \paragraph*{Methods:} The software outlined here, ``Scaffolder,'' is
@@ -81,7 +81,7 @@ University, Nunn Drive, Highland Heights, KY 41076, USA}
   \paragraph*{Results:} This software allows a genome build to be defined in
   terms of the constituent sequences using a relatively simple syntax. This
   syntax further allows unknown regions to be specified and additional sequence
-  to be used fill known gaps in the scaffold. Defining the genome construction
+  to be used to fill known gaps in the scaffold. Defining the genome construction
   in a file makes the scaffolding process reproducible and easier to edit
   compared with large FASTA nucleotide sequences.
 
@@ -121,7 +121,7 @@ in algorithms to solve the problem of genome assembly \cite{pop2008,pop2009}.
 The complexity of merging large numbers of overlapping reads can lead to
 genome assembly software being unable to produce a complete sequence. Instead,
 the algorithm may generate several large assembled regions of sequence
-(`contigs') composed of the many individual readsThese contigs represent a
+(`contigs') composed of the many individual reads. These contigs represent a
 fragmented picture of the genome and therefore require additional work to join
 together into a complete sequence. \pb
 
@@ -192,16 +192,15 @@ The occurrence of paired reads in separate contigs can be used to estimate
 probabilistically the order and distance between these contigs. Alternatively,
 laboratory methods may use PCR to amplify the unknown DNA in a gap region then
 use Sanger sequencing to determine the sequence of this gap. Computational
-methods are preferable as they are less costly in laboratory time and materials
-compared to manual gap resolution, and use the available data that exists
-following sequencing \cite{nagarajan2010}. Finally when the scaffold cannot be
-completely resolved, \emph{in silico} software packages exist to suggest the
-likely primers necessary for PCR amplifying the sequence in gap regions
-\cite{gordon2001}. \pb
+methods using the available sequencing data are preferable as they are less
+costly in laboratory time and materials compared to manual gap resolution
+\cite{nagarajan2010}. Finally when the scaffold cannot be completely resolved,
+\emph{in silico} software packages exist to suggest the likely primers
+necessary for PCR amplifying the sequence in gap regions \cite{gordon2001}. \pb
 
 Examples of \emph{in silico} methods include comparing the assembled contigs
 to a complete reference genome sequence to search for areas of sequence
-similarity between the two. Any areas of corresponding sequence with the
+similarity between the two. Any areas of corresponding sequence in the
 reference genome can be used to infer contig placement and build the contigs
 into a scaffold \cite{richter2007,zhao2008,assefa2009}. Genomic recombination
 can however reduce the efficacy of this. \pb
@@ -230,7 +229,7 @@ merging contigs into a larger, continuous scaffold sequence. The scaffolding
 process may still require manually inserting additional sequences or further
 joining contigs using PCR-derived sequence. Moving and editing large blocks of
 nucleotide text by hand however introduces human error and precludes any
-reproducibility of the steps in this process. \pb
+reproducibility. \pb
 
 The software outlined here, ``Scaffolder,'' aims to address these problems of
 reproducibility by creating a file syntax and software framework for editing a
@@ -269,7 +268,7 @@ directory. \pb
 \subsection*{Scaffold File Syntax} %{{{2
 
 The choice of nucleotide sequences comprising the scaffold is specified using
-the YAML syntax \cite{yaml}. YAML is a language format using whitespace and
+the YAML syntax \cite{yaml}. YAML is a data format using whitespace and
 indentation to produce a machine readable structure. As YAML is a standardised
 data format, third-party developers have the option to generate a genome
 scaffold using any programming language for which a YAML library exists. The
@@ -296,9 +295,8 @@ The input data for Scaffolder is nucleotide sequence in FASTA format file.
 These nucleotide sequences can be of any length and for example may be
 individual reads, assembled contigs or contigs which have been joined to into
 larger scaffolds. The case in which Scaffolder may be most useful is using the
-contigs and scaffolded contigs produced from the previously assembled set of
-sequencing reads, combined with additional gap filling sequences produced by
-PCR or \emph{in silico} methods as outlined in the Background. \pb
+contigs and scaffolded contigs, combined with additional gap filling sequences
+produced by PCR or \emph{in silico} methods as outlined in the Background. \pb
 
 \clearpage
 
@@ -308,8 +306,8 @@ PCR or \emph{in silico} methods as outlined in the Background. \pb
 
 The Scaffolder software facilitates reproducibly joining nucleotide sequences
 together into a single contiguous scaffolded super-sequence. Plain-text
-scaffold files written in YAML specify how these sequences should be joinedThe
-Scaffolder software is used to generate the scaffold sequence from these
+scaffold files written in YAML specify how these sequences should be joined.
+The Scaffolder software is used to generate the scaffold sequence from these
 instructions. In addition to specifying which contigs are required, the
 scaffold file allows the contigs to be edited into smaller sub-sequences or
 reverse complemented if necessary. Each scaffold file represents one scaffolded
@@ -424,7 +422,7 @@ a genome project. \pb
 
 Scaffolder uses a minimal and compact syntax to describe how a genome scaffold
 sequence should be generated. This syntax is simple to write and edit whilst
-being succinct and readable. 
+being succinct and readable. \pb
 
 AGP is a similar format for describing scaffolds. This format can be used to
 describe contig order and N-filled gap regions in a scaffold. The advantages of
@@ -433,7 +431,7 @@ allows searching the scaffold using UNIX line-based tools. The Scaffolder
 format in comparison in contrast is written in the standardised YAML format and
 therefore accessible to the many languages which provide parsers to this
 format. The Scaffolder format is provided with a tool explicitly to produce the
-fasta sequence of scaffold specified by in the file. The scaffold format
+FASTA sequence of scaffold specified by in the file. The Scaffolder format
 further provides functions for trimming and replacing regions of sequence using
 inserts. \pb
 
@@ -465,7 +463,7 @@ finishers to use methods similar to those in software development. \pb
 Scaffolder is software aimed at both bioinformaticians and biologists familiar
 with the command line who wish to build a genome scaffold from a set of
 contigs. The Scaffolder file format maintains the genome scaffold as a concise
-and readable text representation that allows third parties to see how the
+and readable text representation that allows third-parties to see how the
 genome sequence was scaffolded. This file format also allows a broad overview
 of which sequences were included and how they are ordered in the genome
 scaffold, something not possible to deduce from a megabase-length string of
